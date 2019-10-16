@@ -34,7 +34,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./Login/Login_popup.html">LOGIN</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./Login/Login_popup.html" onclick="openForm()">LOGIN</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">GameList</a>
@@ -49,20 +49,7 @@
       </div>
     </div>
   </nav>
-
-  <!-- Login page
-  <div class="form-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
-      <h1>Login</h1>
-      <label for="Id"><b>Id</b></label>
-      <input type="text" placeholder="Enter Id" name="Id" required>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-      <button type="submit" class="btn">Login</button>
-      <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
-    </form>
-  </div> -->
-
+  
   <!-- Masthead -->
   <header class="masthead bg-info text-white text-center">
     <div class="container d-flex align-items-center flex-column">
@@ -481,17 +468,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Login Form -->
-  <script>
-    function openForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-  </script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
