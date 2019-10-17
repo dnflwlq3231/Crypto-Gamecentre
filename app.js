@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 
-app.post('/Login/Singup.html', function(req, res){
+app.post('/Login/Signup.html', function(req, res){
     let {id, password, email} = req.body;
     db.query(`insert into user (id, password, email) values (?, ?, ?)`, [id, password, email], function(err){
         if(err){
