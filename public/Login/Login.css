@@ -8,8 +8,8 @@ html {
     /*background: #60a3bc !important;*/
 }
 .user_card {
-    height: 400px;
-    width: 350px;
+    height: 500px;
+    width: 450px;
     margin-top: auto;
     margin-bottom: auto;
     background: #2c3e50 ;
@@ -38,6 +38,11 @@ html {
 .form_container {
     margin-top: 100px;
 }
+
+.form_control {
+    width: 1000px;
+}
+
 .logo {
     width: 7rem;
     padding-top: 1.3rem;
