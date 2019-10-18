@@ -1,9 +1,7 @@
-var express = require('express');
-var app = express();
-var db = require('./utils/db');
-var bodyParser = require('body-parser');
-
-
+const express = require('express');
+const app = express();
+const db = require('./utils/db');
+const bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
