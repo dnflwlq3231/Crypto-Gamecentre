@@ -7,12 +7,12 @@
 
    <!-- Scirpt -->
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
    <!-- Theme CSS-->
-   <link href="../public/css/signup.css" rel="stylesheet">
+   <link href="/css/signup.css" rel="stylesheet">
 
 </head>
    <body>
@@ -26,19 +26,19 @@
          </div>
          <div class="row">
             <div class="col-md-8 mx-auto">
-               <form action="/signup_process" method="post" name="login">
+                  <form action="/signup_process" method="post" name="login">
                      <div class="form-group">
-                        <input type="text" name="Id" class="form-control my-input" id="Id" placeholder="Username">
+                        <input type="text" name="id" class="form-control my-input" id="id" placeholder="Username">
                      </div>
                      <div class="form-group">
-                        <input type="password" min="0" name="password" id="password" class="form-control my-input"
+                        <input type="password" name="password" id="password" class="form-control my-input"
                         placeholder="password">
                      </div>
                                  <div class="form-group">
                                     <input type="email" name="email" class="form-control my-input" id="email" placeholder="Email">
                                  </div>
                      <div class="form-group">
-                        <input type="number" min="0" name="address" id="address" class="form-control my-input"
+                        <input type="text" name="address" id="address" class="form-control my-input"
                            placeholder="Ethereum Account">
                      </div>
                      <div class="text-center ">
