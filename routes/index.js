@@ -4,25 +4,18 @@ const app = express();
 const db = require('../utils/db');
 const bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-router.post('/', function (req, res) {
-    res.sendFile('../public/index.html');
+router.get('/', function (req, res) {
+    res.render(`index`);
 })
 
-router.post('/Login/Signup.html', function(req, res){
-    let {id, password, email} = req.body;
-    db.query(`insert into user (id, password, email) values (?, ?, ?)`, [id, password, email], function(err){
-        if(err){
-            console.log(err);
-            throw err;
-        }
-        res.redirect('/Login/Login_popup.html');
-    });
-});
+router.get('/login', function (req, res) {
+    res.render(`login`);
+})
 
-router.post('/Login_popup.html', function(req, res){
+router.post('/login_process', function(req, res){    
     let {id, password} = req.body;
     console.log(id,password);
     db.query(`select * from user where user.id=? `, [id], function(err, userinfo){
@@ -39,6 +32,22 @@ router.post('/Login_popup.html', function(req, res){
             res.redirect('/');
         }
     })
+    
 })
+
+router.get('/signup', function (req, res) {
+    res.render(`signup`);
+})
+
+router.post('/signup_process', function(req, res){
+    let {id, password, email} = req.body;
+    db.query(`insert into user (id, password, email) values (?, ?, ?)`, [id, password, email], function(err){
+        if(err){
+            console.log(err);
+            throw err;
+        }
+        res.redirect('../public/Login/Login_popup.html');
+    });
+});
 
 module.exports = router;
