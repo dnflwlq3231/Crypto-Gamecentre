@@ -5,6 +5,7 @@ const indexRouter = require('./routes/index');
 const gameRouter = require('./routes/game');
 
 app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'ejs')
 
 app.use('/', indexRouter);
 app.use('/game', gameRouter);
