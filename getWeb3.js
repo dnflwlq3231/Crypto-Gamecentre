@@ -1,74 +1,286 @@
-// To verify if MetaMask is installed or not
-function inInstalled() {
-  if (typeof web3 !== 'undefined') {
-    console.log('MetaMask is installed')
-    return alert('You should install MetaMask')
-  } else {
-    console.log('MetaMask had been installed')
+const contract_address = "0x6bFF99C3761669c2f1ce78466C21DcB7fb8DE6E0";
+const abi = [
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "DealerHand",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "count2",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "BlackJackDraw",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "DealerDraw",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "BlackJackReset",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "BlackJackStart",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "BlackJackResult",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "countcheck",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "CountDraw",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "random",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "count1",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "PlayerHand",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "BlackJackEnd",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "PlayerDraw",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "PlayerCost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "OverlapCheck",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "Cards",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "DealerCost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+let contract;
+window.addEventListener('load', () => {
+  if(typoeof(web3) == 'undefined') {
+    return console.log("Metamask is not installed");
   }
-}
 
-// To verify if MetaMask is locked or not
-function isLocked() {
-  web3.eth.getAccounts(function(err, accounts) {
-    if (err != null) {
-      console.log(err)
-      return alert('Something go on wrong......')
-    } else if (accounts.length === 0) {
-      console.log('MetaMask is locked')
-      return alert('Your MetaMask account is locked')
-    } else {
-      console.log('MetaMask is unlocked')
-    }
-  })
-}
-
-// To verify if MetaMask has balance or not
-function checkBalance() {
-  toeknInst.balanceOf(web3.ethaccounts[0], function(err, result) {
-    if (!err && result) {
-      var balance = result.c[0];
-      if(balance < dappCost * (100000000)) {
-        console.log('MetaMask has insufficient balance')
-        return false;
-      } 
-        console.log('MetaMask has balance')
-        // Include here your transaction furnction here
-    } else {
-      console.error(error);
-    }
-    return false;
-  });
-}
-
-// If you have a MetaMask transaction, but reject the transaction
-tokenInst.approve(
-  addrHOLD, 
-  truePlanCost, 
-  gasPrice: web3.toWei('50', 'gwei'),
-  function (error, result) {
-  if (!error && result) {
-     var data;
-     console.log('approval sent to network');
-     
-     var url = 'https://etherscan.io/tx/' + result;
-     var link = '<a href=\"" + 
-                 url + 
-                 "\" target=\"_blank\">View Transaction</a>';
-     console.log('Waiting for approval ...');
-    
-     data = {
-        txhash: result,
-        account_type: selectedPlanId,
-        txtype: 1, // Approval
-     };
-     apiService(data, '/transaction/create/', 'POST')
-     .done(function (response) {
-        location.href = response.tx_url;
-     });
-  } 
-  else {
-     console.error(error);
-     console.log('You reject the transaction');
+  contract = new web3.eth.contract(abi).at(contract_address);
+  
+  function address() {
+    console.log(contract.options.address);
+    return contract.options.address;
   }
-});
+  
+  
+  //using contract example
+  contract.message.call((error, result) => {
+    if(err) {
+      return console.log(error);
+     }
+     $('#message').text(result);
+   })
+ 
+}); 
+
+function setMessage() {
+    let message = $('#new_message').val();
+    contract.BalanceOf.sendTransaction(message,
+      {gasPrice: web3.toWei(4.1, 'Gwei')},
+      (error, result) => {
+        if(error) {
+          return console.log(error);
+        }
+        console.log("txhash: " + result);
+      }
+      ) 
+  }
