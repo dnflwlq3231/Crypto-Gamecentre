@@ -69,15 +69,15 @@ router.route('/login_process').post(function(req, res){
     console.log(userId,userPw);
     db.query(`select * from user where user.id=? `, [userId], function(err, userinfo){
         if(err){
-         throw err;    
+            throw err;
         }
-        if(userinfo[0] == undefined){
+        else if(userinfo[0] == null){
             res.send('아이디가 없습니다.');
         }
-        if(userinfo[0].password != userPw){
+        else if(userinfo[0].password != userPw){
             res.send('비밀번호 오류');
         }
-        if(userinfo[0].password === userPw){
+        else if(userinfo[0].password === userPw){
             req.session.user = {
                 "loginId" : userId,
                 "loginPassword" : userPw
