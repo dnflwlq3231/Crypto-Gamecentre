@@ -8,8 +8,8 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
 router.use(sessionParser({
-    secret: 'abcdefghijklmnop',
-    resave: true,
+    secret: 'abcdefghijklmnopqrstuvwxyz',
+    resave: false,
     saveUninitialized: true
 }));
 
@@ -39,7 +39,7 @@ router.get('/profile', function (req, res) {
         }
     }
     if(req.session.user.loginId == undefined){
-        
+        res.redirect('/');
     }
 })
 
@@ -57,13 +57,13 @@ router.post('/signup_process', function(req, res){
         if(err){
             res.send('id & address 사용중');
         }
-        if(result){
+        else if(result){
             res.redirect('/login');
         }
     });
 });
 
-router.route('/login_process').post(function(req, res){    
+router.post('/login_process', function(req, res){    
     let userId = req.body['id'];
     let userPw = req.body['password'];
     console.log(userId,userPw);
@@ -78,13 +78,49 @@ router.route('/login_process').post(function(req, res){
             res.send('비밀번호 오류');
         }
         else if(userinfo[0].password === userPw){
-            req.session.user = {
-                "loginId" : userId,
-                "loginPassword" : userPw
+            if(req.session.user){
+                req.session.destroy();
+                req.session.user = {
+                    "loginId" : userId,
+                    "loginPassword" : userPw
+                    }
+                res.redirect('/');
             }
-            res.redirect('/');
+            
+            else{
+                req.session.user = {
+                    "loginId" : userId,
+                    "loginPassword" : userPw
+                    }
+                res.redirect('/');
+            }
         }
     })
+})
+
+router.post('/forgot_process', function(req,res){
+    let userId = req.body['id'];
+    let userEmail = req.body['email'];
+    db.query('select * from user where user.id=?', [userId], function(err,data){
+        if(err){
+            throw err;
+        }
+        else if(data[0] == null){
+            res.send('아이디가 없습니다');            
+        }
+        else if(data[0].email != userEmail){
+            res.send('Email이 틀립니다');
+        }
+        else if(data[0].email == userEmail){
+            res.render('forgot_result', {
+                data
+            });
+        }
+    })
+})
+
+router.get('/forgot', function (req,res){
+    res.render('forgot');
 })
 
 router.get('/signup', function (req, res) {
