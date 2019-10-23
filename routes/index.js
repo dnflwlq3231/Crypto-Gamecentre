@@ -28,9 +28,14 @@ router.get('/', function (req, res) {
 })
 
 router.get('/logout', function(req,res){
-    req.session.destroy();
-    console.log(`로그아웃`);
-    res.redirect('/');
+    req.session.destroy(function(err){
+       if(err){
+           throw err;
+       } else {
+            console.log(`로그아웃`);
+            res.redirect('/');
+       }
+    });
 })
 
 router.get('/profile', function (req, res) {
@@ -49,6 +54,7 @@ router.get('/profile', function (req, res) {
 })
 
 router.get('/login', function (req, res) {
+    req.session.destroy();
     res.render(`login`);
 })
 
