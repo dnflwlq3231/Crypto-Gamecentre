@@ -1,8 +1,8 @@
 module.exports = {
     isOwner:function(req, res) {
-        if (req.session.user.isLogined) {
+        if (req.session.isLogined) {
             return true;
-        } else if(!req.session.user.isLogined || req.session.user.isLogined == undefined){
+        } else{
             return false;
         }
     },

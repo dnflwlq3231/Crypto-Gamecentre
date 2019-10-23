@@ -17,10 +17,9 @@ router.use(sessionParser({
 }));
 
 router.get('/', function (req, res) {
-    let msg = `로그인 안하고 접속`
     let statusUI = auth.statusUI(req, res);
-    if(req.session.user){
-        msg = `${req.session.user.loginId}로 로그인`
+    if(req.session){
+        msg = `${req.session.loginId}로 로그인`
     }
     console.log(msg);
     res.render(`index`, {
@@ -35,8 +34,8 @@ router.get('/logout', function(req,res){
 })
 
 router.get('/profile', function (req, res) {
-    if(req.session.user.loginId != undefined){
-        let id = req.session.user.loginId;
+    if(req.session.loginId != undefined){
+        let id = req.session.loginId;
         console.log(id);
         db.query('select * from user where user.id = ?'), [id], function(err, data){
             res.render('profile', {
@@ -44,7 +43,7 @@ router.get('/profile', function (req, res) {
             })
         }
     }
-    if(req.session.user.loginId == undefined){
+    else if(req.session.loginId == undefined){
         res.redirect('/');
     }
 })
@@ -86,11 +85,8 @@ router.post('/login_process', function(req, res){
         }
         else if(userinfo[0].password === userPw){
             
-            req.session.user = {
-                "loginId" : userId,
-                "loginPassword" : userPw,
-                "isLogined" : true
-                }
+            req.session.loginId = userId;
+            req.session.isLogined = true; 
             res.redirect('/');
         }
     })
@@ -124,6 +120,5 @@ router.get('/forgot', function (req,res){
 router.get('/signup', function (req, res) {
     res.render(`signup`);
 })
-
 
 module.exports = router;
