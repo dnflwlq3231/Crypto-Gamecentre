@@ -12,7 +12,7 @@ html {
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
-    background: #2c3e50 ;
+    background: #7c736c ;
     position: relative;
     display: flex;
     justify-content: center;
@@ -30,13 +30,13 @@ html {
     width: 170px;
     top: -75px;
     border-radius: 50%;
-    background: #3b79a9;
+    background: #d3c0b2;
     padding: 10px;
     text-align: center;
 }
 
 .form_container {
-    margin-top: 100px;
+    margin-top: 85px;
 }
 
 .form_control {
@@ -44,13 +44,13 @@ html {
 }
 
 .logo {
-    width: 7rem;
-    padding-top: 1.3rem;
+    width: 6rem;
+    padding-top: 1.5rem;
 }
 
 .login_btn {
     width: 100%;
-    background: #3b79a9 !important;
+    background: #d3c0b2 !important;
     color: white !important;
 }
 .login_btn:focus {
@@ -58,10 +58,10 @@ html {
     outline: 0px !important;
 }
 .login_container {
-    padding: -3 2rem;
+    padding: 1 2rem;
 }
 .input-group-text {
-    background: #3b79a9 !important;
+    background: #d3c0b2 !important;
     color: white !important;
     border: 0 !important;
     border-radius: 0.25rem 0 0 0.25rem !important;
@@ -73,4 +73,8 @@ html {
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #3b79a9 !important;
+}
+
+#sign_up {
+    color: beige;
 }
