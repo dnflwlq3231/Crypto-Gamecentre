@@ -1,4 +1,5 @@
-{
+[
+  {
   "contractName": "Chip",
   "abi": [
     {
@@ -21364,3 +21365,4 @@
     "methods": {}
   }
 }
+]

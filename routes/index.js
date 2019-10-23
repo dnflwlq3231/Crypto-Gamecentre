@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require('../utils/db');
 const bodyParser = require('body-parser');
 const sessionParser = require('express-session');
+const auth = require('../utils/auth.js');
+const FileStore = require('session-file-store')(sessionParser);
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -10,16 +12,20 @@ router.use(bodyParser.json());
 router.use(sessionParser({
     secret: 'abcdefghijklmnopqrstuvwxyz',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new FileStore()
 }));
 
 router.get('/', function (req, res) {
     let msg = `로그인 안하고 접속`
+    let statusUI = auth.statusUI(req, res);
     if(req.session.user){
         msg = `${req.session.user.loginId}로 로그인`
     }
     console.log(msg);
-    res.render(`index`);
+    res.render(`index`, {
+        statusUI
+    });
 })
 
 router.get('/logout', function(req,res){
@@ -52,6 +58,7 @@ router.post('/signup_process', function(req, res){
     let userPw = req.body['password'];
     let userEmail = req.body['email'];
     let userAddress = req.body['address'];
+    
     console.log(userId, userPw, userEmail, userAddress);
     db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, userPw, userEmail, userAddress], function(err, result){
         if(err){
@@ -78,22 +85,13 @@ router.post('/login_process', function(req, res){
             res.send('비밀번호 오류');
         }
         else if(userinfo[0].password === userPw){
-            if(req.session.user){
-                req.session.destroy();
-                req.session.user = {
-                    "loginId" : userId,
-                    "loginPassword" : userPw
-                    }
-                res.redirect('/');
-            }
             
-            else{
-                req.session.user = {
-                    "loginId" : userId,
-                    "loginPassword" : userPw
-                    }
-                res.redirect('/');
-            }
+            req.session.user = {
+                "loginId" : userId,
+                "loginPassword" : userPw,
+                "isLogined" : true
+                }
+            res.redirect('/');
         }
     })
 })
