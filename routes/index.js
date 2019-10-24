@@ -54,10 +54,9 @@ router.get('/profile', function (req, res) {
         console.log(id);
         db.query('select * from user where user.id=?', [id], function(err, data){
             res.render('profile', {
-                userId: userId,
-                userEmail: userEmail,
-                userAddress: userAddress
+                data
             })
+
         })
     }
     else if(req.session.loginId == undefined){
