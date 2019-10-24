@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const sessionParser = require('express-session');
 const auth = require('../utils/auth.js');
 const FileStore = require('session-file-store')(sessionParser);
+const ethereum = require('ethereumjs-tx');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -20,6 +21,10 @@ router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
     if(req.session){
         msg = `${req.session.loginId}로 로그인`
+    }
+    if(ethereum.isMetaMask){
+        let accounts = ethereum.enable();
+        let account = accounts[0];
     }
     console.log(msg);
     res.render(`index`, {
@@ -127,5 +132,6 @@ router.get('/forgot', function (req,res){
 router.get('/signup', function (req, res) {
     res.render(`signup`);
 })
+
 
 module.exports = router;
