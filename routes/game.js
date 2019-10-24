@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io'));
 const Tx = require('ethereumjs-tx').Transaction;
@@ -16,7 +15,7 @@ const contract = new web3.eth.Contract(chip, '0x6bFF99C3761669c2f1ce78466C21DcB7
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-router.post('/getToken', function (req, res) {
+router.get('/getToken', function (req, res) {
     contract.methods.GetToken().call().then(console.log);
 })
 
