@@ -42,14 +42,14 @@ router.get('/profile', function (req, res) {
     if(req.session.loginId != undefined){
         let id = req.session.loginId;
         console.log(id);
-        db.query('select * from user where user.id = ?'), [id], function(err, data){
+        db.query('select * from user where user.id=?', [id], function(err, data){
             res.render('profile', {
                 data
             })
-        }
+        })
     }
     else if(req.session.loginId == undefined){
-        res.redirect('/');
+        res.redirect('/login');
     }
 })
 
@@ -101,6 +101,7 @@ router.post('/login_process', function(req, res){
 router.post('/forgot_process', function(req,res){
     let userId = req.body['id'];
     let userEmail = req.body['email'];
+    console.log(userEmail);
     db.query('select * from user where user.id=?', [userId], function(err,data){
         if(err){
             throw err;
