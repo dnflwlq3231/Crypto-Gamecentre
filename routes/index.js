@@ -6,6 +6,7 @@ const sessionParser = require('express-session');
 const auth = require('../utils/auth.js');
 const FileStore = require('session-file-store')(sessionParser);
 const ethereum = require('ethereumjs-tx');
+const nodemailer = require('nodemailer');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -97,7 +98,8 @@ router.post('/login_process', function(req, res){
         else if(userinfo[0].password === userPw){
             
             req.session.loginId = userId;
-            req.session.isLogined = true; 
+            req.session.isLogined = true;
+            req.session.isAddress = userinfo[0].address;
             res.redirect('/');
         }
     })
@@ -118,9 +120,32 @@ router.post('/forgot_process', function(req,res){
             res.send('Email이 틀립니다');
         }
         else if(data[0].email == userEmail){
-            res.render('forgot_result', {
-                data
+            var transporter = nodemailer.createTransport({
+                service: 'naver',
+                auth: {
+                    user: 'dnflwlq3231@naver.com', //author email address
+                    pass: 'goaWltkfkd7!@' //author email password
+                }
             });
+            
+            var mailOptions = {
+                from: 'Game_Centre <dnflwlq3231@naver.com>',
+                to: userEmail,
+                subject: 'Your Password',
+                text: 'Your Password :  ' + data[0].password
+            };
+            
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.log(error);
+                }
+                else {
+                    console.log('Email sent!: ' + info.response);
+                }
+                transporter.close();
+            
+            });
+            res.redirect('/');
         }
     })
 })
