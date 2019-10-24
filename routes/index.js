@@ -40,12 +40,18 @@ router.get('/logout', function(req,res){
 })
 
 router.get('/profile', function (req, res) {
+    let userId = req.body['id'];
+    let userAddress = req.body['address'];
+    let userEmail = req.body['email'];
+
     if(req.session.loginId != undefined){
         let id = req.session.loginId;
         console.log(id);
         db.query('select * from user where user.id=?', [id], function(err, data){
             res.render('profile', {
-                data
+                userId: userId,
+                userEmail: userEmail,
+                userAddress: userAddress
             })
         })
     }
