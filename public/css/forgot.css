@@ -72,7 +72,7 @@ html {
     outline: 0px !important;
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #3b79a9 !important;
+    background-color: #d3c0b2 !important;
 }
 
 #sign_up {

@@ -118,8 +118,8 @@ router.post('/forgot_process', function(req,res){
             var transporter = nodemailer.createTransport({
                 service: 'naver',
                 auth: {
-                    user: 'dnflwlq3231@naver.com',
-                    pass: 'goaWltkfkd7!@'
+                    user: 'dnflwlq3231@naver.com', //author email address
+                    pass: 'goaWltkfkd7!@' //author email password
                 }
             });
             
