@@ -45,10 +45,7 @@ router.get('/logout', function(req,res){
 })
 
 router.get('/profile', function (req, res) {
-    let userId = req.body['id'];
-    let userAddress = req.body['address'];
-    let userEmail = req.body['email'];
-
+    
     if(req.session.loginId != undefined){
         let id = req.session.loginId;
         console.log(id);
@@ -56,7 +53,6 @@ router.get('/profile', function (req, res) {
             res.render('profile', {
                 data
             })
-
         })
     }
     else if(req.session.loginId == undefined){
@@ -64,6 +60,14 @@ router.get('/profile', function (req, res) {
     }
 })
 
+router.post('/profile_process', function(req,res){
+    let userId = req.session.loginId;
+    let userAddress = req.body['address'];
+    let userEmail = req.body['email'];
+    db.query('update user set user.email=?, user.address=? where user.id=?', [userEmail, userAddress, userId], function(err, result){
+        res.redirect('/');
+    })
+})
 router.get('/login', function (req, res) {
     req.session.destroy();
     res.render(`login`);
