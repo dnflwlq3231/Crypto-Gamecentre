@@ -24,15 +24,18 @@
     
     </head>
 <body>
-    <div class="omdoll_content_wrapper">
+    <div class="container">
         <div id="rockgame_module_view">
-            <div></div>
-            <h2 style="padding:0px; margin:0px;">가위바위보 게임</h2>
-                <div class="xecenter_div_line"></div>
-                <form id="insert_form" name="insert_form" action="./" method="post" onsubmit="return rockgame_submit_check()" onKeyDown="if(event.keyCode==13){return false;}"><input type="hidden" name="error_return_url" value="/rockgame" /><input type="hidden" name="mid" value="rockgame" /><input type="hidden" name="vid" value="" /><input type="hidden" name="ruleset" value="insert_game" />
+            <div></div></br>
+            <h2 class="gametitle">가위바위보 게임</h2>
+                <form id="insert_form" name="insert_form" action="./" method="post" onsubmit="return rockgame_submit_check()">
+                    <input type="hidden" name="error_return_url" value="/rockgame" />
+                    <input type="hidden" name="mid" value="rockgame" />
+                    <input type="hidden" name="vid" value="" />
+                    <input type="hidden" name="ruleset" value="insert_game" />
                     <input type="hidden" name="act" value="procRockgameUserView" />
                     <input type="hidden" name="game_srl" value="" />
-                    <div class="rockgame_center">
+                    <div class="rockgame">
                         <div class="left_bar">
                             <div class="game_result">
                                 <div class="com_select">
@@ -57,16 +60,13 @@
                                     <input class="rps_img" type="image" id="rps_paper" src="/public/img/portfolio/paper.gif" onclick="this.form.rsp_slect.value='paper'" />
                                 </div>
                             </div>
-                        </div>
-                        <div class="rockgame_bottom">
-                            <p>참가point를 입력한 후 가위 바위 보 중에 내고 싶은것을 선택합니다</p>
-                            <p>승리할 경우 참가point 만큼 획득합니다 // 패배할 경우 참가point 만큼 소모합니다</p>
-                        </div>
-                        <div class="xecenter_div_line"></div>
+                    </div>
+                    <div class="rockgame_bottom">
+                        <p>참가point를 입력한 후 가위 바위 보 중에 내고 싶은것을 선택합니다</p>
+                        <p>승리할 경우 참가point 만큼 획득합니다 // 패배할 경우 참가point 만큼 소모합니다</p>
+                    </div>
                 </form>
-                    <div style="clear:both;"></div>
-                    <div></div>
-                </div>
+            </div>
                 <script type="text/javascript">
     //폼을 중복전송 방지위해 전송후 가위바위보 버튼을 막음 // 엔터로 전송못하게 함
     function rockgame_submit_check(){

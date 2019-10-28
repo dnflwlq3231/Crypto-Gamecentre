@@ -29,31 +29,28 @@ router.get('/', function (req, res) {
         let account = accounts[0];
     }
     console.log(msg);
-    res.render(`index`, {
+    res.render('index', {
         statusUI
     });
 })
 
 router.get('/login', function (req, res) {
     req.session.destroy();
-    res.render(`login`);
+    res.render('login');
 })
 
 router.post('/login_process', function(req, res){    
     let userId = req.body['id'];
     let userPw = req.body['password'];
     console.log(userId,userPw);
-    db.query(`select * from user where user.id=? `, [userId], function(err, userinfo){
+    db.query('select * from user where user.id=? ', [userId], function(err, userinfo){
         if(err){
             throw err;
         }
-        else if(userinfo[0] == null){
-            res.send('아이디가 없습니다.');
+        else if(userinfo[0] == null || userinfo[0].password != userPw){
+            res.write("<script>alert('ID & Password check plz'); location.href='/login';</script>");                
         }
-        else if(userinfo[0].password != userPw){
-            res.send('비밀번호 오류');
-        }
-        else if(userinfo[0].password === userPw){
+        else if(userinfo[0].password == userPw){
             
             req.session.loginId = userId;
             req.session.isLogined = true;
@@ -65,12 +62,8 @@ router.post('/login_process', function(req, res){
 
 router.get('/logout', function(req,res){
     req.session.destroy(function(err){
-       if(err){
-           throw err;
-       } else {
-            console.log(`로그아웃`);
-            res.redirect('/');
-       }
+        console.log("logout");
+        res.redirect('/');   
     });
 })
 
@@ -95,12 +88,17 @@ router.post('/profile_process', function(req,res){
     let userAddress = req.body['address'];
     let userEmail = req.body['email'];
     db.query('update user set user.email=?, user.address=? where user.id=?', [userEmail, userAddress, userId], function(err, result){
-        res.redirect('/');
+        if(err){
+            throw err;
+        }
+        else { 
+            res.redirect('/');
+        }
     })
 })
 
 router.get('/signup', function (req, res) {
-    res.render(`signup`);
+    res.render('signup');
 })
 
 router.post('/signup_process', function(req, res){
@@ -112,7 +110,7 @@ router.post('/signup_process', function(req, res){
     console.log(userId, userPw, userEmail, userAddress);
     db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, userPw, userEmail, userAddress], function(err, result){
         if(err){
-            res.send('id & address 사용중');
+            res.write("<script>alert('Id & Address check plz'); location.href='/signup';</script>");
         }
         else if(result){
             res.redirect('/login');
@@ -127,16 +125,12 @@ router.get('/forgot', function (req,res){
 router.post('/forgot_process', function(req,res){
     let userId = req.body['id'];
     let userEmail = req.body['email'];
-    console.log(userEmail);
     db.query('select * from user where user.id=?', [userId], function(err,data){
         if(err){
             throw err;
         }
-        else if(data[0] == null){
-            res.send('아이디가 없습니다');            
-        }
-        else if(data[0].email != userEmail){
-            res.send('Email이 틀립니다');
+        else if(data[0] == null || data[0].email != userEmail){
+            res.write("<script>alert('Id & Email check plz'); location.href='/forgot';</script>");          
         }
         else if(data[0].email == userEmail){
             let mailerid = author.emailId(req,res);
@@ -168,6 +162,10 @@ router.post('/forgot_process', function(req,res){
             });
         }
     })
+})
+
+router.get('/tt', function(req,res){
+    res.render('tt');
 })
 
 module.exports = router;
