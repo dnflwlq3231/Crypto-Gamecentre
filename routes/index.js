@@ -7,6 +7,7 @@ const auth = require('../utils/auth.js');
 const FileStore = require('session-file-store')(sessionParser);
 const ethereum = require('ethereumjs-tx');
 const nodemailer = require('nodemailer');
+const author = require('../utils/author');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -31,6 +32,35 @@ router.get('/', function (req, res) {
     res.render(`index`, {
         statusUI
     });
+})
+
+router.get('/login', function (req, res) {
+    req.session.destroy();
+    res.render(`login`);
+})
+
+router.post('/login_process', function(req, res){    
+    let userId = req.body['id'];
+    let userPw = req.body['password'];
+    console.log(userId,userPw);
+    db.query(`select * from user where user.id=? `, [userId], function(err, userinfo){
+        if(err){
+            throw err;
+        }
+        else if(userinfo[0] == null){
+            res.send('아이디가 없습니다.');
+        }
+        else if(userinfo[0].password != userPw){
+            res.send('비밀번호 오류');
+        }
+        else if(userinfo[0].password === userPw){
+            
+            req.session.loginId = userId;
+            req.session.isLogined = true;
+            req.session.isAddress = userinfo[0].address;
+            res.redirect('/');
+        }
+    })
 })
 
 router.get('/logout', function(req,res){
@@ -68,9 +98,9 @@ router.post('/profile_process', function(req,res){
         res.redirect('/');
     })
 })
-router.get('/login', function (req, res) {
-    req.session.destroy();
-    res.render(`login`);
+
+router.get('/signup', function (req, res) {
+    res.render(`signup`);
 })
 
 router.post('/signup_process', function(req, res){
@@ -90,28 +120,8 @@ router.post('/signup_process', function(req, res){
     });
 });
 
-router.post('/login_process', function(req, res){    
-    let userId = req.body['id'];
-    let userPw = req.body['password'];
-    console.log(userId,userPw);
-    db.query(`select * from user where user.id=? `, [userId], function(err, userinfo){
-        if(err){
-            throw err;
-        }
-        else if(userinfo[0] == null){
-            res.send('아이디가 없습니다.');
-        }
-        else if(userinfo[0].password != userPw){
-            res.send('비밀번호 오류');
-        }
-        else if(userinfo[0].password === userPw){
-            
-            req.session.loginId = userId;
-            req.session.isLogined = true;
-            req.session.isAddress = userinfo[0].address;
-            res.redirect('/');
-        }
-    })
+router.get('/forgot', function (req,res){
+    res.render('forgot');
 })
 
 router.post('/forgot_process', function(req,res){
@@ -129,11 +139,13 @@ router.post('/forgot_process', function(req,res){
             res.send('Email이 틀립니다');
         }
         else if(data[0].email == userEmail){
+            let mailerid = author.emailId(req,res);
+            let mailerpass = author.emailPass(req,res);
             var transporter = nodemailer.createTransport({
                 service: 'naver',
                 auth: {
-                    user: 'dnflwlq3231@naver.com', //author email address
-                    pass: 'goaWltkfkd7!@' //author email password
+                    user: mailerid,
+                    pass: mailerpass
                 }
             });
             
@@ -154,18 +166,8 @@ router.post('/forgot_process', function(req,res){
                 transporter.close();
             
             });
-            res.redirect('/');
         }
     })
 })
-
-router.get('/forgot', function (req,res){
-    res.render('forgot');
-})
-
-router.get('/signup', function (req, res) {
-    res.render(`signup`);
-})
-
 
 module.exports = router;
