@@ -15,6 +15,10 @@ const contract = new web3.eth.Contract(chip, '0x6bFF99C3761669c2f1ce78466C21DcB7
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
+router.get('/game/getToken', function (req, res) {
+    contract.methods.GetToken().call().then(console.log);
+})
+
 router.get('/game/:gameId', function (req, res) {
     let gameTitle;
     let gamePage;
@@ -40,8 +44,5 @@ router.get('/game/:gameId', function (req, res) {
     });
 })
 
-router.get('/game/getToken', function (req, res) {
-    contract.methods.GetToken().call().then(console.log);
-})
 
 module.exports = router;
