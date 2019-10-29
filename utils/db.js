@@ -2,8 +2,9 @@ var mysql = require('mysql');
 
 var db = mysql.createConnection({
 
-    host : //'localhost', 
-        '203.236.220.47',
+    host : 
+    'localhost', 
+        // '203.236.220.47',
 
     port : 3306,
 

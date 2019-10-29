@@ -135,7 +135,7 @@ router.post('/forgot_process', function(req,res){
         }
         else if(data[0].email == userEmail){
             res.json({"msg" : "success"});
-            
+
             let mailerid = author.emailId(req,res);
             let mailerpass = author.emailPass(req,res);
             var transporter = nodemailer.createTransport({
@@ -163,7 +163,6 @@ router.post('/forgot_process', function(req,res){
                 transporter.close();
             
             });
-
         }
     })
 })
