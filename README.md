@@ -27,7 +27,7 @@
 
 ### Login
 
-[![Login_page Preview](./public/img/md/login.PNG)]
+![Login_page Preview](./public/img/md/login.PNG)
 
 - 본 페이지는 로그인을 해야만 모든 기능을 이용할 수 있습니다. 로그인은 메인페이지의 `LOGIN` 버튼을 눌러 로그인페이지로 접속 후 진행합니다.<br>
 - 아이디와 패스워드를 데이터베이스에서 확인 후 맞다면 로그인이 되며 메인페이지로 이동합니다
@@ -36,7 +36,7 @@
 
 ### Sign up
 
-[![Signup_page Preview](./public/img/md/signup.PNG)]
+![Signup_page Preview](./public/img/md/signup.PNG)
 
 - `Username` : 사용할 아이디를 입력합니다 (수정할 수 없습니다)
 - `Password` : 사용할 비밀번호를 입력합니다
@@ -45,7 +45,7 @@
 
 ### Forgot
 
-[![Forgot_page Preview](./public/img/md/forgot.PNG)]
+![Forgot_page Preview](./public/img/md/forgot.PNG)
 
 - `username` : 가입할 때 입력한 아이디를 입력하세요
 - `email` : 가입할 때 입력한 이메일을 입력하세요. 비밀번호를 알려드립니다.
@@ -55,7 +55,7 @@
 
 ### Profile
 
-[![Profile_page Preview](./public/img/md/profile.PNG)]
+![Profile_page Preview](./public/img/md/profile.PNG)
 
 - `Name` : 가입시 입력한 아이디가 보입니다 (수정이 `불가`합니다)
 - `Mail` : 가입시 입력한 이메일이 보입니다 (수정이 `가능`합니다)
