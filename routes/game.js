@@ -15,7 +15,32 @@ const contract = new web3.eth.Contract(chip, '0x6bFF99C3761669c2f1ce78466C21DcB7
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-router.get('/getToken', function (req, res) {
+router.get('/game/:gameId', function (req, res) {
+    let gameTitle;
+    let gamePage;
+    if (req.params.gameId == 0){
+        gameTitle = 'BlackJack';
+        gamePage = ``;
+    } else if (req.params.gameId == 1){
+        gameTitle = 'Dice';
+        gamePage = ``;
+    } else if (req.params.gameId == 2){
+        gameTitle = 'OddEven';
+        gamePage = ``;
+    } else if (req.params.gameId == 3){
+        gameTitle = 'RockPaperScissors';
+        gamePage = ``;
+    } else {
+        console.log('undefined game page request')
+        res.redirect('/')
+    }
+    res.render(`game`, {
+        title: gameTitle,
+        body: gamePage
+    });
+})
+
+router.get('/game/getToken', function (req, res) {
     contract.methods.GetToken().call().then(console.log);
 })
 
