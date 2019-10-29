@@ -69,7 +69,7 @@
             </div>
         </div>
 
-    <!-- Modal -->
+    <!--Send Email Modal-->
     <div class="modal fade" id="indexemail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -83,6 +83,27 @@
                 <div class="modal-body">
                     We'll send your password. <br> 
                     Please check your email!
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href = '/'" value="Close">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Check typing Modal-->
+    <div class="modal fade" id="check_typing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="index_email_Label">Find password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Check Id & Email plz
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href = '/'" value="Close">
@@ -116,7 +137,7 @@
                     if (result.msg == "success") {
                         $('#indexemail').modal('show');
                     } else if (result.msg == "error") {
-                        alert('Check Id & Email plz')
+                        $('#check_typing').modal('show');
                         }
                 }
             })

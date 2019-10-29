@@ -83,6 +83,27 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!--Check login Modal-->
+    <div class="modal fade" id="check_login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="index_email_Label">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    가입하지 않았거나 잘못된 정보입니다.
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href = '/'" value="Close">
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- login function -->
     <script>
         $("#btnSubmit").on("click", function() {
@@ -107,7 +128,7 @@
                     if(result.msg == "success") {
                         window.location.href = '/'
                     } else if (result.msg == "failed") {
-                        alert('가입하지 않았거나 잘못된 정보입니다.')
+                        $('#check_login').modal('show');
                     }
                 }
             })
