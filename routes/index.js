@@ -42,20 +42,21 @@ router.get('/login', function (req, res) {
 router.post('/login_process', function(req, res){    
     let userId = req.body['id'];
     let userPw = req.body['password'];
-    console.log(userId,userPw);
+    console.log(userId, userPw)
     db.query('select * from user where user.id=? ', [userId], function(err, userinfo){
         if(err){
             throw err;
         }
-        else if(userinfo[0] == null || userinfo[0].password != userPw){
-            res.write("<script>alert('ID & Password check plz'); location.href='/login';</script>");                
+         if(userinfo[0] == null || userinfo[0].password != userPw){       
+            console.log("login failed")
+            res.json({"msg" : "failed"})
         }
         else if(userinfo[0].password == userPw){
-            
+            console.log("login successed")
             req.session.loginId = userId;
             req.session.isLogined = true;
             req.session.isAddress = userinfo[0].address;
-            res.redirect('/');
+            res.json({"msg": "success"})
         }
     })
 })
@@ -111,6 +112,7 @@ router.post('/signup_process', function(req, res){
     db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, userPw, userEmail, userAddress], function(err, result){
         if(err){
             res.write("<script>alert('Id & Address check plz'); location.href='/signup';</script>");
+        
         }
         else if(result){
             res.redirect('/login');

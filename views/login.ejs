@@ -36,35 +36,36 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">
-                    
+
                     <!--login form-->
-                    <form action="/login_process" method="post">
+                    <div enctype="multipart/form-data"> 
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="id" class="form-control input_user" value="" placeholder="username">
+                            <input type="text" name="id" id="iddd" class="form-control input_user" value=""
+                                placeholder="username">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" class="form-control input_pass" value=""
+                            <input type="password" name="password" id="passworddd" class="form-control input_pass" value=""
                                 placeholder="password">
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                <label class="custom-control-label" for="customControlInline" style="color: whitesmoke">Remember me</label>
+                                <label class="custom-control-label" for="customControlInline"
+                                    style="color: whitesmoke">Remember me</label>
                             </div>
                         </div>
                         <!--login button-->
                         <div class="d-flex justify-content-center mt-3 login_container">
-                            <button type="submit" name="button" class="btn login_btn">Login</button>
+                            <button type="submit" name="button" class="btn login_btn" id="btnSubmit">Login</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links" style="color: whitesmoke">
                         Don't have an account? <a href='/signup' class="ml-2">Sign Up</a>
@@ -81,6 +82,36 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</body>
 
+    <!-- login function -->
+    <script>
+        $("#btnSubmit").on("click", function() {
+            let userid = $('#iddd').val();
+            let userpass = $('#passworddd').val();
+            console.log(userid, userpass);
+            $.ajax({
+                url: "/login_process",
+                dataType: 'json',
+                data: {
+                    'id': userid,
+                    'password': userpass
+                },
+                type: "POST",
+                error: function(jqXHR, textStatus, errorThrown){
+                       console.log("jqXHR : " + jqXHR)
+                       console.log("textStatus : " + textStatus)
+                       console.log("errorThrown : " + errorThrown)
+                       console.log("ajax 호출 실패")
+                },
+                success: function(result){
+                    if(result.msg == "success") {
+                        window.location.href = "http://localhost:3000/"
+                    } else if (result.msg == "failed") {
+                        alert('가입하지 않았거나 잘못된 정보입니다.')
+                    }
+                }
+            })
+        })
+    </script>
+</body>
 </html>
