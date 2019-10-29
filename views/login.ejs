@@ -38,7 +38,7 @@
                 <div class="d-flex justify-content-center form_container">
 
                     <!--login form-->
-                    <div enctype="multipart/form-data"> 
+                    <div enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -50,8 +50,8 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" id="password" class="form-control input_pass" value=""
-                                placeholder="password">
+                            <input type="password" name="password" id="password" class="form-control input_pass"
+                                value="" placeholder="password">
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
@@ -77,12 +77,6 @@
             </div>
         </div>
     </div>
-
-    <!-- main link js-->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <!--Check login Modal-->
     <div class="modal fade" id="check_login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -98,15 +92,15 @@
                     가입하지 않았거나 잘못된 정보입니다.
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href = '/'" value="Close">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- login function -->
     <script>
-        $("#btnSubmit").on("click", function() {
+        $("#btnSubmit").on("click", function () {
             let userid = $('#id').val();
             let userpass = $('#password').val();
             console.log(userid, userpass);
@@ -118,14 +112,14 @@
                     'password': userpass
                 },
                 type: "POST",
-                error: function(jqXHR, textStatus, errorThrown){
-                       console.log("jqXHR : " + jqXHR)
-                       console.log("textStatus : " + textStatus)
-                       console.log("errorThrown : " + errorThrown)
-                       console.log("ajax 호출 실패")
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("jqXHR : " + jqXHR)
+                    console.log("textStatus : " + textStatus)
+                    console.log("errorThrown : " + errorThrown)
+                    console.log("ajax 호출 실패")
                 },
-                success: function(result){
-                    if(result.msg == "success") {
+                success: function (result) {
+                    if (result.msg == "success") {
                         window.location.href = '/'
                     } else if (result.msg == "failed") {
                         $('#check_login').modal('show');
@@ -134,5 +128,11 @@
             })
         })
     </script>
+
+    <!-- main link js-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>

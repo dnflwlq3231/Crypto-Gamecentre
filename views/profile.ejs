@@ -51,41 +51,38 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-envelope fa-sm"></i></span>
                             </div>
-                            <input type="email" name="email" id="email" class="form-control input_pass" value=<%= data[0].email %> >
+                            <input type="email" name="email" id="email" class="form-control input_pass"
+                                value=<%= data[0].email %>>
                         </div>
                         <div style="color: azure; font-weight: 500; font-size: 20px">Eth.address</div>
                         <div class="input-group mb-4">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fab fa-ethereum fa-lg"></i></span>
                             </div>
-                            <input type="address" name="address" id="address" class="form-control input_pass" value=<%= data[0].address %> >
+                            <input type="address" name="address" id="address" class="form-control input_pass"
+                                value=<%= data[0].address %>>
                         </div>
-                                                
+
                         <!--Submit button-->
                         <div class="d-flex justify-content-center mt-3 mb-2 login_container">
                             <button type="submit" name="button" class="btn login_btn" id="change">Change</button>
                         </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
-                            <input type="button" class="btn login_btn" onclick="location.href = '/'" value="Back to Main">
+                            <input type="button" class="btn login_btn" onclick="location.href = '/'"
+                                value="Back to Main">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- main link js-->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <!--Check profile Modal-->
     <div class="modal fade" id="check_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="index_email_Label">Login</h5>
+                    <h5 class="modal-title" id="index_email_Label">Profile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -102,7 +99,7 @@
 
     <!-- profile form -->
     <script>
-        $("#change").on("click", function() {
+        $("#change").on("click", function () {
             let userId = $('#id').val();
             let userMail = $('#email').val();
             let userAddress = $('#address').val();
@@ -115,20 +112,24 @@
                     'address': userAddress
                 },
                 type: "POST",
-                error: function(jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     console.log("jqXHR : " + jqXHR)
                     console.log("textStatus : " + textStatus)
                     console.log("errorThrown : " + errorThrown)
                     console.log("ajax 호출 실패")
                 },
-                success: function(result) {
+                success: function (result) {
                     $('#check_profile').modal('show');
-                    window.location.href = '/'
+            
                 }
             })
         })
     </script>
+
+    <!-- main link js-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
