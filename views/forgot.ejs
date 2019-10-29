@@ -27,50 +27,50 @@
 
 <body>
     <div class="container h-100">
-        <div class="d-flex justify-content-center h-100">
-            <div class="user_card">
-                <div class="d-flex justify-content-center">
-                    <!-- logo -->
-                    <div class="brand_logo_container">
-                        <img src="/img/portfolio/key.png" class="logo">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <!-- logo -->
+                        <div class="brand_logo_container">
+                            <img src="/img/portfolio/key.png" class="logo">
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center form_container">
-
-                    <!--forgot form-->
-                    <form action="/forgot_process" method="post">
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    <div class="d-flex justify-content-center form_container">
+    
+                        <!--forgot form-->
+                        <div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" name="id" id="id" class="form-control input_user" value=""
+                                    placeholder="username">
                             </div>
-                            <input type="text" name="id" class="form-control input_user" value=""
-                                placeholder="username">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input type="email" name="email" id="email" class="form-control input_pass" value=""
+                                    placeholder="email">
                             </div>
-                            <input type="email" name="email" class="form-control input_pass" value=""
-                                placeholder="email">
+                            
+                            <!--Submit button-->
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <button type="submit" name="button" id="subbutton" class="btn login_btn">SUBMIT</button>
+                            </div>
                         </div>
-                        
-                        <!--Submit button-->
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                            <button type="submit" name="button" class="btn login_btn" data-toggle="modal" data-target="#index_email">SUBMIT</button>
+                    </div>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links" style="color: whitesmoke">
+                            Don't have an account? <a href='/signup' class="ml-2" id="sign_up">Sign Up</a>
                         </div>
-                    </form>
-                </div>
-                <div class="mt-4">
-                    <div class="d-flex justify-content-center links" style="color: whitesmoke">
-                        Don't have an account? <a href='/signup' class="ml-2" id="sign_up">Sign Up</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="index_email" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="indexemail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -91,10 +91,43 @@
         </div>
     </div>
 
+    <script>
+        
+
+        $("#subbutton").on("click", function() {
+            let userId = $('#id').val();
+            let userMail = $('#email').val();
+            
+            $.ajax({
+                url: "/forgot_process",
+                dataType: 'json',
+                data: {
+                    'id': userId,
+                    'email' : userMail,
+                },
+                type: "POST",
+                error: function(jqXHR, textStatus, errorThrown){
+                        console.log("jqXHR : " + jqXHR)
+                        console.log("textStatus : " + textStatus)
+                        console.log("errorThrown : " + errorThrown)
+                        console.log("ajax 호출 실패")
+                },
+                success: function(result) {
+                    if (result.msg == "success") {
+                        $('#indexemail').modal('show');
+                    } else if (result.msg == "error") {
+                        alert('Check Id & Email plz')
+                        }
+                }
+            })
+        })
+
+
+    </script>
     <!-- main link js-->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -93,7 +93,6 @@ router.post('/profile_process', function(req,res){
             throw err;
         }
         else { 
-            //res.redirect('/');
             res.json({});
         }
     })
@@ -112,11 +111,9 @@ router.post('/signup_process', function(req, res){
     console.log(userId, userPw, userEmail, userAddress);
     db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, userPw, userEmail, userAddress], function(err, result){
         if(err){
-            //res.write("<script>alert('Id & Address check plz'); location.href='/signup';</script>");
             res.json({"msg" : "error"})
         }
         else {
-            //res.redirect('/login');
             res.json({"msg" : "success"})
         }
     });
@@ -134,9 +131,11 @@ router.post('/forgot_process', function(req,res){
             throw err;
         }
         else if(data[0] == null || data[0].email != userEmail){
-            res.write("<script>alert('Id & Email check plz'); location.href='/forgot';</script>");          
+            res.json({"msg" : "error"});     
         }
         else if(data[0].email == userEmail){
+            res.json({"msg" : "success"});
+            
             let mailerid = author.emailId(req,res);
             let mailerpass = author.emailPass(req,res);
             var transporter = nodemailer.createTransport({
@@ -164,6 +163,7 @@ router.post('/forgot_process', function(req,res){
                 transporter.close();
             
             });
+
         }
     })
 })

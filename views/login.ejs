@@ -43,14 +43,14 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="id" id="iddd" class="form-control input_user" value=""
+                            <input type="text" name="id" id="id" class="form-control input_user" value=""
                                 placeholder="username">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" id="passworddd" class="form-control input_pass" value=""
+                            <input type="password" name="password" id="password" class="form-control input_pass" value=""
                                 placeholder="password">
                         </div>
                         <div class="form-group">
@@ -86,8 +86,8 @@
     <!-- login function -->
     <script>
         $("#btnSubmit").on("click", function() {
-            let userid = $('#iddd').val();
-            let userpass = $('#passworddd').val();
+            let userid = $('#id').val();
+            let userpass = $('#password').val();
             console.log(userid, userpass);
             $.ajax({
                 url: "/login_process",
@@ -105,7 +105,7 @@
                 },
                 success: function(result){
                     if(result.msg == "success") {
-                        window.location.href = "http://localhost:3000/"
+                        window.location.href = '/'
                     } else if (result.msg == "failed") {
                         alert('가입하지 않았거나 잘못된 정보입니다.')
                     }
