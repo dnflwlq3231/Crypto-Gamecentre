@@ -38,37 +38,37 @@
                 <div class="d-flex justify-content-center form_container">
 
                     <!--forgot form-->
-                    <form action="/profile_process" method="post">
+                    <div>
                         <div style="color: azure; font-weight: 500; font-size: 20px">Name</div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <a name="id" class="form-control input_user"><%= data[0].id %></a>
+                            <a name="id" class="form-control input_user" id="id"><%= data[0].id %></a>
                         </div>
                         <div style="color: azure; font-weight: 500; font-size: 20px">Mail</div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-envelope fa-sm"></i></span>
                             </div>
-                            <input type="email" name="email" class="form-control input_pass" value=<%= data[0].email %> >
+                            <input type="email" name="email" id="email" class="form-control input_pass" value=<%= data[0].email %> >
                         </div>
                         <div style="color: azure; font-weight: 500; font-size: 20px">Eth.address</div>
                         <div class="input-group mb-4">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fab fa-ethereum fa-lg"></i></span>
                             </div>
-                            <input type="address" name="address" class="form-control input_pass" value=<%= data[0].address %> >
+                            <input type="address" name="address" id="address" class="form-control input_pass" value=<%= data[0].address %> >
                         </div>
                                                 
                         <!--Submit button-->
                         <div class="d-flex justify-content-center mt-3 mb-2 login_container">
-                            <button type="submit" name="button" class="btn login_btn">Change</button>
+                            <button type="submit" name="button" class="btn login_btn" id="change">Change</button>
                         </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <input type="button" class="btn login_btn" onclick="location.href = '/'" value="Back to Main">
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,6 +78,35 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- profile form -->
+    <script>
+        $("#change").on("click", function() {
+            let userId = $('#id').val();
+            let userMail = $('#email').val();
+            let userAddress = $('#address').val();
+            $.ajax({
+                url: "/profile_process",
+                dataType: 'json',
+                data: {
+                    'id': userId,
+                    'email': userMail,
+                    'address': userAddress
+                },
+                type: "POST",
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("jqXHR : " + jqXHR)
+                    console.log("textStatus : " + textStatus)
+                    console.log("errorThrown : " + errorThrown)
+                    console.log("ajax 호출 실패")
+                },
+                success: function(result) {
+                    alert('변경이 완료되었습니다')
+                    window.location.href = "http://localhost:3000/"
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

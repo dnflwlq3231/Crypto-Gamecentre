@@ -93,7 +93,8 @@ router.post('/profile_process', function(req,res){
             throw err;
         }
         else { 
-            res.redirect('/');
+            //res.redirect('/');
+            res.json({});
         }
     })
 })
@@ -111,11 +112,12 @@ router.post('/signup_process', function(req, res){
     console.log(userId, userPw, userEmail, userAddress);
     db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, userPw, userEmail, userAddress], function(err, result){
         if(err){
-            res.write("<script>alert('Id & Address check plz'); location.href='/signup';</script>");
-        
+            //res.write("<script>alert('Id & Address check plz'); location.href='/signup';</script>");
+            res.json({"msg" : "error"})
         }
-        else if(result){
-            res.redirect('/login');
+        else {
+            //res.redirect('/login');
+            res.json({"msg" : "success"})
         }
     });
 });
