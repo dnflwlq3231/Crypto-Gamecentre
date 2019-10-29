@@ -1,12 +1,19 @@
-# [Start Bootstrap - Freelancer](https://startbootstrap.com/template-overviews/freelancer/)
+# [Start GameCentre](http://203.236.220.47:3000/)
 
-[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid, window modals for each portfolio item, and a working PHP contact form.
+[GameCentre](http://203.236.220.47:3000/) 는 블록체인 이더리움(Ethereum) 스마트 컨트렉트들로 제작된 게임들을 모아 놓았습니다.<br>
+ 총 4가지의 게임이 준비되어 있습니다. 자세한 내용은 아래에 설명하겠습니다.
 
 ## Preview
 
-[![Freelancer Preview](https://startbootstrap.com/assets/img/screenshots/themes/freelancer.png)](https://blackrockdigital.github.io/startbootstrap-freelancer/)
+[![GameCentre Preview](./public/img/md/main.PNG)](http://203.236.220.47:3000/)
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-freelancer/)**
+**[View Live Preview](http://203.236.220.47:3000/)**
+
+- `LOGIN` : 로그인 페이지로 이동합니다
+- `GAMELIST` : 메인 페이지 내의 게임목록 창으로 이동합니다
+- `ABOUT` : 메인 페이지 내의 소개 창으로 이동합니다
+- `CONTACT` : 메인 페이지 내의 연락 창으로 이동합니다
+- `PROFILE` : 내 정보 페이지로 이동합니다 (로그인 시에만 이용 가능)
 
 ## Status
 
@@ -16,53 +23,46 @@
 [![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer)
 [![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer?type=dev)
 
-## Download and Installation
-
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/freelancer/)
-* Install via npm: `npm i startbootstrap-freelancer`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-freelancer.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-freelancer)
-
 ## Usage
 
-### Basic Usage
+### Login
 
-After downloading, simply edit the HTML and CSS files included with the template in a code editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+[![Login_page Preview](./public/img/md/login.PNG)]
 
-### Advanced Usage
+- 본 페이지는 로그인을 해야만 모든 기능을 이용할 수 있습니다. 로그인은 메인페이지의 `LOGIN` 버튼을 눌러 로그인페이지로 접속 후 진행합니다.<br>
+- 아이디와 패스워드를 데이터베이스에서 확인 후 맞다면 로그인이 되며 메인페이지로 이동합니다
+- 만약 계정이 기억이 안나신다면 `Forgot your password?` 버튼을 눌러 비밀번호를 찾을 수 있습니다
+- 만약 계정이 없다면 `Sign up` 버튼을 눌러 계정을 생성할 수 있습니다  
 
-After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+### Sign up
 
-#### Gulp Tasks
+[![Signup_page Preview](./public/img/md/signup.PNG)]
 
-- `gulp` the default task that builds everything
-- `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-- `gulp js` minifies the themes JS file
-- `gulp vendor` copies dependencies from node_modules to the vendor directory
+- `Username` : 사용할 아이디를 입력합니다 (수정할 수 없습니다)
+- `Password` : 사용할 비밀번호를 입력합니다
+- `Email` : 본인의 이메일을 입력합니다 (비밀번호를 찾을 때 입력된 메일로 알려드립니다)
+- `Ethereum Account` : 본인의 지갑주소를 입력합니다. 게임진행 시 필요합니다.
 
-You must have npm and Gulp installed globally in order to use these features.
+### Forgot
+
+[![Forgot_page Preview](./public/img/md/forgot.PNG)]
+
+- `username` : 가입할 때 입력한 아이디를 입력하세요
+- `email` : 가입할 때 입력한 이메일을 입력하세요. 비밀번호를 알려드립니다.
+- `Sign Up` : 계정이 없으시다면 이 버튼을 눌러 계정을 생성하세요
+
+반드시 가입시 작성하였던 이메일로만 비밀번호가 발송되는 점 유의하세요
+
+### Profile
+
+[![Profile_page Preview](./public/img/md/profile.PNG)]
+
+- `Name` : 가입시 입력한 아이디가 보입니다 (수정이 `불가`합니다)
+- `Mail` : 가입시 입력한 이메일이 보입니다 (수정이 `가능`합니다)
+- `Eth.address` : 가입시 입력한 지갑 주소가 보입니다 (수정이 `가능`합니다)
 
 ## Bugs and Issues
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-freelancer/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/freelancer/).
+페이지를 사용하는 데 버그나 문제점이 있나요? [Open a new issue](https://github.com/dnflwlq3231/Crypto-Gamecentre/issues) 이곳에서 `GameCentre`에 대한 의견을 남기고 이슈를 볼 수 있습니다 
 
-## About
 
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
-
-* https://startbootstrap.com
-* https://twitter.com/SBootstrap
-
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
-
-* http://davidmiller.io
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license.
