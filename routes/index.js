@@ -70,14 +70,13 @@ router.post('/contact', function (req,res){
 })
 
 router.get('/login', function (req, res) {
-    req.session.destroy();
+    // req.session.destroy();
     res.render('login');
 })
 
 router.post('/login_process', function(req, res){    
     let userId = req.body['id'];
     let userPw = req.body['password'];
-    console.log(userId, userPw)
     db.query('select * from user where user.id=? ', [userId], function(err, userinfo){
         if(err){
             throw err;
@@ -107,7 +106,6 @@ router.get('/profile', function (req, res) {
     
     if(req.session.loginId != undefined){
         let id = req.session.loginId;
-        console.log(id);
         db.query('select * from user where user.id=?', [id], function(err, data){
             res.render('profile', {
                 data
@@ -142,8 +140,7 @@ router.post('/signup_process', function(req, res){
     let userPw = req.body['password'];
     let userEmail = req.body['email'];
     let userAddress = req.body['address'];
-    
-    console.log(userId, userPw, userEmail, userAddress);
+
     db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, userPw, userEmail, userAddress], function(err, result){
         if(err){
             res.json({"msg" : "error"})
