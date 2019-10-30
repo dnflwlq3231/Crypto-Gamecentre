@@ -4,7 +4,7 @@ const db = require('../utils/db.js');
 const auth = require('../utils/auth.js');
 const ethereum = require('ethereumjs-tx');
 const nodemailer = require('nodemailer');
-const author = require('../utils/author.js');
+const author = require('../config/author.js');
 
 
 router.get('/', function (req, res) {

@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const sessionParser = require('express-session');
 
 const mysqlStroe = require('express-mysql-session')(sessionParser);
-const dbOption = require('./utils/db.json')
+const dbOption = require('./config/db.json')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
