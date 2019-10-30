@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../utils/db');
+const db = require('../utils/db.js');
 const bodyParser = require('body-parser');
 const sessionParser = require('express-session');
 const auth = require('../utils/auth.js');
-const FileStore = require('session-file-store')(sessionParser);
+const mysqlStroe = require('express-mysql-session')(sessionParser);
 const ethereum = require('ethereumjs-tx');
 const nodemailer = require('nodemailer');
-const author = require('../utils/author');
+const author = require('../utils/author.js');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -16,7 +16,16 @@ router.use(sessionParser({
     secret: 'abcdefghijklmnopqrstuvwxyz',
     resave: false,
     saveUninitialized: true,
-    store: new FileStore()
+    store: new mysqlStroe({
+        host : 
+        'localhost', 
+        // '203.236.220.47',
+        port : 3306,
+        user : 'root',
+        password : 'class3',
+        database:'testserver'
+    })
+
 }));
 
 router.get('/', function (req, res) {
@@ -57,7 +66,7 @@ router.post('/contact', function (req,res){
             from: 'Game_Centre contact <dnflwlq3231@naver.com>',
             to: mailerid,
             subject: 'claim',
-            text: 'claim message :  ' + userMessage
+            text: 'claim ID :   ' + userId +  '\nclaim message :  \n       ' + userMessage 
         };
         
         transporter.sendMail(mailOptions, (error, info) => {
