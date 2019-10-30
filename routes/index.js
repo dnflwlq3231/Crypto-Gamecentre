@@ -34,6 +34,53 @@ router.get('/', function (req, res) {
     });
 })
 
+router.post('/contact', function (req,res){
+    let userId = req.body['id'];
+    let userMessage = req.body['message'];
+    let loginId = req.session.loginId;
+    
+    if(userId == loginId){
+        
+        res.json({"msg" : "success"})
+        
+        let mailerid = author.emailId(req,res);
+        let mailerpass = author.emailPass(req,res);
+        var transporter = nodemailer.createTransport({
+            service: 'naver',
+            auth: {
+                user: mailerid,
+                pass: mailerpass
+            }
+        });
+        
+        var mailOptions = {
+            from: 'Game_Centre contact <dnflwlq3231@naver.com>',
+            to: mailerid,
+            subject: 'claim',
+            text: 'claim message :  ' + userMessage
+        };
+        
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log('Email sent!: ' + info.response);
+            }
+            transporter.close();
+        
+        });
+    }
+    else if(userId != loginId){
+        if(loginId == undefined){
+            res.json({"msg" : "error"})
+        }
+        else{
+            res.json({"msg" : "false"})
+        }
+    }   
+})
+
 router.get('/login', function (req, res) {
     req.session.destroy();
     res.render('login');

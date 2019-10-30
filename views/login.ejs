@@ -106,7 +106,6 @@
         $("#btnSubmit").on("click", function () {
             let userid = $('#id').val();
             let userpass = $('#password').val();
-            console.log(userid, userpass);
             $.ajax({
                 url: "/login_process",
                 dataType: 'json',
