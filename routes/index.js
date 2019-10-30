@@ -1,32 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../utils/db.js');
-const bodyParser = require('body-parser');
-const sessionParser = require('express-session');
 const auth = require('../utils/auth.js');
-const mysqlStroe = require('express-mysql-session')(sessionParser);
 const ethereum = require('ethereumjs-tx');
 const nodemailer = require('nodemailer');
 const author = require('../utils/author.js');
 
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
-
-router.use(sessionParser({
-    secret: 'abcdefghijklmnopqrstuvwxyz',
-    resave: false,
-    saveUninitialized: true,
-    store: new mysqlStroe({
-        host : 
-        'localhost', 
-        // '203.236.220.47',
-        port : 3306,
-        user : 'root',
-        password : 'class3',
-        database:'testserver'
-    })
-
-}));
 
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
