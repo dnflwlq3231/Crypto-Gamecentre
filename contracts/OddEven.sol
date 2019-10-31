@@ -5,6 +5,7 @@ contract OddEven {
 
     function OddEvenStart(uint i) public {
         require(OddEvenResult == 5);
+        require(i == 0 && i == 1);
         
         uint256 randNum = uint256(keccak256(abi.encodePacked(now, msg.sender))) % 2;
         randNum = randNum + 1;

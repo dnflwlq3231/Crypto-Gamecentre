@@ -5,6 +5,7 @@ contract RockPaperScissors {
 
     function RPStart(uint RPS) public {
         require(0 < RPS && RPS < 4);
+        require(RPSResult == 5);
         uint256 randNum = uint256(keccak256(abi.encodePacked(now, msg.sender))) % 3;
         hand = randNum + 1;
 
