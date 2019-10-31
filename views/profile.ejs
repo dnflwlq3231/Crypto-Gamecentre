@@ -58,12 +58,20 @@
                                 value=<%= data[0].email %>>
                         </div>
                         <div style="color: azure; font-weight: 500; font-size: 20px">Eth.address</div>
-                        <div class="input-group mb-4">
+                        <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fab fa-ethereum fa-lg"></i></span>
                             </div>
                             <input type="address" name="address" id="address" class="form-control input_pass"
                                 value=<%= data[0].address %>>
+                        </div>
+                        <div style="color: azure; font-weight: 500; font-size: 20px">Password</div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fab fa-ethereum fa-lg"></i></span>
+                            </div>
+                            <input type="password" name="password" id="password" class="form-control input_pass"
+                                value="">
                         </div>
 
                         <!--Submit button-->
@@ -79,7 +87,7 @@
             </div>
         </div>
     </div>
-    <!--Check profile Modal-->
+    <!--Check profile Modal1-->
     <div class="modal fade" id="check_profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -100,32 +108,61 @@
         </div>
     </div>
 
+    <!--Check profile Modal2-->
+    <div class="modal fade" id="check_profile2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="index_email_Label">Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    패스워드를 입력하세요!
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- profile form -->
     <script>
         $("#change").on("click", function () {
             let userId = $('#id').val();
             let userMail = $('#email').val();
             let userAddress = $('#address').val();
-            $.ajax({
-                url: "/profile_process",
-                dataType: 'json',
-                data: {
-                    'id': userId,
-                    'email': userMail,
-                    'address': userAddress
-                },
-                type: "POST",
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log("jqXHR : " + jqXHR)
-                    console.log("textStatus : " + textStatus)
-                    console.log("errorThrown : " + errorThrown)
-                    console.log("ajax 호출 실패")
-                },
-                success: function (result) {
-                    $('#check_profile').modal('show');
+            let userPassword = $('#password').val();
             
-                }
-            })
+            if(userPassword != ""){
+                $.ajax({
+                    url: "/profile_process",
+                    dataType: 'json',
+                    data: {
+                        'id': userId,
+                        'email': userMail,
+                        'address': userAddress,
+                        'password': userPassword
+                    },
+                    type: "POST",
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("jqXHR : " + jqXHR)
+                        console.log("textStatus : " + textStatus)
+                        console.log("errorThrown : " + errorThrown)
+                        console.log("ajax 호출 실패")
+                    },
+                    success: function (result) {
+                        $('#check_profile').modal('show');
+                        
+                    }
+                })
+            }
+            else {
+                $('#check_profile2').modal('show');
+            }
         })
     </script>
 
