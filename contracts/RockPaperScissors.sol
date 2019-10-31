@@ -4,10 +4,14 @@ contract RockPaperScissors {
     uint256 public hand = 0;
 
     function RPStart(uint RPS) public {
+
         require(0 < RPS && RPS < 4);
         require(RPSResult == 5);
-        uint256 randNum = uint256(keccak256(abi.encodePacked(now, msg.sender))) % 3;
+        
+        uint i = 0;
+        uint256 randNum = uint256(keccak256(abi.encodePacked(now, msg.sender, i))) % 3;
         hand = randNum + 1;
+        i++;
 
         if(RPS == 1) {
             if(hand == 1 || hand == 2) RPSResult = 0;

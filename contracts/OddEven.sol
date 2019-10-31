@@ -4,10 +4,13 @@ contract OddEven {
     uint256 public GameOddEven = 0;
 
     function OddEvenStart(uint i) public {
+        
         require(OddEvenResult == 5);
         require(i == 0 && i == 1);
-        
-        uint256 randNum = uint256(keccak256(abi.encodePacked(now, msg.sender))) % 2;
+
+        uint a = 0;
+        uint256 randNum = uint256(keccak256(abi.encodePacked(now, msg.sender, a))) % 2;
+        a++;
         randNum = randNum + 1;
         if(randNum % 2 == 0) {
             GameOddEven = 0;

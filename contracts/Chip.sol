@@ -24,6 +24,7 @@ contract Chip is BlackJack, Dice, OddEven, RockPaperScissors {
 
   function Token() external {
     require(balances[msg.sender] == 0);
+
     balances[msg.sender] = totalSupply;
   }
   
@@ -34,6 +35,7 @@ contract Chip is BlackJack, Dice, OddEven, RockPaperScissors {
   function AdminSend(uint256 amount) external returns (bool) {
     require(balances[msg.sender] >= amount);
     require(amount > 0);
+
     balances[msg.sender] = balances[msg.sender].sub(amount);
     balances[gameContract] = balances[gameContract].add(amount);
     emit Transfered(msg.sender, gameContract, amount);
@@ -52,6 +54,7 @@ contract Chip is BlackJack, Dice, OddEven, RockPaperScissors {
     require(msg.sender == userAddress);
     require(balances[userAddress] == 0);
     require(balances[gameContract] >= 100);
+
     balances[gameContract] = balances[gameContract].sub(100);
     balances[msg.sender] = balances[msg.sender].add(100);
     emit Transfered(gameContract, msg.sender, 100);
@@ -62,6 +65,7 @@ contract Chip is BlackJack, Dice, OddEven, RockPaperScissors {
     require(balances[msg.sender] >= _betAmount);
     require(_betAmount > 0);
     require(balances[gameContract] >= _betAmount.mul(10));
+
     betAmount = _betAmount;
     balances[msg.sender] = balances[msg.sender].sub(betAmount);
     balances[gameContract] = balances[gameContract].add(betAmount);
@@ -69,7 +73,6 @@ contract Chip is BlackJack, Dice, OddEven, RockPaperScissors {
   }
   
   function DiceReward(address userAddress) external {
-
     require(msg.sender == userAddress);
     require(betAmount != 0);
     require(DiceResult != 5);
