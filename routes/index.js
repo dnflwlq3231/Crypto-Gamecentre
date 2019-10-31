@@ -7,8 +7,6 @@ const nodemailer = require('nodemailer');
 const author = require('../config/author.js');
 const crypto = require('crypto');
 
-
-
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
     if(req.session){
