@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-
 const indexRouter = require('./routes/index');
 const bodyParser = require('body-parser');
 const sessionParser = require('express-session');
