@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 
-const crypto = require('crypto');
 const ethereum = require('ethereumjs-tx');
+const crypto = require('crypto');
 const Web3 = require('web3');
 
 const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io'));
@@ -13,8 +13,14 @@ const Tx = ethereum.Transaction;
 const chip = require('../utils/chip.json')
 const db = require('../utils/db.js');
 const auth = require('../utils/auth.js');
-const author = require('../config/author.js');
+const author = require('../config/author.json');
 
+router.use(metaMask({
+    window.addEventListener('load', () => {
+        if(typoeof(web3) == 'undefined') {
+          return console.log("Metamask is not installed");
+        }
+    })}))
 
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);

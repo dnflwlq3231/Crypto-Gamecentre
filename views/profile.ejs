@@ -58,7 +58,7 @@
                                 value=<%= data[0].email %>>
                         </div>
                         <div style="color: azure; font-weight: 500; font-size: 20px">Eth.address</div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fab fa-ethereum fa-lg"></i></span>
                             </div>
@@ -68,7 +68,7 @@
                         <div style="color: azure; font-weight: 500; font-size: 20px">Password</div>
                         <div class="input-group mb-4">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fab fa-ethereum fa-lg"></i></span>
+                                <span class="input-group-text"><i class="fas fa-key fa-sm"></i></span>
                             </div>
                             <input type="password" name="password" id="password" class="form-control input_pass"
                                 value="">
@@ -102,7 +102,8 @@
                     성공적으로 변경되었습니다!
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href = '/'" value="Close">
+                    <input type="button" id="profile_close" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="location.href = '/'" value="Close">
                 </div>
             </div>
         </div>
@@ -123,7 +124,7 @@
                     패스워드를 입력하세요!
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                    <input type="button" id="profile_close2" class="btn btn-secondary" data-dismiss="modal" value="Close">
                 </div>
             </div>
         </div>
@@ -136,8 +137,8 @@
             let userMail = $('#email').val();
             let userAddress = $('#address').val();
             let userPassword = $('#password').val();
-            
-            if(userPassword != ""){
+
+            if (userPassword != "") {
                 $.ajax({
                     url: "/profile_process",
                     dataType: 'json',
@@ -156,12 +157,30 @@
                     },
                     success: function (result) {
                         $('#check_profile').modal('show');
-                        
+
                     }
                 })
             }
             else {
                 $('#check_profile2').modal('show');
+            }
+        })
+        $("#password").keypress(function (e) {
+            let key = e.which;
+            if (key == 13) {
+                $("#change").click();
+            }
+        })
+        $("#check_profile").keydown(function (e) {
+            let key = e.which;
+            if (key == 13) {
+                $(".close").click();
+            }
+        })
+        $("#check_profile2").keydown(function (e) {
+            let key = e.which;
+            if (key == 13) {
+                $(".close").click();
             }
         })
     </script>
