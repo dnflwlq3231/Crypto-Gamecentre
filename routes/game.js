@@ -17,6 +17,10 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
 router.post('/getToken', function (req, res) {
+    if(typeof window.ethereum !== undefined) {
+        ethereum.isMetaMask;
+        ethereum.enable();
+    }
     contract.methods.GetToken().call().then(console.log);
 })
 
@@ -75,7 +79,6 @@ router.get('/Rps', function (req, res) {
         `
     })
 })
-
 
 
 module.exports = router;
