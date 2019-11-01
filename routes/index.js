@@ -1,41 +1,19 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
 
-const chip = require('../utils/chip.json')
+const abi = require('../utils/abi.json')
 const db = require('../utils/db.js');
 const auth = require('../utils/auth.js');
 const author = require('../config/author.json');
 
-const window = require
 const nodemailer = require('nodemailer');
 const ethereum = require('ethereumjs-tx');
 const crypto = require('crypto');
 const Web3 = require('web3');
-=======
-const nodemailer = require('nodemailer');
-const author = require('../config/author.json');
-const ethereum = require('ethereumjs-tx');
-const crypto = require('crypto');
-const Web3 = require('web3');
-const chip = require('../utils/chip.json')
-const db = require('../utils/db.js');
-const auth = require('../utils/auth.js');
-
->>>>>>> 6683ee445cc0468c4d9929ddcaa4ef480e267eec
 const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io'));
-const contract = new web3.eth.Contract(chip, '0x6bFF99C3761669c2f1ce78466C21DcB7fb8DE6E0');
+const contract = new web3.eth.Contract(abi, '0xE9C86823DB084ADe8203C7D23b39F2870e1f9E6a');
 const Tx = ethereum.Transaction;
 
-<<<<<<< HEAD
-=======
-// router.use(metaMask({
-//     window.addEventListener('load', () => {
-//         if(typoeof(web3) == 'undefined') {
-//           return console.log("Metamask is not installed");
-//         }
-//     })}))
->>>>>>> 6683ee445cc0468c4d9929ddcaa4ef480e267eec
 
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
@@ -301,13 +279,35 @@ router.get('/Rps', function (req, res) {
 
 // web3를 이용해 컨트랙트와 통신하는 부분
 
-router.post('/getToken', function (req, res) {
-    if(typeof window.ethereum !== undefined) {
-        ethereum.isMetaMask;
-        ethereum.enable();
+router.get('/test', async function (req, res) {
+    if (req.session.loginId == undefined) {
+        res.redirect('/login');
     }
+    let userId = req.session.loginId;
+    let userAddress;
+    db.query('select address from user where user.id=?', [userId], function (err, result) {
+        console.log(result);
+        userAddress = result.RowDataPacket[address];
+        console.log(userAddress);
+    })
+    // DB에서 지갑 주소를 result로 가져오는건 성공했지만, 형식이 json인지 모르겟는데 어째든 정확히 지갑 주소만 뽑아서 userAddress에 넣는 거에는 실패함.
+    res.render('test', {
+        userAddr: userAddress,
+        userBal: '0'
+    })
+})
 
-    contract.methods.GetToken().call().then(console.log);
+router.get('/getBalance', async function (req, res) {
+    let userAddress = 0xA4De37Ec3EF04893BE59363a4d1E97cDb82582Eb;
+    let balanceOf = await contract.methods.BalanceOf(userAddress).call().then(function (res) {
+        console.log(res)}).catch(function (err) {console.log(err)});
+    res.render(balanceOf);
+    // contracts 폴더에 올라와 있는 chip.sol을 remix로 새로 deploy 한 다음에 abi 옮기고 실행해본 것.
+    // BalanceOf는 분명 함수가 맞는데, 계속 함수가 아니라고 뜸.
+})
+
+router.post('/getToken', function (req, res) {
+    contract.methods.GetToken(userAddress).call().then(console.log);
 })
 
 
