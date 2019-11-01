@@ -21,6 +21,7 @@ router.get('/', function (req, res) {
     if(req.session){
         msg = `${req.session.loginId}로 로그인`
     }
+    /* 일단 동작안됨. window가 문제임
     window.addEventListener('load', () => {
         if (typeof web3 !== 'undefined') {
             web3js = new Web3(web3.currentProvider);
@@ -253,56 +254,28 @@ router.get('/BlackJack', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');
     }
-    else next()
-}, function (req, res) {
-    res.render('game', {
-        title: 'BlackJack',
-        body: `
-        <div>블랙잭</div>
-        `
-    })
+    res.render('tt')
 })
 
 router.get('/OddEven', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');
     }
-    else next()
-}, function (req, res) {
-    res.render('game', {
-        title: 'OddEven',
-        body: `
-        <div>홀짝 맞추기</div>
-        `
-    })
+    res.render('tt')
 })
 
 router.get('/Dice', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');
     }
-    else next()
-}, function (req, res) {
-    res.render('game', {
-        title: 'Dice',
-        body: `
-        <div>주사위 게임</div>
-        `
-    })
+    res.render('gameDice')
 })
 
 router.get('/Rps', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');
     }
-    else next()
-}, function (req, res) {
-    res.render('game', {
-        title: 'Rock-Paper-Scissors',
-        body: `
-        <div>가위바위보 게임</div>
-        `
-    })
+    res.render('tt')
 })
 
 // web3를 이용해 컨트랙트와 통신하는 부분
