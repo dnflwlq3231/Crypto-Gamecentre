@@ -1,38 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const nodemailer = require('nodemailer');
-
-const ethereum = require('ethereumjs-tx');
-const crypto = require('crypto');
-const Web3 = require('web3');
-
-const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io'));
-const contract = new web3.eth.Contract(chip, '0x6bFF99C3761669c2f1ce78466C21DcB7fb8DE6E0');
-const Tx = ethereum.Transaction;
 
 const chip = require('../utils/chip.json')
 const db = require('../utils/db.js');
 const auth = require('../utils/auth.js');
 const author = require('../config/author.json');
 
-router.use(metaMask({
-    window.addEventListener('load', () => {
-        if(typoeof(web3) == 'undefined') {
-          return console.log("Metamask is not installed");
-        }
-    })}))
+const window = require
+const nodemailer = require('nodemailer');
+const ethereum = require('ethereumjs-tx');
+const crypto = require('crypto');
+const Web3 = require('web3');
+const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io'));
+const contract = new web3.eth.Contract(chip, '0x6bFF99C3761669c2f1ce78466C21DcB7fb8DE6E0');
+const Tx = ethereum.Transaction;
+
 
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
     if(req.session){
         msg = `${req.session.loginId}로 로그인`
     }
-    if(typeof web3.ethereum !== 'undefined'
-        || typeof window.web3 !== 'undefined') {
-            const provider = window['ethereum'] || window.web3.currentProvider
-        ethereum.isMetaMask;
-        ethereum.enable();
-    }
+    window.addEventListener('load', () => {
+        if (typeof web3 !== 'undefined') {
+            web3js = new Web3(web3.currentProvider);
+        } else {
+            console.log('web3가 없는 경우 metamask로 시도하십시오.')
+            web3js = web3;
+        }
+    })
     /*
     if(ethereum.isMetaMask){
         let accounts = ethereum.enable();
