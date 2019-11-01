@@ -10,8 +10,8 @@ const nodemailer = require('nodemailer');
 const ethereum = require('ethereumjs-tx');
 const crypto = require('crypto');
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io'));
-const contract = new web3.eth.Contract(abi, '0xE9C86823DB084ADe8203C7D23b39F2870e1f9E6a');
+const web3 = new Web3('https://ropsten.infura.io');
+const contract = new web3.eth.Contract(abi, '0x166bc5697f57f4381b0e48f02d50a694476bed12');
 const Tx = ethereum.Transaction;
 
 
@@ -249,66 +249,65 @@ router.get('/tt', function(req,res){
     res.render('tt');
 })
 
-router.get('/BlackJack', function (req, res) {
-    if (req.session.loginId == undefined) {
-        res.redirect('/login');
-    }
-    res.render('tt')
-})
+// router.get('/BlackJack', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('tt')
+// })
 
-router.get('/OddEven', function (req, res) {
-    if (req.session.loginId == undefined) {
-        res.redirect('/login');
-    }
-    res.render('tt')
-})
+// router.get('/OddEven', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('tt')
+// })
 
-router.get('/Dice', function (req, res) {
-    if (req.session.loginId == undefined) {
-        res.redirect('/login');
-    }
-    res.render('gameDice')
-})
+// router.get('/Dice', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('gameDice')
+// })
 
-router.get('/Rps', function (req, res) {
-    if (req.session.loginId == undefined) {
-        res.redirect('/login');
-    }
-    res.render('tt')
-})
+// router.get('/Rps', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('tt')
+// })
 
 // web3를 이용해 컨트랙트와 통신하는 부분
 
-router.get('/test', async function (req, res) {
+router.get('/test', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');
     }
-    let userId = req.session.loginId;
-    let userAddress;
-    db.query('select address from user where user.id=?', [userId], function (err, result) {
-        console.log(result);
-        userAddress = result.RowDataPacket[address];
-        console.log(userAddress);
-    })
-    // DB에서 지갑 주소를 result로 가져오는건 성공했지만, 형식이 json인지 모르겟는데 어째든 정확히 지갑 주소만 뽑아서 userAddress에 넣는 거에는 실패함.
-    res.render('test', {
-        userAddr: userAddress,
-        userBal: '0'
-    })
+    else {
+        let userId = req.session.loginId;
+        db.query('select address from user where user.id=?', [userId], async function (err, result) {
+            let userAddress = result[0].address;
+            let aa = await contract.methods.BalanceOf(userAddress).call();
+            res.render('test', {
+                userAddr: userAddress,
+                userBal: aa
+            })
+        })
+    }   
 })
 
-router.get('/getBalance', async function (req, res) {
-    let userAddress = 0xA4De37Ec3EF04893BE59363a4d1E97cDb82582Eb;
-    let balanceOf = await contract.methods.BalanceOf(userAddress).call().then(function (res) {
-        console.log(res)}).catch(function (err) {console.log(err)});
-    res.render(balanceOf);
-    // contracts 폴더에 올라와 있는 chip.sol을 remix로 새로 deploy 한 다음에 abi 옮기고 실행해본 것.
-    // BalanceOf는 분명 함수가 맞는데, 계속 함수가 아니라고 뜸.
-})
+// router.get('/getBalance', async function (req, res) {
+//     let userAddress = 0xA4De37Ec3EF04893BE59363a4d1E97cDb82582Eb;
+//     let balanceOf = await contract.methods.BalanceOf(userAddress).call().then(function (res) {
+//         console.log(res)}).catch(function (err) {console.log(err)});
+//     res.render(balanceOf);
+//     // contracts 폴더에 올라와 있는 chip.sol을 remix로 새로 deploy 한 다음에 abi 옮기고 실행해본 것.
+//     // BalanceOf는 분명 함수가 맞는데, 계속 함수가 아니라고 뜸.
+// })
 
-router.post('/getToken', function (req, res) {
-    contract.methods.GetToken(userAddress).call().then(console.log);
-})
+// router.post('/getToken', function (req, res) {
+//     contract.methods.GetToken(userAddress).call().then(console.log);
+// })
 
 
 module.exports = router;
