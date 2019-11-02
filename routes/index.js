@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const ethereum = require('ethereumjs-tx');
 const crypto = require('crypto');
 const Web3 = require('web3');
-const web3 = new Web3('https://ropsten.infura.io');
+const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/ca01a649518f495daa63f82e95c89467'));
 const contract = new web3.eth.Contract(abi, '0x166bc5697f57f4381b0e48f02d50a694476bed12');
 const Tx = ethereum.Transaction;
 
@@ -287,10 +287,24 @@ router.get('/test', function (req, res) {
         let userId = req.session.loginId;
         db.query('select address from user where user.id=?', [userId], async function (err, result) {
             let userAddress = result[0].address;
+            // await contract.methods.GetTokens(userAddress).send({
+            //     from : '0x166bc5697f57f4381b0e48f02d50a694476bed12',
+            //     gas : 470000
+            // }).on("transactionHash", function (){
+            //     console.log("Hash");
+            // }).on("receipt", function () {
+            //     console.log("Receipt");
+            // }).on("confirmation", function () {
+            //     console.log("Confirmed");
+            // }).on("error", async function () {
+            //     console.log("Error");
+            // })
+            
             let aa = await contract.methods.BalanceOf(userAddress).call();
-            res.render('test', {
+                res.render('test', {
                 userAddr: userAddress,
-                userBal: aa
+                userBal: aa,
+                abi : abi
             })
         })
     }   
