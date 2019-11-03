@@ -10,8 +10,8 @@ const nodemailer = require('nodemailer');
 const ethereum = require('ethereumjs-tx');
 const crypto = require('crypto');
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/ca01a649518f495daa63f82e95c89467'));
-const contract = new web3.eth.Contract(abi, '0x166bc5697f57f4381b0e48f02d50a694476bed12');
+const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
+const contract = new web3.eth.Contract(abi, '0x7436f94e7FBafd0F8A63ad6748E0c7A35E08e958');
 const Tx = ethereum.Transaction;
 
 
@@ -301,7 +301,7 @@ router.get('/test', function (req, res) {
             // })
             
             let aa = await contract.methods.BalanceOf(userAddress).call();
-                res.render('test', {
+            res.render('test', {
                 userAddr: userAddress,
                 userBal: aa,
                 abi : abi
@@ -309,19 +309,6 @@ router.get('/test', function (req, res) {
         })
     }   
 })
-
-// router.get('/getBalance', async function (req, res) {
-//     let userAddress = 0xA4De37Ec3EF04893BE59363a4d1E97cDb82582Eb;
-//     let balanceOf = await contract.methods.BalanceOf(userAddress).call().then(function (res) {
-//         console.log(res)}).catch(function (err) {console.log(err)});
-//     res.render(balanceOf);
-//     // contracts 폴더에 올라와 있는 chip.sol을 remix로 새로 deploy 한 다음에 abi 옮기고 실행해본 것.
-//     // BalanceOf는 분명 함수가 맞는데, 계속 함수가 아니라고 뜸.
-// })
-
-// router.post('/getToken', function (req, res) {
-//     contract.methods.GetToken(userAddress).call().then(console.log);
-// })
 
 
 module.exports = router;
