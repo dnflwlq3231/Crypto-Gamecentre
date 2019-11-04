@@ -1,0 +1,79 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dice</title>
+
+    <!-- jquery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
+	<script	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	
+    <!-- Theme CSS -->
+    <link href="/css/freelancer.css" rel="stylesheet">
+	<link href="/css/game-dice.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" onclick="location.href = '/'">Game Centre</a>
+			<button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-info text-white rounded"
+				type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				Menu
+				<i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item mx-0 mx-lg-1">
+						<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href='/logout'>LOGOUT</a>
+					</li>
+					<li class="nav-item mx-0 mx-lg-1">
+						<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/#portfolio">GameList</a>
+					</li>
+					<li class="nav-item mx-0 mx-lg-1">
+
+						<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/#about">About</a>
+					</li>
+					<li class="nav-item mx-0 mx-lg-1">
+						<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/#contact">Contact</a>
+					</li>
+					<li class="nav-item mx-0 mx-lg-1">
+						<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href='/profile'>Profile</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- 한칸 뛰우기 -->
+	<div style="padding-top: 150px;"></div>
+	<!-- 결과 값 보여주는 곳 -->
+	<div>
+		<img id="img-versus" src="/img/portfolio/versus.png">
+	</div>
+	<!-- 주사위 선택칸 -->
+	<div id="dice-space">
+		<img class="dice" id="btn-play-dice-1" src="/img/dice/dice_1.png"/>
+		<img class="dice" id="btn-play-dice-2" src="/img/dice/dice_2.png"/>
+		<img class="dice" id="btn-play-dice-3" src="/img/dice/dice_3.png"/></br>
+		<img class="dice" id="btn-play-dice-4" src="/img/dice/dice_4.png"/>
+		<img class="dice" id="btn-play-dice-5" src="/img/dice/dice_5.png"/>
+		<img class="dice" id="btn-play-dice-6" src="/img/dice/dice_6.png"/>
+	</div>
+	<!-- 토큰 받고 걸기 -->
+	<div style="margin-top: 10px;">
+		<button type="button" class="btn btn-outline-primary" id="btn-get-token">토큰 받기</button>
+		<button style="margin: 0 60px;" type="button" class="btn btn-outline-success" id="btn-bet">10 토큰 걸기</button>
+		<button type="button" class="btn btn-outline-danger" id="btn-reward">보상 받기</button>
+	</div>
+
+	<!-- web3 스크립트 -->
+    <script type="text/javascript" src="/js/game_dice.js"></script>
+
+</body>
+
+</html>

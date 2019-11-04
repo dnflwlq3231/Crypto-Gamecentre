@@ -1,0 +1,87 @@
+body {
+    text-align: center;
+    width: 900px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    background-color: #ffffff;
+}
+header {
+    text-align: center;
+    height: 100px;
+    padding-top: 15px;
+}
+section {
+    text-align: center;
+    height: 500px;
+    width:900;
+    padding-top: 50px;
+    margin-left: -16.5px;
+    background-color: #fcfcfc;
+    box-shadow: 0 1px 4px #eaeaea;
+}
+footer {
+    position: absolute;
+    width:900;
+    bottom: 110;
+    margin-left: -16.5px;
+    text-align: center;
+    background-color: #2d303a;
+}
+h2 {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 50px;
+}
+.name {
+    display: inline-block;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 30px;
+}
+.rps_box {
+    margin-right: 25px;
+    margin-left: 25px;
+    position: relative;
+    display: inline-block;
+   
+}
+.game_result {
+    display: inline-block;
+    width: 600px;
+    height: 100px;  
+}
+.game_select {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 30px;
+}
+.result {
+    float: left;
+    width: 24%;
+    clear: right;
+
+}
+#com_name {
+    padding-right: 150px; 
+}
+#player_name {
+    padding-left: 150px;
+}
+#com_result {
+    width: 116px;
+    height: 113px;
+    margin-left: 250px;
+    margin-top: -50px;    
+}
+#player_result {
+    width: 116px;
+    height: 113px;
+    margin-right:200px;
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+#versus {
+    padding: -50px 50px 0px 50px;
+    margin-top: -40px;
+}
