@@ -245,8 +245,8 @@ router.post('/forgot_process', function(req,res){
     })
 })
 
-router.get('/tt', function(req,res){
-    res.render('tt');
+router.get('/Rps', function(req,res){
+    res.render('Rps');
 })
 
 // router.get('/BlackJack', function (req, res) {
