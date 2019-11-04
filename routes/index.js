@@ -5,14 +5,6 @@ const auth = require('../utils/auth.js');
 const author = require('../config/author.json');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-<<<<<<< HEAD
-=======
-const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
-const contract = new web3.eth.Contract(abi, '0x2abc350FB965C80a79Fc611C71329D95C7A2CA19');
-const Tx = ethereum.Transaction;
-
->>>>>>> e49b71d46c1b96a13db9bdf3c7a30c2f8030e81d
 
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
@@ -232,35 +224,28 @@ router.get('/Rps', function(req,res){
     res.render('Rps');
 })
 
-<<<<<<< HEAD
-router.get('/test', function (req, res) {
-=======
 router.get('/Dice', function (req, res) {
->>>>>>> e49b71d46c1b96a13db9bdf3c7a30c2f8030e81d
     if (req.session.loginId == undefined) {
         res.redirect('/login');
     }
     else {
         let userId = req.session.loginId;
         db.query('select address from user where user.id=?', [userId], async function (err, result) {
-<<<<<<< HEAD
-            res.render('test', {
-                address : result[0].address
-            })
-=======
             let userAddress = result[0].address;
             res.render('dice');
->>>>>>> e49b71d46c1b96a13db9bdf3c7a30c2f8030e81d
         })
     }   
 })
 
-<<<<<<< HEAD
-=======
 // 테스트 페이지
 router.get('/test', function (req, res) {
-    res.render('test');
+    let userId = req.session.loginId;
+    db.query('select * from user where user.id=?', [userId], async function (err, result) {
+        let Address = result[0].address;
+        res.render('test', {
+            Address
+        });
+    })
 })
 
->>>>>>> e49b71d46c1b96a13db9bdf3c7a30c2f8030e81d
 module.exports = router;
