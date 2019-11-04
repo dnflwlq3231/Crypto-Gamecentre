@@ -65,7 +65,7 @@
             <div id="rockgame_module_view">
                 <!-- 위쪽 -->
 
-                <h2 style="padding:0px; margin:0px;">가위바위보 게임</h2>
+                <h2 style="text-align: center">가위바위보 게임</h2>
                 <div class="xecenter_div_line"></div>
                 <form id="insert_form" name="insert_form" action="https://m16.me/" method="post"
                     onsubmit="return rockgame_submit_check()" onkeydown="if(event.keyCode==13){return false;}"><input
@@ -74,89 +74,68 @@
                         value="insert_game">
                     <input type="hidden" name="act" value="procRockgameUserView">
                     <input type="hidden" name="game_srl" value="">
+                </form>
             </div>
-        
-        <div class="container" style="border:1px solid black;">
-
-                <div class = "row"> 
-                <div class = "col-lg-2"> <h1>54           </h1></div>
-                <div class = "col-lg-8" style=" text-align: center;"><h1>Game Day</h1> </div>
-                <div class = "col-lg-2"> <h1>56</h1></div>
-                
-                </div>
-                
-                <div class = "row"> 
-                <div class = "col-lg-2"> <h1>Team1           </h1></div>
-                <div class = "col-lg-8"><h1>      </h1> </div>
-                <div class = "col-lg-2"> <h1>Team6</h1></div>
-                
-                </div>
-                
-                </div>
-                
-                 
+        </div>
     </header>
     <!-- 가운데 -->
     <section>
         <div class="rockgame_center">
             <!-- 왼쪽 -->
-            <p class="left_bar">
+            <p class="row">
                 <div class="game_result">
-                    <div class="com_select">
-                        <div class="com_name">
-                            <p>COM</p>
-                        </div>
-                        <div class="rps_result_box"></div>
+                    <div class="name" id="com_name">
+                        COM
                     </div>
-                    <div class="fight">
-                        <img src="/img/portfolio/versus.png" style="vertical-align:baseline; margin-bottom:35px;">
-                    </div>
-                    <div class="user_select">
-                        <div class="user_name">
-                            <p>Player</p>
-                        </div>
-                        <div class="rps_result_box"></div>
+                    <div class="name" id="player_name">
+                        PLAYER
                     </div>
                 </div>
-                <div class="game_select">
-                    <input type="hidden" name="rsp_select" value="">
-                    <div class="rps_box">
-                        <input class="rps_img" type="image" id="rps_rock" src="/img/portfolio/paper.gif"
-                            onclick="this.form.rsp_slect.value=&#39;rock&#39;">
-                    </div>
-                    <div class="rps_box">
-                        <input class="rps_img" type="image" id="rps_scissors" src="/img/portfolio/scissors.gif"
-                            onclick="this.form.rsp_slect.value=&#39;scissors&#39;">
-                    </div>
-                    <div class="rps_box">
-                        <input class="rps_img" type="image" id="rps_paper" src="/img/portfolio/rock.gif"
-                            onclick="this.form.rsp_slect.value=&#39;paper&#39;">
-                    </div>
+                <div>
+                    <div class="result" id="com_result"></div>
+                    <div class="result" id="versus"> <img src="/img/portfolio/versus.png"></div>
+                    <div class="result" id="player_result"></div>
                 </div>
             </p>
+            <div class="game_select">
+                <input type="hidden" name="rsp_select" value="">
+                <div class="rps_box">
+                    <input class="rps_img" type="image" id="rps_rock" src="/img/portfolio/paper.gif"
+                        onclick="this.form.rsp_slect.value=&#39;rock&#39;">
+                </div>
+                <div class="rps_box">
+                    <input class="rps_img" type="image" id="rps_scissors" src="/img/portfolio/scissors.gif"
+                        onclick="this.form.rsp_slect.value=&#39;scissors&#39;">
+                </div>
+                <div class="rps_box">
+                    <input class="rps_img" type="image" id="rps_paper" src="/img/portfolio/rock.gif"
+                        onclick="this.form.rsp_slect.value=&#39;paper&#39;">
+                </div>
+            </div>
+        </div>
     </section>
     <!-- 오른쪽-->
     <footer>
-        <p class="right_bar">
-            <div class="rockgame_top">
-                <span>보유point : <input type="text" class="xecenter_form_box" style="width:50px; background:#eee;"
-                        value="152" disabled="disabled"> </span>
-                <span>참가point : <input type="text" class="xecenter_form_box" style="width:35px;" id="game_point"
-                        name="game_point" value=""></span>
-                <span>잔여횟수 : <input type="text" class="xecenter_form_box" style="width:23px; background:#eee;"
-                        value="10" disabled="disabled"></span>
-                <span>오늘결과 : <input type="text" class="xecenter_form_box" style="width:45px; background:#eee;"
-                        disabled="disabled"></span>
-            </div>
-            <!-- 아래 쪽-->
-            <div class="rockgame_bottom">
-                <p>참가point를 입력한 후 가위 바위 보 중에 내고 싶은것을 선택합니다</p>
-                <p>승리할 경우 참가point 만큼 획득합니다 // 패배할 경우 참가point 만큼 소모합니다</p>
-            </div>
-            <div class="xecenter_div_line"></div>
+        <p class="row">
+            <p class="right_bar">
+                <div class="rockgame_top">
+                    <span>보유point : <input type="text" class="xecenter_form_box" style="width:50px; background:#eee;"
+                            value="152" disabled="disabled"> </span>
+                    <span>참가point : <input type="text" class="xecenter_form_box" style="width:35px;" id="game_point"
+                            name="game_point" value=""></span>
+                    <span>잔여횟수 : <input type="text" class="xecenter_form_box" style="width:23px; background:#eee;"
+                            value="10" disabled="disabled"></span>
+                    <span>오늘결과 : <input type="text" class="xecenter_form_box" style="width:45px; background:#eee;"
+                            disabled="disabled"></span>
+                </div>
+                <!-- 아래 쪽-->
+                <div class="rockgame_bottom">
+                    <p>참가point를 입력한 후 가위 바위 보 중에 내고 싶은것을 선택합니다</p>
+                    <p>승리할 경우 참가point 만큼 획득합니다 // 패배할 경우 참가point 만큼 소모합니다</p>
+                </div>
+                <div class="xecenter_div_line"></div>
+            </p>
         </p>
-        </form>
-        <div style="clear:both;"></div>
     </footer>
 
     <script type="text/javascript">
@@ -177,7 +156,7 @@
             $('#game_point').focus(); //포인트 입력창에 포커스주기
         });
     </script>
-    </div>
+
     <!-- Bootstrap core JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="/vendor/jquery/jquery.min.js"></script>
@@ -188,6 +167,9 @@
 
     <!-- Custom scripts for this template -->
     <script src="/js/freelancer.min.js"></script>
+
+    <!-- Connect with contract -->
+    <script type="text/javascript" src="/js/game_rpc.js"></script>
 </body>
 
 </html>
