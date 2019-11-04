@@ -13,6 +13,13 @@
 		src="https://code.jquery.com/jquery-3.4.1.min.js"
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 		crossorigin="anonymous"></script>
+	
+	<style>
+		.dice {
+			max-width: 10%;
+			height: auto;
+		}
+	</style>
 </head>
 
 <body>
@@ -26,16 +33,14 @@
 		<input type="button" id="btn-reward" value="보상받기"/>
 	</div>
 	<div>
-		<select id="select-user-dice">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-		</select>
-		<input type="button" id="btn-play-dice" value="주사위 굴리기"/>
+		<img class="dice" id="btn-play-dice-1" src="/img/dice/dice_1.png"/>
+		<img class="dice" id="btn-play-dice-2" src="/img/dice/dice_2.png"/>
+		<img class="dice" id="btn-play-dice-3" src="/img/dice/dice_3.png"/></br>
+		<img class="dice" id="btn-play-dice-4" src="/img/dice/dice_4.png"/>
+		<img class="dice" id="btn-play-dice-5" src="/img/dice/dice_5.png"/>
+		<img class="dice" id="btn-play-dice-6" src="/img/dice/dice_6.png"/>
 	</div>
+
 
     <script>
         var abi = [
@@ -672,7 +677,7 @@
         if (typeof web3 !== 'undefined') {
 			console.log("Using web3 detected from external source like Metamask");
             var web3 = new Web3(web3.currentProvider);
-            let contract = new web3.eth.Contract(abi, '0x7436f94e7FBafd0F8A63ad6748E0c7A35E08e958');
+            let contract = new web3.eth.Contract(abi, '0x2abc350FB965C80a79Fc611C71329D95C7A2CA19');
 			
             async function func(){
 				var userAccounts = await ethereum.enable();
@@ -701,13 +706,56 @@
 				});
 			});
 
-			$('#btn-play-dice').click(async function () {
-				let userDiceNum = $('#select-user-dice option').index($('#select-user-dice optionselected'));
-
+			$('#btn-play-dice-1').click(async function () {
 				var userAccounts = await ethereum.enable();
 				userAccount = userAccounts[0];
 
-				let plyDice = await contract.methods.DiceGameStart(userDiceNum).send({
+				let plyDice = await contract.methods.DiceGameStart('1').send({
+					from : userAccount
+				})
+			})
+
+			$('#btn-play-dice-2').click(async function () {
+				var userAccounts = await ethereum.enable();
+				userAccount = userAccounts[0];
+
+				let plyDice = await contract.methods.DiceGameStart('2').send({
+					from : userAccount
+				})
+			})
+
+			$('#btn-play-dice-3').click(async function () {
+				var userAccounts = await ethereum.enable();
+				userAccount = userAccounts[0];
+
+				let plyDice = await contract.methods.DiceGameStart('3').send({
+					from : userAccount
+				})
+			})
+
+			$('#btn-play-dice-4').click(async function () {
+				var userAccounts = await ethereum.enable();
+				userAccount = userAccounts[0];
+
+				let plyDice = await contract.methods.DiceGameStart('4').send({
+					from : userAccount
+				})
+			})
+
+			$('#btn-play-dice-5').click(async function () {
+				var userAccounts = await ethereum.enable();
+				userAccount = userAccounts[0];
+
+				let plyDice = await contract.methods.DiceGameStart('5').send({
+					from : userAccount
+				})
+			})
+
+			$('#btn-play-dice-6').click(async function () {
+				var userAccounts = await ethereum.enable();
+				userAccount = userAccounts[0];
+
+				let plyDice = await contract.methods.DiceGameStart('6').send({
 					from : userAccount
 				})
 			})
@@ -757,6 +805,8 @@
 			// ee();
 		}
 	</script>
+
+
 </body>
 
 </html>
