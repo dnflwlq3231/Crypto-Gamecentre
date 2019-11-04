@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+}
+
+.dice {
+    max-width: 15%;
+    height: auto;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.view-result {
+    max-width: 15%;
+    height: auto;
+    float: left;
+    background-color: slategray;
+}
+
+#dice-space {
+    clear: left;
+    padding-top: 10px;
+}
+
+#img-versus {
+    max-width: 80%;
+    height: auto;
+    padding-top: 4%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
