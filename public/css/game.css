@@ -1,0 +1,59 @@
+body {
+    text-align: center;
+    border: 3px solid black;
+}
+header {
+   
+    text-align: center;
+    height: 300px;
+    padding-top: 200px;
+}
+section {
+    
+    text-align: center;
+    height: 250px;
+}
+footer {
+   
+    text-align: center;
+}
+.rps_result_box {
+    border: 3px solid black;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    float: left;
+}
+.rps_box {
+    border: 3px solid black;
+    margin-right: 20px;
+    margin-left: 20px;
+    position: relative;
+    float: left;
+}
+.user_name {
+    position: relative;
+    float: left;
+    left: 50px;
+       
+}
+.com_name {
+    position: relative;
+    float: left; 
+    right: 50px;
+    
+}
+.fight {
+    position: relative;
+    float: left; 
+}
+.game_result {
+    position: relative;
+    left: 500px;
+    clear: both;
+}
+.game_select {
+    position: relative;
+    left: 350px;
+    clear: both;
+}
