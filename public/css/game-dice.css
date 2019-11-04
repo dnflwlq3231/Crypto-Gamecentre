@@ -17,9 +17,20 @@ body {
     background-color: slategray;
 }
 
+.token-console {
+    max-width: 15%;
+    height: auto;
+    margin: 0 10;
+}
+
 #dice-space {
     clear: left;
-    padding-top: 10px;
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+#view-result-com {
+    padding-left: 45%;
 }
 
 #img-versus {
@@ -30,3 +41,7 @@ body {
     margin-right: 2%;
 }
 
+#btn-play-dice-1 {
+    top: 0;
+    left: 0;
+}

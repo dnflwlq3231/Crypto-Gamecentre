@@ -249,36 +249,6 @@ router.get('/tt', function(req,res){
     res.render('tt');
 })
 
-// router.get('/BlackJack', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('tt')
-// })
-
-// router.get('/OddEven', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('tt')
-// })
-
-// router.get('/Dice', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('gameDice')
-// })
-
-// router.get('/Rps', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('tt')
-// })
-
-// web3를 이용해 컨트랙트와 통신하는 부분
-
 router.get('/Dice', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');
@@ -292,5 +262,9 @@ router.get('/Dice', function (req, res) {
     }   
 })
 
+// 테스트 페이지
+router.get('/test', function (req, res) {
+    res.render('test');
+})
 
 module.exports = router;
