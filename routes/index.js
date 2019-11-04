@@ -1,21 +1,40 @@
 const express = require('express');
 const router = express.Router();
+
+const abi = require('../utils/abi.json')
 const db = require('../utils/db.js');
 const auth = require('../utils/auth.js');
-const ethereum = require('ethereumjs-tx');
+const author = require('../config/author.json');
+
 const nodemailer = require('nodemailer');
-const author = require('../config/author.js');
+const ethereum = require('ethereumjs-tx');
 const crypto = require('crypto');
+const Web3 = require('web3');
+const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
+const contract = new web3.eth.Contract(abi, '0x7436f94e7FBafd0F8A63ad6748E0c7A35E08e958');
+const Tx = ethereum.Transaction;
+
 
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
     if(req.session){
         msg = `${req.session.loginId}로 로그인`
     }
+    /* 일단 동작안됨. window가 문제임
+    window.addEventListener('load', () => {
+        if (typeof web3 !== 'undefined') {
+            web3js = new Web3(web3.currentProvider);
+        } else {
+            console.log('web3가 없는 경우 metamask로 시도하십시오.')
+            web3js = web3;
+        }
+    })
+    /*
     if(ethereum.isMetaMask){
         let accounts = ethereum.enable();
         let account = accounts[0];
     }
+    */
     console.log(msg);
     res.render('index', {
         statusUI
@@ -229,5 +248,67 @@ router.post('/forgot_process', function(req,res){
 router.get('/tt', function(req,res){
     res.render('tt');
 })
+
+// router.get('/BlackJack', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('tt')
+// })
+
+// router.get('/OddEven', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('tt')
+// })
+
+// router.get('/Dice', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('gameDice')
+// })
+
+// router.get('/Rps', function (req, res) {
+//     if (req.session.loginId == undefined) {
+//         res.redirect('/login');
+//     }
+//     res.render('tt')
+// })
+
+// web3를 이용해 컨트랙트와 통신하는 부분
+
+router.get('/test', function (req, res) {
+    if (req.session.loginId == undefined) {
+        res.redirect('/login');
+    }
+    else {
+        let userId = req.session.loginId;
+        db.query('select address from user where user.id=?', [userId], async function (err, result) {
+            let userAddress = result[0].address;
+            // await contract.methods.GetTokens(userAddress).send({
+            //     from : '0x166bc5697f57f4381b0e48f02d50a694476bed12',
+            //     gas : 470000
+            // }).on("transactionHash", function (){
+            //     console.log("Hash");
+            // }).on("receipt", function () {
+            //     console.log("Receipt");
+            // }).on("confirmation", function () {
+            //     console.log("Confirmed");
+            // }).on("error", async function () {
+            //     console.log("Error");
+            // })
+            
+            let aa = await contract.methods.BalanceOf(userAddress).call();
+            res.render('test', {
+                userAddr: userAddress,
+                userBal: aa,
+                abi : abi
+            })
+        })
+    }   
+})
+
 
 module.exports = router;
