@@ -39,8 +39,8 @@ h2 {
     font-size: 30px;
 }
 .rps_box {
-    margin-right: 25px;
-    margin-left: 25px;
+    margin-right: 0px;
+    margin-left: 0px;
     position: relative;
     display: inline-block;
    
