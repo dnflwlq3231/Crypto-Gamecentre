@@ -114,44 +114,11 @@
             </div>
         </div>
     </div>
-
-    <script>
-        
-
-        $("#subbutton").on("click", function() {
-            let userId = $('#id').val();
-            let userMail = $('#email').val();
-            
-            $.ajax({
-                url: "/forgot_process",
-                dataType: 'json',
-                data: {
-                    'id': userId,
-                    'email' : userMail,
-                },
-                type: "POST",
-                error: function(jqXHR, textStatus, errorThrown){
-                        console.log("jqXHR : " + jqXHR)
-                        console.log("textStatus : " + textStatus)
-                        console.log("errorThrown : " + errorThrown)
-                        console.log("ajax 호출 실패")
-                },
-                success: function(result) {
-                    if (result.msg == "success") {
-                        $('#indexemail').modal('show');
-                    } else if (result.msg == "error") {
-                        $('#check_typing').modal('show');
-                        }
-                }
-            })
-        })
-
-
-    </script>
     <!-- main link js-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="/js/forgot.js"></script>
 </body>
 
 </html>
