@@ -249,37 +249,7 @@ router.get('/Rps', function(req,res){
     res.render('Rps');
 })
 
-// router.get('/BlackJack', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('tt')
-// })
-
-// router.get('/OddEven', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('tt')
-// })
-
-// router.get('/Dice', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('gameDice')
-// })
-
-// router.get('/Rps', function (req, res) {
-//     if (req.session.loginId == undefined) {
-//         res.redirect('/login');
-//     }
-//     res.render('tt')
-// })
-
-// web3를 이용해 컨트랙트와 통신하는 부분
-
-router.get('/test', function (req, res) {
+router.get('/Dice', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');
     }
@@ -287,28 +257,14 @@ router.get('/test', function (req, res) {
         let userId = req.session.loginId;
         db.query('select address from user where user.id=?', [userId], async function (err, result) {
             let userAddress = result[0].address;
-            // await contract.methods.GetTokens(userAddress).send({
-            //     from : '0x166bc5697f57f4381b0e48f02d50a694476bed12',
-            //     gas : 470000
-            // }).on("transactionHash", function (){
-            //     console.log("Hash");
-            // }).on("receipt", function () {
-            //     console.log("Receipt");
-            // }).on("confirmation", function () {
-            //     console.log("Confirmed");
-            // }).on("error", async function () {
-            //     console.log("Error");
-            // })
-            
-            let aa = await contract.methods.BalanceOf(userAddress).call();
-            res.render('test', {
-                userAddr: userAddress,
-                userBal: aa,
-                abi : abi
-            })
+            res.render('dice');
         })
     }   
 })
 
+// 테스트 페이지
+router.get('/test', function (req, res) {
+    res.render('test');
+})
 
 module.exports = router;

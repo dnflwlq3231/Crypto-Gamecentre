@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+}
+
+.dice {
+    max-width: 15%;
+    height: auto;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.view-result {
+    max-width: 15%;
+    height: auto;
+    float: left;
+    background-color: slategray;
+}
+
+.token-console {
+    max-width: 15%;
+    height: auto;
+    margin: 0 10;
+}
+
+#dice-space {
+    clear: left;
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+#view-result-com {
+    padding-left: 45%;
+}
+
+#img-versus {
+    max-width: 80%;
+    height: auto;
+    padding-top: 4%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#btn-play-dice-1 {
+    top: 0;
+    left: 0;
+}
