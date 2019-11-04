@@ -1,59 +1,75 @@
 body {
     text-align: center;
     border: 3px solid black;
+    width: 1000px;
+    height: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 170px;
 }
 header {
-   
     text-align: center;
-    height: 300px;
-    padding-top: 200px;
+    height: 100px;
+    padding-top: 40px;
 }
 section {
-    
     text-align: center;
     height: 250px;
 }
 footer {
-   
+    padding-top: 110px;
     text-align: center;
 }
-.rps_result_box {
-    border: 3px solid black;
-    width: 100px;
-    height: 100px;
-    position: relative;
-    float: left;
+.name {
+    display: inline-block;
+    
 }
 .rps_box {
-    border: 3px solid black;
     margin-right: 20px;
     margin-left: 20px;
     position: relative;
-    float: left;
-}
-.user_name {
-    position: relative;
-    float: left;
-    left: 50px;
-       
-}
-.com_name {
-    position: relative;
-    float: left; 
-    right: 50px;
-    
-}
-.fight {
-    position: relative;
-    float: left; 
+    display: inline-block;
+   
 }
 .game_result {
-    position: relative;
-    left: 500px;
-    clear: both;
+    display: inline-block;
+    width: 600px;
+    height: 100px;  
 }
 .game_select {
     position: relative;
-    left: 350px;
-    clear: both;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 30px;
+}
+.result {
+    float: left;
+    width: 24%;
+    clear: right;
+
+}
+#com_name {
+    padding-right: 150px; 
+}
+#player_name {
+    padding-left: 150px;
+}
+#com_result {
+    border: 3px solid black;
+    width: 116px;
+    height: 113px;
+    margin-left: 260px;
+    margin-top: -50px;    
+}
+#player_result {
+    border: 3px solid black;
+    width: 116px;
+    height: 113px;
+    margin-right:200px;
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+#versus {
+    padding: -50px 50px 0px 50px;
+    margin-top: -40px;
 }
