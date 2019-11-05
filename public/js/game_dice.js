@@ -364,7 +364,7 @@ var address = $('#address').val();
 var tx;
 if (typeof web3 !== 'undefined') {
 
-    console.log("MetaMask가 감지되엇습니다.");
+    console.log("MetaMask가 감지되었습니다.");
     var web3 = new Web3(web3.currentProvider);
     let contract = new web3.eth.Contract(abi, '0x08550f36557f395071976240e32ba93c8e707cdc');
     ethereum.enable();

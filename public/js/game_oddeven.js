@@ -365,7 +365,7 @@ var tx;
 
 if (typeof web3 !== 'undefined') {
 
-    console.log("MetaMask가 감지되엇습니다.");
+    console.log("MetaMask가 감지되었습니다.");
     var web3 = new Web3(web3.currentProvider);
     let contract = new web3.eth.Contract(abi, '0x08550f36557f395071976240e32ba93c8e707cdc');
     ethereum.enable();
@@ -413,10 +413,10 @@ if (typeof web3 !== 'undefined') {
             })
         }
         else {
-            $('').attr('src', '')
-            $('').attr('src', '')
+            $('#player_result').attr('src', '/img/oddeven/odd_result.png')
+            $('#com_result').attr('src', '/img/portfolio/pending_hamster.gif')
 
-            await contract.methods.OddEven(address, '0', betAmount).send({
+            await contract.methods.OddEven(address, '1', betAmount).send({
                 from: address
             }, function (err, result) {
                 if(err) { console.log(err) }
@@ -425,11 +425,11 @@ if (typeof web3 !== 'undefined') {
 
             let OddEvenResult = await contract.methods.OddEvenReward(address).call();
 
-            if (OddEvenResult[1] == 0) { $('').attr('src', '')}
-            if (OddEvenResult[1] == 1) { $('').attr('src', '')}
+            if (OddEvenResult[1] == 0) { $('#com_result').attr('src', '/img/oddeven/even_result.png')}
+            if (OddEvenResult[1] == 1) { $('#com_result').attr('src', '/img/oddeven/odd_result.png')}
             
             let Balance = await contract.methods.BalanceOf(address).call();
-            $('').attr('value', Balance)
+            $('#ply-balance').attr('value', Balance)
         }
     })
     
@@ -444,10 +444,10 @@ if (typeof web3 !== 'undefined') {
             })
         }
         else {
-            $('').attr('src', '')
-            $('').attr('src', '')
+            $('#player_result').attr('src', '/img/oddeven/even_result.png')
+            $('#com_result').attr('src', '/img/portfolio/pending_hamster.gif')
 
-            await contract.methods.OddEven(address, '1', betAmount).send({
+            await contract.methods.OddEven(address, '0', betAmount).send({
                 from: address
             }, function (err, result) {
                 if(err) { console.log(err) }
@@ -456,11 +456,11 @@ if (typeof web3 !== 'undefined') {
 
             let OddEvenResult = await contract.methods.OddEvenReward(address).call();
 
-            if (OddEvenResult[1] == 0) { $('').attr('src', '')}
-            if (OddEvenResult[1] == 1) { $('').attr('src', '')}
+            if (OddEvenResult[1] == 0) { $('#com_result').attr('src', '/img/oddeven/even_result.png')}
+            if (OddEvenResult[1] == 1) { $('#com_result').attr('src', '/img/oddeven/odd_result.png')}
             
             let Balance = await contract.methods.BalanceOf(address).call();
-            $('').attr('value', Balance)
+            $('#ply-balance').attr('value', Balance)
         }
     })
 }

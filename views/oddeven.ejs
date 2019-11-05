@@ -10,7 +10,10 @@
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="shortcut" href="/img/favicon.ico" type="image/x-icon">
 
+    <!-- jquery -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
+	<script	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <!-- Custom fonts for this theme -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -85,9 +88,9 @@
                     </div>
                 </div>
                 <div>
-                    <div class="result shadow-sm p-3 bg-white rounded" id="com_result"></div>
+                    <div class="result shadow-sm p-3 bg-white rounded"><img id="com_result" src=""></div>
                     <div class="result" id="versus"> <img src="/img/portfolio/versus.png"></div>
-                    <div class="result shadow-sm p-3 bg-white rounded" id="player_result"></div>
+                    <div class="result shadow-sm p-3 bg-white rounded"><img id="player_result" src=""></div>
                 </div>
             </p>
             <div class="game_select">
@@ -209,8 +212,9 @@
             <!--/.Content-->
         </div>
     </div>
+    
     <!-- 사용자 지갑 주소 -->
-	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= address %>">
+	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= Address %>">
 
     <!-- Bootstrap core JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
