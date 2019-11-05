@@ -393,37 +393,92 @@ if (typeof web3 !== 'undefined') {
         console.log('현재 잔액 : ' + Balance);
         $('#ply-balance').attr('value', Balance);
 	});
-	
-	$('#rps_paper').click(async function () {
+
+	$('#rps_scissors').click(async function () {
         ethereum.enable();
         let betAmount = $("#input-bet-amount").val();
 
-        $('#img-ply-dice').attr('src', '/img/dice/dice_1.png')
-        $('#').attr('src', '/img/portfolio/pending_hamster.gif')
+        $('#img-ply-selected').attr('src', '/img/rps/scissors.png')
+        $('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
 
-        let plyDice = await contract.methods.Dice(address, '1', betAmount).send({
+        let rps = await contract.methods.Rps(address, '1', betAmount).send({
 			from: address
 		}, function(error, result) {
 			if (error){
 				console.log(error)
 			}else {
-				console.dir('주사위 hash : ' + result);	
+				console.dir('가위바위보 hash : ' + result);	
 			}
         });
         
-        let diceReward = await contract.methods.DiceReward(address).call();
-        console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        let diceReward = await contract.methods.RpsReward(address).call();
+        console.log('결과 : ' + diceReward[0] + '   컴퓨터 : ' + diceReward[1] + '   유저 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
         
-        if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
-        if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
-        if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
-        if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
-        if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
-        if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
+        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
+        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
         // 잔액 변경
         let Balance = await contract.methods.BalanceOf(address).call();
         console.log('현재 잔액 : ' + Balance);
         $('#ply-balance').attr('value', Balance);
-    })
+	});
+	
+	$('#rps_rock').click(async function () {
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
+
+        $('#img-ply-selected').attr('src', '/img/rps/rock.png')
+        $('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+
+        let rps = await contract.methods.Rps(address, '2', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('가위바위보 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.RpsReward(address).call();
+        console.log('결과 : ' + diceReward[0] + '   컴퓨터 : ' + diceReward[1] + '   유저 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
+        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
+        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
+    });
+	
+	$('#rps_paper').click(async function () {
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
+
+        $('#img-ply-selected').attr('src', '/img/rps/palm.png')
+        $('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+
+        let rps = await contract.methods.Rps(address, '3', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('가위바위보 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.RpsReward(address).call();
+        console.log('결과 : ' + diceReward[0] + '   컴퓨터 : ' + diceReward[1] + '   유저 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
+        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
+        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
+    });
 	
 }
