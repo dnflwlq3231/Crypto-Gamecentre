@@ -2165,8 +2165,8 @@ fieldset:disabled a.btn {
   border-radius: 1.3rem; }
 
 .btn-sm, .btn-group-sm > .btn {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  padding: 0.5rem 1.75rem;
+  font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.2rem; }
 
@@ -7653,6 +7653,10 @@ h2 {
 .modalContent {
   font-family: 'Do Hyeon', sans-serif;
   font-size: 25px;
+}
+.modalContent_Rule {
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 20px;
 }
 .callBalance {
   border: 1px solid #9a76b4;
