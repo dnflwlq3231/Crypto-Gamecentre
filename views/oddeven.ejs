@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rock Scissors Paper</title>
+    <title>Odd Even</title>
 
     <!-- Favicon -->
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="shortcut" href="/img/favicon.ico" type="image/x-icon">
 
-    <!-- jquery -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="//cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
-	<script	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <!-- Custom fonts for this theme -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +24,7 @@
 
     <!-- Theme CSS -->
     <link href="/css/freelancer.css" rel="stylesheet">
-    <link href="/css/game-rps.css" rel="stylesheet">
+    <link href="/css/game-oddeven.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
@@ -70,14 +67,14 @@
         <div class="omdoll_content_wrapper">
             <div id="rockgame_module_view">
                 <!-- 위쪽 -->
-                <h2 style="text-align: center">가위. 바위. 보 게임</h2>
+                <h2 style="text-align: center">홀수, 짝수 맞추기 게임</h2>
                 <div class="xecenter_div_line"></div>
             </div>
         </div>
     </header>
     <!-- 가운데 -->
     <section>
-        <div class="rockgame_center">
+        <div class="oddEvengame_center">
             <p class="row">
                 <div class="game_result">
                     <div class="name" id="com_name">
@@ -88,21 +85,18 @@
                     </div>
                 </div>
                 <div>
-                    <div class="result shadow-sm p-3 bg-white rounded" id="com_result"><img  id="img-com-result" src=""></div>
+                    <div class="result shadow-sm p-3 bg-white rounded" id="com_result"></div>
                     <div class="result" id="versus"> <img src="/img/portfolio/versus.png"></div>
-                    <div class="result shadow-sm p-3 bg-white rounded" id="player_result"><img  id="img-ply-selected" src=""></div>
+                    <div class="result shadow-sm p-3 bg-white rounded" id="player_result"></div>
                 </div>
             </p>
             <div class="game_select">
-                <input type="hidden" name="rsp_select" value="">
-                <div class="rps_box">
-                    <input class="rps_img" type="image" id="rps_paper" src="/img/rps/palm.png" onclick="">
+                <input type="hidden" name="oddEven_select" value="">
+                <div class="oddEven_box">
+                    <input class="oddEven_img" type="image" id="oddEven_odd" src="/img/oddeven/odd.png">
                 </div>
-                <div class="rps_box">
-                    <input class="rps_img" type="image" id="rps_scissors" src="/img/rps/scissors.png" onclick="">
-                </div>
-                <div class="rps_box">
-                    <input class="rps_img" type="image" id="rps_rock" src="/img/rps/rock.png" onclick="">
+                <div class="oddEven_box">
+                    <input class="oddEven_img" type="image" id="oddEven_even" src="/img/oddeven/even.png">
                 </div>
             </div>
         </div>
@@ -111,13 +105,13 @@
     <footer class="rounded-bottom">
         <p class="row">
             <p class="right_bar">
-                <div class="rockgame_set">
+                <div class="oddEvengame_set">
                     <button type="submit" class="btn btn-outline-primary btn-lg" data-toggle="modal"
                         data-target="#modalBalance">
                         <i class="fas fa-wallet fa-2x" style="color: #eee"></i>
                         &nbsp; Balance
                     </button>
-                    <button type="button" class="btn btn-outline-primary btn-lg" id="btn-get-token">
+                    <button type="button" class="btn btn-outline-primary btn-lg">
                         <i class="fas fa-coins fa-2x" style="color:#eee"></i>
                         &nbsp; Get Token
                     </button>
@@ -150,7 +144,7 @@
                 <!--Body-->
                 <div class="modal-body">
                     <p class="modalContent">Your balance is</p>
-                    <input type="text" class="callBalance" id="ply-balance" value="">
+                    <input type="text" class="callBalance">
                 </div>
                 <!--Footer-->
                 <div class="modal-footer flex-center">
@@ -174,7 +168,7 @@
                 <!--Body-->
                 <div class="modal-body">
                     <p class="modalContent">How much token want to bet?</p>
-                    <input type="text" class="callBalance" id="input-bet-amount" value="">
+                    <input type="text" class="callBalance">
                 </div>
                 <!--Footer-->
                 <div class="modal-footer flex-center">
@@ -202,7 +196,7 @@
                         1. Check your balance with 'Balance' button<br>
                         (If you don't have any token, let's get token by clicking 'Get Token' button)<br>
                         2. Click 'Betting' button and then write number that how much token do you want<br>
-                        3. Click your pick between 'paper', 'scissors' and 'rock'<br>
+                        3. Click your pick between 'Odd' and 'Even'<br>
                         4. After pandding, you can show result of game<br>
                     </p>
                     
@@ -216,8 +210,6 @@
         </div>
     </div>
 
-    <!-- 사용자 지갑 주소 -->
-	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= Address %>">
 
     <!-- Bootstrap core JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -230,8 +222,8 @@
     <!-- Custom scripts for this template -->
     <script src="/js/freelancer.min.js"></script>
 
-    <!-- web3 스크립트 -->
-    <script type="text/javascript" src="/js/game_rps.js"></script>
+    <!-- Connect with contract -->
+    <script type="text/javascript" src="/js/game_rpc.js"></script>
 </body>
 
 </html>

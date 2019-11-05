@@ -398,8 +398,8 @@ if (typeof web3 !== 'undefined') {
         ethereum.enable();
         let betAmount = $("#input-bet-amount").val();
 
-        $('#img-ply-selected').attr('src', '/img/rps/scissors.png')
-        $('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+        $('#img-ply-selected').attr('src', '/img/rps/scissors_result.png')
+        $('#img-com-result').attr('src', '/img/rps/pending_hamster.gif')
 
         let rps = await contract.methods.Rps(address, '1', betAmount).send({
 			from: address
@@ -414,9 +414,9 @@ if (typeof web3 !== 'undefined') {
         let diceReward = await contract.methods.RpsReward(address).call();
         console.log('결과 : ' + diceReward[0] + '   컴퓨터 : ' + diceReward[1] + '   유저 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
         
-        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
-        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
-        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
+        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors_result.png')}
+        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock_result.png')}
+        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm_result.png')}
         // 잔액 변경
         let Balance = await contract.methods.BalanceOf(address).call();
         console.log('현재 잔액 : ' + Balance);
@@ -427,8 +427,8 @@ if (typeof web3 !== 'undefined') {
         ethereum.enable();
         let betAmount = $("#input-bet-amount").val();
 
-        $('#img-ply-selected').attr('src', '/img/rps/rock.png')
-        $('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+        $('#img-ply-selected').attr('src', '/img/rps/rock_result.png')
+        $('#img-com-result').attr('src', '/img/rps/pending_hamster.gif')
 
         let rps = await contract.methods.Rps(address, '2', betAmount).send({
 			from: address
@@ -443,9 +443,9 @@ if (typeof web3 !== 'undefined') {
         let diceReward = await contract.methods.RpsReward(address).call();
         console.log('결과 : ' + diceReward[0] + '   컴퓨터 : ' + diceReward[1] + '   유저 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
         
-        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
-        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
-        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
+        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors_result.png')}
+        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock_result.png')}
+        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm_result.png')}
         // 잔액 변경
         let Balance = await contract.methods.BalanceOf(address).call();
         console.log('현재 잔액 : ' + Balance);
@@ -456,8 +456,8 @@ if (typeof web3 !== 'undefined') {
         ethereum.enable();
         let betAmount = $("#input-bet-amount").val();
 
-        $('#img-ply-selected').attr('src', '/img/rps/palm.png')
-        $('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+        $('#img-ply-selected').attr('src', '/img/rps/palm_result.png')
+        $('#img-com-result').attr('src', '/img/rps/pending_hamster.gif')
 
         let rps = await contract.methods.Rps(address, '3', betAmount).send({
 			from: address
@@ -472,9 +472,9 @@ if (typeof web3 !== 'undefined') {
         let diceReward = await contract.methods.RpsReward(address).call();
         console.log('결과 : ' + diceReward[0] + '   컴퓨터 : ' + diceReward[1] + '   유저 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
         
-        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
-        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
-        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
+        if (diceReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors_result.png')}
+        if (diceReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock_result.png')}
+        if (diceReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm_result.png')}
         // 잔액 변경
         let Balance = await contract.methods.BalanceOf(address).call();
         console.log('현재 잔액 : ' + Balance);
