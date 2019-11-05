@@ -71,8 +71,65 @@
 	<div style="margin: 10px 0 80px 0;">
 		<button type="button" class="btn btn-outline-primary" id="btn-get-token">토큰 받기</button>
 	</div>
+	<!-- 기록 -->
+	<div>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">배팅금액</th>
+					<th scope="col">컴퓨터</th>
+					<th scope="col">사용자</th>
+					<th scope="col">게임결과</th>
+					<th scope="col">해쉬</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td><%= result2[0].betting %></td>
+					<td><%= result2[0].com %></td>
+					<td><%= result2[0].user %></td>
+					<td><%= result2[0].result %></td>
+					<td><%= result2[0].tx %></td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td><%= result2[1].betting %></td>
+					<td><%= result2[1].com %></td>
+					<td><%= result2[1].user %></td>
+					<td><%= result2[1].result %></td>
+					<td><%= result2[1].tx %></td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td><%= result2[2].betting %></td>
+					<td><%= result2[2].com %></td>
+					<td><%= result2[2].user %></td>
+					<td><%= result2[2].result %></td>
+					<td><%= result2[2].tx %></td>
+				</tr>
+				<tr>
+					<th scope="row">4</th>
+					<td><%= result2[3].betting %></td>
+					<td><%= result2[3].com %></td>
+					<td><%= result2[3].user %></td>
+					<td><%= result2[3].result %></td>
+					<td><%= result2[3].tx %></td>
+				</tr>
+				<tr>
+					<th scope="row">5</th>
+					<td><%= result2[4].betting %></td>
+					<td><%= result2[4].com %></td>
+					<td><%= result2[4].user %></td>
+					<td><%= result2[4].result %></td>
+					<td><%= result2[4].tx %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<!-- 사용자 지갑 주소 -->
-	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= Address %>">
+	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= address %>">
 	<!-- web3 스크립트 -->
     <script type="text/javascript" src="/js/game_dice.js"></script>
 </body>

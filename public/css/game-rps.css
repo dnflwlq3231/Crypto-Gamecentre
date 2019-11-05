@@ -7654,6 +7654,10 @@ h2 {
   font-family: 'Do Hyeon', sans-serif;
   font-size: 25px;
 }
+.modalContent_Rule {
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 20px;
+}
 .callBalance {
   border: 1px solid #9a76b4;
   width: 300px;

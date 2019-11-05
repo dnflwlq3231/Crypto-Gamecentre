@@ -220,8 +220,32 @@ router.post('/forgot_process', function(req,res){
     })
 })
 
+router.get('/OddEven', function (req, res) {
+    if (req.session.loginId == undefined) {
+        res.redirect('/login');
+    }
+    else {
+        let userId = req.session.loginId;
+        db.query('select * from user where user.id=?', [userId], async function (err, result) {
+        let Address = result[0].address;
+        res.render('oddeven', {
+            Address
+        });
+    })}
+})
+
 router.get('/Rps', function(req,res){
-    res.render('Rps');
+    if (req.session.loginId == undefined) {
+        res.redirect('/login');
+    }
+    else {
+        let userId = req.session.loginId;
+        db.query('select * from user where user.id=?', [userId], async function (err, result) {
+        let Address = result[0].address;
+        res.render('rps', {
+            Address
+        });
+    })}
 })
 
 router.get('/Dice', function (req, res) {
@@ -235,7 +259,7 @@ router.get('/Dice', function (req, res) {
                 throw err;
             }
             else {
-                db.query('select * from dice, user where user.address = dice.address', function (err, result2) {
+                db.query('select * from dice, user where user.address = dice.address order by dice.no desc', function (err, result2) {
                     let Address = result[0].address;
                     res.render('dice', {
                         address : Address,
@@ -264,7 +288,7 @@ router.post('/dicedb', function(req, res){
     let diceuser = req.body['user'];
     let diceresult = req.body['result'];
     let dicetxhash = req.body['txhash'];
-    db.query('insert into dice (address, betting, com, user, result, txhash) values (?, ?, ?, ?, ?, ?)', [diceaddress, dicebetting, dicecom, diceuser, diceresult, dicetxhash], function (err, result){
+    db.query('insert into dice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [diceaddress, dicebetting, dicecom, diceuser, diceresult, dicetxhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
         }
