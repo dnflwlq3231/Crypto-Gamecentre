@@ -220,8 +220,32 @@ router.post('/forgot_process', function(req,res){
     })
 })
 
+router.get('/OddEven', function (req, res) {
+    if (req.session.loginId == undefined) {
+        res.redirect('/login');
+    }
+    else {
+        let userId = req.session.loginId;
+        db.query('select * from user where user.id=?', [userId], async function (err, result) {
+        let Address = result[0].address;
+        res.render('oddeven', {
+            Address
+        });
+    })}
+})
+
 router.get('/Rps', function(req,res){
-    res.render('Rps');
+    if (req.session.loginId == undefined) {
+        res.redirect('/login');
+    }
+    else {
+        let userId = req.session.loginId;
+        db.query('select * from user where user.id=?', [userId], async function (err, result) {
+        let Address = result[0].address;
+        res.render('rps', {
+            Address
+        });
+    })}
 })
 
 router.get('/Dice', function (req, res) {
