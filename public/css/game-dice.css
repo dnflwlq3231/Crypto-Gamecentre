@@ -2,6 +2,10 @@ body {
     text-align: center;
 }
 
+.table {
+    margin: 0 auto;
+}
+
 .dice {
     max-width: 15%;
     height: auto;
