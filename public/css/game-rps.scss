@@ -1,3 +1,11 @@
+$theme-colors: (
+    "primary":// #8a48b0
+               // #8454b6
+               #9a76b4
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 body {
     text-align: center;
     width: 900px;
@@ -16,7 +24,8 @@ section {
     text-align: center;
     height: 500px;
     width:900;
-    padding-top: 50px;
+    padding-top: 20px;
+    padding-left: 20px;
     margin-left: -16.5px;
     background-color: #fcfcfc;
     box-shadow: 0 1px 4px #eaeaea;
@@ -24,7 +33,8 @@ section {
 footer {
     position: absolute;
     width:900;
-    bottom: 110;
+    height: 85px;
+    bottom: 155;
     margin-left: -16.5px;
     text-align: center;
     background-color: #2d303a;
@@ -39,8 +49,8 @@ h2 {
     font-size: 30px;
 }
 .rps_box {
-    margin-right: 0px;
-    margin-left: 0px;
+    margin-right: 25px;
+    margin-left: 25px;
     position: relative;
     display: inline-block;
    
@@ -60,7 +70,12 @@ h2 {
     float: left;
     width: 24%;
     clear: right;
-
+}
+.btn-outline {
+    color: #2d303a;
+}
+button{
+    margin-top: -20px;
 }
 #com_name {
     padding-right: 150px; 
@@ -70,16 +85,18 @@ h2 {
 }
 #com_result {
     width: 116px;
-    height: 113px;
-    margin-left: 250px;
+    height: 116px;
+    margin-left: 195px;
+    margin-right: 20px;
     margin-top: -50px;    
 }
 #player_result {
-    width: 116px;
-    height: 113px;
-    margin-right:200px;
+    width:116px;
+    height:116px;
+    margin-right:100px;
+    margin-left: 20px;
     margin-top: -50px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 #versus {
     padding: -50px 50px 0px 50px;

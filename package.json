@@ -19,7 +19,6 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
-    "popper.js": "^1.14.7",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-mysql-session": "^2.1.0",
@@ -28,7 +27,9 @@
     "jquery.easing": "^1.4.1",
     "mysql": "^2.17.1",
     "node-gyp": "^6.0.0",
+    "node-sass": "^4.13.0",
     "nodemailer": "^6.3.1",
+    "popper.js": "^1.14.7",
     "supervisor": "^0.12.0"
   }
 }

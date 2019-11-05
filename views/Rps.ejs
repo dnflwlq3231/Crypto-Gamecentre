@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
 
     <!-- Theme CSS -->
     <link href="/css/freelancer.css" rel="stylesheet">
-    <link href="/css/game.css" rel="stylesheet">
+    <link href="/css/game-rps.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
@@ -66,17 +67,8 @@
         <div class="omdoll_content_wrapper">
             <div id="rockgame_module_view">
                 <!-- 위쪽 -->
-
                 <h2 style="text-align: center">가위. 바위. 보 게임</h2>
                 <div class="xecenter_div_line"></div>
-                <form id="insert_form" name="insert_form" action="https://m16.me/" method="post"
-                    onsubmit="return rockgame_submit_check()" onkeydown="if(event.keyCode==13){return false;}"><input
-                        type="hidden" name="error_return_url" value="/rockgame"><input type="hidden" name="mid"
-                        value="rockgame"><input type="hidden" name="vid" value=""><input type="hidden" name="ruleset"
-                        value="insert_game">
-                    <input type="hidden" name="act" value="procRockgameUserView">
-                    <input type="hidden" name="game_srl" value="">
-                </form>
             </div>
         </div>
     </header>
@@ -101,16 +93,16 @@
             <div class="game_select">
                 <input type="hidden" name="rsp_select" value="">
                 <div class="rps_box">
-                    <input class="rps_img" type="image" id="rps_rock" src="/img/rps/palm.png" width="240" height="240"
-                        onclick="this.form.rsp_slect.value=&#39;rock&#39;">
+                    <input class="rps_img" type="image" id="rps_rock" src="/img/rps/palm.png" width="200" height="200"
+                        onclick="">
                 </div>
                 <div class="rps_box">
-                    <input class="rps_img" type="image" id="rps_scissors" src="/img/rps/scissors.png" width="240" height="240"
-                        onclick="this.form.rsp_slect.value=&#39;scissors&#39;">
+                    <input class="rps_img" type="image" id="rps_scissors" src="/img/rps/scissors.png" width="200"
+                        height="200" onclick="">
                 </div>
                 <div class="rps_box">
-                    <input class="rps_img" type="image" id="rps_paper" src="/img/rps/rock.png" width="240" height="240"
-                        onclick="this.form.rsp_slect.value=&#39;paper&#39;">
+                    <input class="rps_img" type="image" id="rps_paper" src="/img/rps/rock.png" width="200" height="200"
+                        onclick="">
                 </div>
             </div>
         </div>
@@ -120,37 +112,104 @@
         <p class="row">
             <p class="right_bar">
                 <div class="rockgame_set">
-                    <span class="fas fa-coins" style="color: #eee"> : <input type="text" class="xecenter_form_box" style="width:50px; background:#eee;"
-                            value="152" disabled="disabled"> </span>
-                    <span>참가point : <input type="text" class="xecenter_form_box" style="width:35px;" id="game_point"
-                            name="game_point" value=""></span>
-                    <span>잔여횟수 : <input type="text" class="xecenter_form_box" style="width:23px; background:#eee;"
-                            value="10" disabled="disabled"></span>
-                    <span>오늘결과 : <input type="text" class="xecenter_form_box" style="width:45px; background:#eee;"
-                            disabled="disabled"></span>
-                </div>                      
+                    <button type="submit" class="btn btn-outline-primary btn-lg" data-toggle="modal"
+                        data-target="#modalBalance">
+                        <i class="fas fa-wallet fa-2x" style="color: #eee"></i>
+                        &nbsp; Balance
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-coins fa-2x" style="color:#eee"></i>
+                        &nbsp; Get Token
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-lg" data-toggle="modal" 
+                        data-target="#modalBetting">
+                        <i class="fas fa-comments-dollar fa-2x" style="color:#eee"></i>
+                        &nbsp; Betting
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-lg" data-toggle="modal"
+                        data-target="#modalRule">
+                        <i class="fas fa-book fa-2x" style="color: #eee"></i>
+                        &nbsp; Rule
+                    </button>
+                </div>
             </p>
         </p>
     </footer>
 
-    <script type="text/javascript">
-        //폼을 중복전송 방지위해 전송후 가위바위보 버튼을 막음 // 엔터로 전송못하게 함
-        function rockgame_submit_check() {
 
-            if (document.insert_form.game_point.value == '') {
-                alert('참가point를 입력하세요');
-                return false;
-            } else {
-                document.getElementById('rps_rock').disabled = true;
-                document.getElementById('rps_paper').disabled = true;
-                document.getElementById('rps_scissors').disabled = true;
-                return true;
-            }
-        }
-        jQuery(function ($) {
-            $('#game_point').focus(); //포인트 입력창에 포커스주기
-        });
-    </script>
+    <!--Balance Modal-->
+    <div class="modal fade" id="modalBalance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-info" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="modalName">Balance</p>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <p class="modalContent">Your balance is</p>
+                    <input type="text" class="callBalance">
+                </div>
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+    <!--Betting Modal-->
+    <div class="modal fade" id="modalBetting" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-info" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="modalName">Betting</p>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <p class="modalContent">How much token want to bet?</p>
+                    <input type="text" class="callBalance">
+                </div>
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Bet!</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+    <!--Rule Modal-->
+    <div class="modal fade" id="modalRule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-info" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="modalName">Balance</p>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <p class="modalContent">Your balance is</p>
+                    <input type="text" class="callBalance">
+                </div>
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
