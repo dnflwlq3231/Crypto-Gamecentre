@@ -3,7 +3,6 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "uint256",
 				"name": "amount",
 				"type": "uint256"
 			}
@@ -11,7 +10,6 @@ var abi = [
 		"name": "AdminSend",
 		"outputs": [
 			{
-				"internalType": "bool",
 				"name": "",
 				"type": "bool"
 			}
@@ -24,17 +22,14 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			},
 			{
-				"internalType": "uint256",
 				"name": "number",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
 				"name": "betAmount",
 				"type": "uint256"
 			}
@@ -49,7 +44,6 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "uint256",
 				"name": "select",
 				"type": "uint256"
 			}
@@ -57,12 +51,10 @@ var abi = [
 		"name": "DiceRule",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "result",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
 				"name": "DiceComNum",
 				"type": "uint256"
 			}
@@ -75,7 +67,6 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			}
@@ -90,17 +81,14 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			},
 			{
-				"internalType": "uint256",
 				"name": "number",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
 				"name": "betAmount",
 				"type": "uint256"
 			}
@@ -115,7 +103,6 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "uint256",
 				"name": "x",
 				"type": "uint256"
 			}
@@ -123,12 +110,10 @@ var abi = [
 		"name": "OddEvenRule",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -141,22 +126,19 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			},
 			{
-				"internalType": "uint256",
 				"name": "number",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
 				"name": "betAmount",
 				"type": "uint256"
 			}
 		],
-		"name": "RPS",
+		"name": "Rps",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -166,7 +148,6 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "uint256",
 				"name": "RPS",
 				"type": "uint256"
 			}
@@ -174,12 +155,10 @@ var abi = [
 		"name": "RpsRule",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -192,7 +171,6 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "_gameContract",
 				"type": "address"
 			}
@@ -216,7 +194,6 @@ var abi = [
 		"constant": true,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			}
@@ -224,7 +201,6 @@ var abi = [
 		"name": "BalanceOf",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "balance",
 				"type": "uint256"
 			}
@@ -237,7 +213,6 @@ var abi = [
 		"constant": true,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			}
@@ -245,12 +220,18 @@ var abi = [
 		"name": "DiceReward",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
 				"name": "",
 				"type": "uint256"
 			}
@@ -265,7 +246,6 @@ var abi = [
 		"name": "gameContract",
 		"outputs": [
 			{
-				"internalType": "address",
 				"name": "",
 				"type": "address"
 			}
@@ -280,7 +260,6 @@ var abi = [
 		"name": "name",
 		"outputs": [
 			{
-				"internalType": "string",
 				"name": "",
 				"type": "string"
 			}
@@ -293,7 +272,6 @@ var abi = [
 		"constant": true,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			}
@@ -301,12 +279,18 @@ var abi = [
 		"name": "OddEvenReward",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
 				"name": "",
 				"type": "uint256"
 			}
@@ -319,20 +303,25 @@ var abi = [
 		"constant": true,
 		"inputs": [
 			{
-				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			}
 		],
-		"name": "RPSReward",
+		"name": "RpsReward",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
 				"name": "",
 				"type": "uint256"
 			}
@@ -347,7 +336,6 @@ var abi = [
 		"name": "symbol",
 		"outputs": [
 			{
-				"internalType": "string",
 				"name": "",
 				"type": "string"
 			}
@@ -362,7 +350,6 @@ var abi = [
 		"name": "totalSupply",
 		"outputs": [
 			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -371,7 +358,7 @@ var abi = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-];
+]
 
 let address = $('#address').val();
 
@@ -379,7 +366,7 @@ if (typeof web3 !== 'undefined') {
     
     console.log("Using web3 detected from external source like Metamask");
     var web3 = new Web3(web3.currentProvider);
-    let contract = new web3.eth.Contract(abi, '0x63ef3fc5ac265e74e206c5b2b812ec8603bdc347');
+    let contract = new web3.eth.Contract(abi, '0x08550f36557f395071976240e32ba93c8e707cdc');
 	ethereum.enable();
 	
 	$('#btn-balance').click(async function () {
@@ -415,11 +402,11 @@ if (typeof web3 !== 'undefined') {
 	
 	$('#btn-play-diceward').click(async function (){
 		let diceward = await contract.methods.DiceReward(address).call();
-		console.log('컴퓨터 주사위 : ' + diceward[0] + '   주사위 결과 : ' + diceward[1]);
+		console.log('주사위 결과 : ' + diceward[0] + '   컴퓨터 주사위 : ' + diceward[1] + '   유저 주사위 : ' + diceward[2] + '   베팅금액 : ' + diceward[3]);
 	})
 
 	$('#btn-play-rps').click(async function () {
-		let rps = await contract.methods.RPS(address, '1', '100').send({
+		let rps = await contract.methods.Rps(address, '1', '100').send({
 			from: address
 		}, function(error, result) {
 			if (error){
@@ -432,8 +419,8 @@ if (typeof web3 !== 'undefined') {
 	})
 	
 	$('#btn-play-rpsward').click(async function (){
-		let rpsward = await contract.methods.RPSReward(address).call();
-		console.log('컴퓨터 : ' + rpsward[0] + '   가위바위보 결과 : ' + rpsward[1]);
+		let rpsward = await contract.methods.RpsReward(address).call();
+		console.log('가위바위보 결과 : ' + rpsward[0] + '   컴퓨터 가위바위보 : ' + rpsward[1] + '   유저 가위바위보 : ' + rpsward[2] + '   베팅금액 : ' + rpsward[3]);
 	})
 
 	$('#btn-play-oddeven').click(async function () {
@@ -443,7 +430,7 @@ if (typeof web3 !== 'undefined') {
 			if (error){
 				console.log(error)
 			}else {
-				console.dir('홀짝 : ' + result);	
+				console.dir('홀짝 hash : ' + result);	
 			}
 		});
 		console.log(oddeven);
@@ -451,7 +438,7 @@ if (typeof web3 !== 'undefined') {
 	
 	$('#btn-play-oddevenward').click(async function (){
 		let oddevenward = await contract.methods.OddEvenReward(address).call();
-		console.log('컴퓨터 : ' + oddevenward[0] + '   홀짝 결과 : ' + oddevenward[1]);
+		console.log('홀짝 결과 : ' + oddevenward[0] + '   컴퓨터 결과 : ' + oddevenward[1] + '   유저 선택 : ' + oddevenward[2] + '   베팅 금액 : ' + oddevenward[3]);
 	})
 
 }

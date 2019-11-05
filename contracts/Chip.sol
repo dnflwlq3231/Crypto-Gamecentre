@@ -12,12 +12,16 @@ contract Chip {
 
   address public gameContract = 0x0000000000000000000000000000000000000000;
 
-  mapping (address => uint256) balances;
+  mapping (address => uint) balances;
+  mapping (address => uint) userbetting;
   mapping (address => uint) diceComNum;
+  mapping (address => uint) diceUserNum;
   mapping (address => uint) diceResult;
-  mapping (address => uint) rpsResult;
   mapping (address => uint) rpsComHand;
-  mapping (address => uint) oddEvenNum;
+  mapping (address => uint) rpsUserHand;
+  mapping (address => uint) rpsResult;
+  mapping (address => uint) oddEvenComNum;
+  mapping (address => uint) oddEvenUserNum;
   mapping (address => uint) oddEvenResult;
   
 
@@ -98,12 +102,14 @@ contract Chip {
       balances[msg.sender] = balances[msg.sender].add(playerReturn.mul(Result));
     }
 
+    userbetting[msg.sender] = betAmount;
     diceComNum[msg.sender] = DiceComNum;
+    diceUserNum[msg.sender] = number;
     diceResult[msg.sender] = Result;
   }
 
-  function DiceReward(address userAddress) external view returns (uint, uint) {
-    return (diceComNum[userAddress], diceResult[userAddress]);
+  function DiceReward(address userAddress) external view returns (uint, uint, uint, uint) {
+    return (diceResult[userAddress], diceComNum[userAddress], diceUserNum[userAddress], userbetting[userAddress]);
   }
 
   function RpsRule(uint RPS) public returns (uint, uint) {
@@ -129,14 +135,14 @@ contract Chip {
     return (Result, RPSComHand);
   }
 
-  function RPS(address userAddress, uint number, uint betAmount) external {
+  function Rps(address userAddress, uint number, uint betAmount) external {
     require(msg.sender == userAddress);
     require(betAmount > 0);
     require(balances[msg.sender] >= betAmount);
     require(balances[gameContract] >= betAmount);
     
     uint Result;
-    uint RPSComHand;
+    uint RpsComHand;
 
     balances[msg.sender] = balances[msg.sender].sub(betAmount);
     balances[gameContract] = balances[gameContract].add(betAmount);
@@ -144,19 +150,21 @@ contract Chip {
     uint playerReturn;
     playerReturn = betAmount.mul(3); 
 
-    (Result, RPSComHand) = RpsRule(number);
+    (Result, RpsComHand) = RpsRule(number);
 
     if(Result == 1){
       balances[gameContract] = balances[gameContract].sub(playerReturn.mul(Result));
       balances[msg.sender] = balances[msg.sender].add(playerReturn.mul(Result));
     }
 
-    rpsComHand[msg.sender] = RPSComHand;
+    userbetting[msg.sender] = betAmount;
+    rpsComHand[msg.sender] = RpsComHand;
+    rpsUserHand[msg.sender] = number;
     rpsResult[msg.sender] = Result;
   }
 
-  function RPSReward(address userAddress) external view returns (uint, uint) {
-    return (rpsComHand[userAddress], rpsResult[userAddress]);
+  function RpsReward(address userAddress) external view returns (uint, uint, uint, uint) {
+    return (rpsResult[userAddress], rpsComHand[userAddress], rpsUserHand[userAddress], userbetting[userAddress]);
   }
 
   function OddEvenRule(uint x) public returns (uint, uint) {
@@ -199,12 +207,14 @@ contract Chip {
       balances[msg.sender] = balances[msg.sender].add(playerReturn.mul(Result));
     }
 
-    oddEvenNum[msg.sender] = OddEven;
+    userbetting[msg.sender] = betAmount;
+    oddEvenComNum[msg.sender] = OddEven;
+    oddEvenUserNum[msg.sender] = number;
     oddEvenResult[msg.sender] = Result;
   }
 
-  function OddEvenReward(address userAddress) external view returns (uint, uint) {
-    return (oddEvenNum[userAddress], oddEvenResult[userAddress]);
+  function OddEvenReward(address userAddress) external view returns (uint, uint, uint, uint) {
+    return (oddEvenResult[userAddress], oddEvenComNum[userAddress], oddEvenUserNum[userAddress], userbetting[userAddress]);
   }
 
 //   ****************************************************************************
