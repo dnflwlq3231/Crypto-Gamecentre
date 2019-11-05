@@ -85,47 +85,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+				<% list.forEach(function(result, index){ %>
 				<tr>
-					<th scope="row">1</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td scope="row"><%= result.dice_no %></th>
+					<td><%= result.betting %></td>
+					<td><%= result.com %></td>
+					<td><%= result.user %></td>
+					<td><%= result.result %></td>
+					<td><%= result.tx %></td>
 				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th scope="row">4</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th scope="row">5</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<% }); %>
 			</tbody>
 		</table>
 	</div>

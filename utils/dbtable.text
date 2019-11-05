@@ -6,5 +6,16 @@ CREATE TABLE `user` (
   `address` varchar(45) NOT NULL,
   PRIMARY KEY (`no`),
   UNIQUE KEY `address_UNIQUE` (`address`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8
+  UNIQUE KEY `id_UNIQUE` (`id`));
+
+CREATE TABLE `testserver`.`gamedice` (
+  `dice_no` INT NOT NULL AUTO_INCREMENT,
+  `address` VARCHAR(45) NOT NULL,
+  `betting` VARCHAR(45) NOT NULL,
+  `com` VARCHAR(45) NOT NULL,
+  `user` VARCHAR(45) NOT NULL,
+  `result` VARCHAR(45) NOT NULL,
+  `tx` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`dice_no`),
+  UNIQUE INDEX `dice_no_UNIQUE` (`dice_no` ASC),
+  UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));

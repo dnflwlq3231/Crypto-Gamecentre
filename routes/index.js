@@ -259,11 +259,11 @@ router.get('/Dice', function (req, res) {
                 throw err;
             }
             else {
-                db.query('select * from dice, user where user.address = dice.address order by dice.no desc', function (err, result2) {
+                db.query('select * from gamedice, user where user.address = gamedice.address', function (err, result2) {
                     let Address = result[0].address;
                     res.render('dice', {
                         address : Address,
-                        result2
+                        list : result2
                     });
                 })
             }
@@ -288,7 +288,14 @@ router.post('/dicedb', function(req, res){
     let diceuser = req.body['user'];
     let diceresult = req.body['result'];
     let dicetxhash = req.body['txhash'];
-    db.query('insert into dice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [diceaddress, dicebetting, dicecom, diceuser, diceresult, dicetxhash], function (err, result){
+    if(diceresult == 0){
+        diceresult = '패'
+    }
+    else {
+        diceresult = '승'
+    }
+    
+    db.query('insert into gamedice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [diceaddress, dicebetting, dicecom, diceuser, diceresult, dicetxhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
         }
