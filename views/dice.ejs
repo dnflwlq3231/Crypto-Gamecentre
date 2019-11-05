@@ -50,10 +50,15 @@
 		</div>
 	</nav>
 	<!-- 한칸 뛰우기 -->
-	<div style="padding-top: 150px;"></div>
+	<div style="padding-top: 170px;"></div>
 	<!-- 결과 값 보여주는 곳 -->
+	<div id="view-space">
+		<img class="view-result" id="img-com-dice" src="/img/dice/box.png">
+		<img class="view-result" id="img-versus" src="/img/portfolio/versus.png">
+		<img class="view-result" id="img-ply-dice" src="/img/dice/box.png">
+	</div>
 	<div>
-		<img id="img-versus" src="/img/portfolio/versus.png">
+		<img id="img-pending" src="/img/portfolio/pending_hamster.gif">
 	</div>
 	<!-- 주사위 선택칸 -->
 	<div id="dice-space">
@@ -65,11 +70,13 @@
 		<img class="dice" id="btn-play-dice-6" src="/img/dice/dice_6.png"/>
 	</div>
 	<!-- 토큰 받고 걸기 -->
-	<div style="margin-top: 10px;">
+	<div style="margin: 10px 0 80px 0;">
 		<button type="button" class="btn btn-outline-primary" id="btn-get-token">토큰 받기</button>
-		<button style="margin: 0 60px;" type="button" class="btn btn-outline-success" id="btn-bet">10 토큰 걸기</button>
+		<input type="number" class="form-control" id="input-bet-amount" placeholder="배팅 할 액수를 쓰세요.">
 		<button type="button" class="btn btn-outline-danger" id="btn-reward">보상 받기</button>
 	</div>
+
+	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= Address %>">
 
 	<!-- web3 스크립트 -->
     <script type="text/javascript" src="/js/game_dice.js"></script>

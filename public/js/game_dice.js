@@ -1,718 +1,571 @@
 var abi = [
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "DealerHand",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "name",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "i",
-                "type": "uint256"
-            }
-        ],
-        "name": "OddEvenStart",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "count2",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "DiceReward",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "OddEvenReward",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "RPSResult",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "BlackJackDraw",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "OddEvenResult",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "DealerDraw",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "DiceComNum1",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "BlackJackReset",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "BlackJackReward",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "BlackJackStart",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "BlackJackResult",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "countcheck",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "CountDraw",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "random",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_betAmount",
-                "type": "uint256"
-            },
-            {
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "Betting",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "number",
-                "type": "uint256"
-            }
-        ],
-        "name": "DiceGameStart",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "AdminSend",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "count1",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "PlayerHand",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "DiceMyNum2",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "BlackJackEnd",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "GameOddEven",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "PlayerDraw",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "PlayerCost",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "hand",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "RPSReward",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "OverlapCheck",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "RPS",
-                "type": "uint256"
-            }
-        ],
-        "name": "RPStart",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_gameContract",
-                "type": "address"
-            }
-        ],
-        "name": "SetContAddr",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "Token",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "betAmount",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "gameContract",
-        "outputs": [
-            {
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "Cards",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "BalanceOf",
-        "outputs": [
-            {
-                "name": "balance",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "GetTokens",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "DiceResult",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "DealerCost",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "Result",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "value",
-                "type": "uint256"
-            }
-        ],
-        "name": "Transfered",
-        "type": "event"
-    }
-];
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "AdminSend",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"name": "number",
+				"type": "uint256"
+			},
+			{
+				"name": "betAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "Dice",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "select",
+				"type": "uint256"
+			}
+		],
+		"name": "DiceRule",
+		"outputs": [
+			{
+				"name": "result",
+				"type": "uint256"
+			},
+			{
+				"name": "DiceComNum",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "GetTokens",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"name": "number",
+				"type": "uint256"
+			},
+			{
+				"name": "betAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "OddEven",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "x",
+				"type": "uint256"
+			}
+		],
+		"name": "OddEvenRule",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"name": "number",
+				"type": "uint256"
+			},
+			{
+				"name": "betAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "Rps",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "RPS",
+				"type": "uint256"
+			}
+		],
+		"name": "RpsRule",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_gameContract",
+				"type": "address"
+			}
+		],
+		"name": "SetContAddr",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "Token",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "BalanceOf",
+		"outputs": [
+			{
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "DiceReward",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "gameContract",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "OddEvenReward",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "RpsReward",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
 
-var userAccount = null;
+var address = $('#address').val();
+
 if (typeof web3 !== 'undefined') {
-    console.log("Using web3 detected from external source like Metamask");
+
+    console.log("MetaMask가 감지되엇습니다.");
     var web3 = new Web3(web3.currentProvider);
-    let contract = new web3.eth.Contract(abi, '0x2abc350FB965C80a79Fc611C71329D95C7A2CA19');
+    let contract = new web3.eth.Contract(abi, '0x08550f36557f395071976240e32ba93c8e707cdc');
+    ethereum.enable();
     
-    async function func(){
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
-
-        let urBalance = await contract.methods.BalanceOf(userAccount).call();
-        console.log(urBalance);
-    }
-    func();
-
-    $('#btn-get-token').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
-
-        let getToken = await contract.methods.GetTokens(userAccount).send({
-            from : userAccount
-        });
+    $('#btn-balance').click(async function () {
+        ethereum.enable();
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
     });
 
-    $('#btn-bet').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
-
-        let bet = await contract.methods.Betting('10', userAccount).send({
-            from: userAccount
-        });
+    $('#btn-get-token').click(async function () {
+        ethereum.enable();
+        let getToken = await contract.methods.GetTokens(address).send({
+            from : address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('토큰 얻기 hash : ' + result);	
+			}
+		});
     });
 
     $('#btn-play-dice-1').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
 
-        let plyDice = await contract.methods.DiceGameStart('1').send({
-            from : userAccount
-        })
+        $('#img-ply-dice').attr('src', '/img/dice/dice_1.png')
+        $('#img-pending').css('visibility', 'visible')
+
+        let plyDice = await contract.methods.Dice(address, '1', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('주사위 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.DiceReward(address).call();
+        console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
+        if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
+        if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
+        if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
+        if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
+        if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+
+        $('#img-pending').css('visibility', 'hidden')
     })
 
     $('#btn-play-dice-2').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
 
-        let plyDice = await contract.methods.DiceGameStart('2').send({
-            from : userAccount
-        })
+        $('#img-ply-dice').attr('src', '/img/dice/dice_2.png')
+        $('#img-pending').css('visibility', 'visible')
+
+        let plyDice = await contract.methods.Dice(address, '2', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('주사위 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.DiceReward(address).call();
+        console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
+        if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
+        if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
+        if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
+        if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
+        if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+
+        $('#img-pending').css('visibility', 'hidden')
     })
 
     $('#btn-play-dice-3').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
 
-        let plyDice = await contract.methods.DiceGameStart('3').send({
-            from : userAccount
-        })
+        $('#img-ply-dice').attr('src', '/img/dice/dice_3.png')
+        $('#img-pending').css('visibility', 'visible')
+
+        let plyDice = await contract.methods.Dice(address, '3', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('주사위 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.DiceReward(address).call();
+        console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
+        if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
+        if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
+        if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
+        if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
+        if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+
+        $('#img-pending').css('visibility', 'hidden')
     })
 
     $('#btn-play-dice-4').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
 
-        let plyDice = await contract.methods.DiceGameStart('4').send({
-            from : userAccount
-        })
+        $('#img-ply-dice').attr('src', '/img/dice/dice_4.png')
+        $('#img-pending').css('visibility', 'visible')
+
+        let plyDice = await contract.methods.Dice(address, '4', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('주사위 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.DiceReward(address).call();
+        console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
+        if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
+        if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
+        if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
+        if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
+        if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+
+        $('#img-pending').css('visibility', 'hidden')
     })
 
     $('#btn-play-dice-5').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
 
-        let plyDice = await contract.methods.DiceGameStart('5').send({
-            from : userAccount
-        })
+        $('#img-ply-dice').attr('src', '/img/dice/dice_5.png')
+        $('#img-pending').css('visibility', 'visible')
+
+        let plyDice = await contract.methods.Dice(address, '5', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('주사위 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.DiceReward(address).call();
+        console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
+        if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
+        if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
+        if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
+        if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
+        if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+
+        $('#img-pending').css('visibility', 'hidden')
     })
 
     $('#btn-play-dice-6').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
+        ethereum.enable();
+        let betAmount = $("#input-bet-amount").val();
 
-        let plyDice = await contract.methods.DiceGameStart('6').send({
-            from : userAccount
-        })
+        $('#img-ply-dice').attr('src', '/img/dice/dice_6.png')
+        $('#img-pending').css('visibility', 'visible')
+
+        let plyDice = await contract.methods.Dice(address, '6', betAmount).send({
+			from: address
+		}, function(error, result) {
+			if (error){
+				console.log(error)
+			}else {
+				console.dir('주사위 hash : ' + result);	
+			}
+        });
+        
+        let diceReward = await contract.methods.DiceReward(address).call();
+        console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
+        
+        if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
+        if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
+        if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
+        if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
+        if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
+        if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+
+        $('#img-pending').css('visibility', 'hidden')
     })
 
     $('#btn-reward').click(async function () {
