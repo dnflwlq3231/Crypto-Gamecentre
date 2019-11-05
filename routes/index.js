@@ -230,11 +230,12 @@ router.get('/Dice', function (req, res) {
     }
     else {
         let userId = req.session.loginId;
-        db.query('select address from user where user.id=?', [userId], async function (err, result) {
-            let userAddress = result[0].address;
-            res.render('dice');
-        })
-    }   
+        db.query('select * from user where user.id=?', [userId], async function (err, result) {
+        let Address = result[0].address;
+        res.render('dice', {
+            Address
+        });
+    })}   
 })
 
 // 테스트 페이지
