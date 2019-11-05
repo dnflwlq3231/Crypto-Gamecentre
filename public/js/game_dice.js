@@ -369,10 +369,12 @@ if (typeof web3 !== 'undefined') {
     let contract = new web3.eth.Contract(abi, '0x08550f36557f395071976240e32ba93c8e707cdc');
     ethereum.enable();
     
-    $('#btn-balance').click(async function () {
+    // 페이지 로드시 잔액 조회
+    $(document).ready(async function () {
         ethereum.enable();
         let Balance = await contract.methods.BalanceOf(address).call();
         console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     });
 
     $('#btn-get-token').click(async function () {
@@ -385,7 +387,11 @@ if (typeof web3 !== 'undefined') {
 			}else {
 				console.dir('토큰 얻기 hash : ' + result);	
 			}
-		});
+        });
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     });
 
     $('#btn-play-dice-1').click(async function () {
@@ -393,7 +399,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 
         $('#img-ply-dice').attr('src', '/img/dice/dice_1.png')
-        $('#img-pending').css('visibility', 'visible')
+        $('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 
         let plyDice = await contract.methods.Dice(address, '1', betAmount).send({
 			from: address
@@ -414,8 +420,10 @@ if (typeof web3 !== 'undefined') {
         if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
         if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
         if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
-
-        $('#img-pending').css('visibility', 'hidden')
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     })
 
     $('#btn-play-dice-2').click(async function () {
@@ -423,7 +431,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 
         $('#img-ply-dice').attr('src', '/img/dice/dice_2.png')
-        $('#img-pending').css('visibility', 'visible')
+        $('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 
         let plyDice = await contract.methods.Dice(address, '2', betAmount).send({
 			from: address
@@ -444,8 +452,10 @@ if (typeof web3 !== 'undefined') {
         if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
         if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
         if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
-
-        $('#img-pending').css('visibility', 'hidden')
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     })
 
     $('#btn-play-dice-3').click(async function () {
@@ -453,7 +463,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 
         $('#img-ply-dice').attr('src', '/img/dice/dice_3.png')
-        $('#img-pending').css('visibility', 'visible')
+        $('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 
         let plyDice = await contract.methods.Dice(address, '3', betAmount).send({
 			from: address
@@ -474,8 +484,10 @@ if (typeof web3 !== 'undefined') {
         if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
         if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
         if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
-
-        $('#img-pending').css('visibility', 'hidden')
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     })
 
     $('#btn-play-dice-4').click(async function () {
@@ -483,7 +495,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 
         $('#img-ply-dice').attr('src', '/img/dice/dice_4.png')
-        $('#img-pending').css('visibility', 'visible')
+        $('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 
         let plyDice = await contract.methods.Dice(address, '4', betAmount).send({
 			from: address
@@ -504,8 +516,10 @@ if (typeof web3 !== 'undefined') {
         if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
         if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
         if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
-
-        $('#img-pending').css('visibility', 'hidden')
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     })
 
     $('#btn-play-dice-5').click(async function () {
@@ -513,7 +527,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 
         $('#img-ply-dice').attr('src', '/img/dice/dice_5.png')
-        $('#img-pending').css('visibility', 'visible')
+        $('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 
         let plyDice = await contract.methods.Dice(address, '5', betAmount).send({
 			from: address
@@ -534,8 +548,10 @@ if (typeof web3 !== 'undefined') {
         if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
         if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
         if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
-
-        $('#img-pending').css('visibility', 'hidden')
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     })
 
     $('#btn-play-dice-6').click(async function () {
@@ -543,7 +559,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 
         $('#img-ply-dice').attr('src', '/img/dice/dice_6.png')
-        $('#img-pending').css('visibility', 'visible')
+        $('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 
         let plyDice = await contract.methods.Dice(address, '6', betAmount).send({
 			from: address
@@ -557,23 +573,17 @@ if (typeof web3 !== 'undefined') {
         
         let diceReward = await contract.methods.DiceReward(address).call();
         console.log('주사위 결과 : ' + diceReward[0] + '   컴퓨터 주사위 : ' + diceReward[1] + '   유저 주사위 : ' + diceReward[2] + '   베팅금액 : ' + diceReward[3]);
-        
+            
         if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
         if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
         if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
         if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
         if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
         if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
-
-        $('#img-pending').css('visibility', 'hidden')
+        // 잔액 변경
+        let Balance = await contract.methods.BalanceOf(address).call();
+        console.log('현재 잔액 : ' + Balance);
+        $('#ply-balance').attr('value', Balance);
     })
 
-    $('#btn-reward').click(async function () {
-        var userAccounts = await ethereum.enable();
-        userAccount = userAccounts[0];
-
-        let ee = await contract.methods.DiceReward(userAccount).send({
-            from : userAccount
-        })
-    })
 }

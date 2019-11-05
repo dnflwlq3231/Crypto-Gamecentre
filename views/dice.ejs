@@ -1,21 +1,17 @@
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dice</title>
-
     <!-- jquery -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="//cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
 	<script	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	
     <!-- Theme CSS -->
     <link href="/css/freelancer.css" rel="stylesheet">
 	<link href="/css/game-dice.css" rel="stylesheet">
 </head>
-
 <body id="page-top">
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -57,8 +53,10 @@
 		<img class="view-result" id="img-versus" src="/img/portfolio/versus.png">
 		<img class="view-result" id="img-ply-dice" src="/img/dice/box.png">
 	</div>
-	<div>
-		<img id="img-pending" src="/img/portfolio/pending_hamster.gif">
+	<!-- 잔액, 배팅금액 확인칸 -->
+	<div id="info-space">
+		<input type="text" class="form-control" id="ply-balance" value="당신의 잔액은.." readonly>
+		<input type="text" class="form-control" id="input-bet-amount" placeholder="배팅금액." value="">
 	</div>
 	<!-- 주사위 선택칸 -->
 	<div id="dice-space">
@@ -69,18 +67,13 @@
 		<img class="dice" id="btn-play-dice-5" src="/img/dice/dice_5.png"/>
 		<img class="dice" id="btn-play-dice-6" src="/img/dice/dice_6.png"/>
 	</div>
-	<!-- 토큰 받고 걸기 -->
+	<!-- 토큰 받기 -->
 	<div style="margin: 10px 0 80px 0;">
 		<button type="button" class="btn btn-outline-primary" id="btn-get-token">토큰 받기</button>
-		<input type="number" class="form-control" id="input-bet-amount" placeholder="배팅 할 액수를 쓰세요.">
-		<button type="button" class="btn btn-outline-danger" id="btn-reward">보상 받기</button>
 	</div>
-
+	<!-- 사용자 지갑 주소 -->
 	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= Address %>">
-
 	<!-- web3 스크립트 -->
     <script type="text/javascript" src="/js/game_dice.js"></script>
-
 </body>
-
 </html>

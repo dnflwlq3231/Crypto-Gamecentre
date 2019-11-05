@@ -5,7 +5,7 @@ body {
 .dice {
     max-width: 15%;
     height: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-right: 10px;
     margin-left: 10px;
 }
@@ -22,12 +22,18 @@ body {
 }
 
 #view-space {
-    /* margin: 0 auto; */
+    margin: 0 auto;
 }
 
 #dice-space {
-    padding-top: 70px;
+    clear: left;
+    padding-top: 20px;
     padding-bottom: 30px;
+}
+
+#info-space {
+    margin: 30px 0px auto;
+    padding-left: 35%;
 }
 
 #img-versus {
@@ -38,8 +44,15 @@ body {
     margin-right: 2%;
 }
 
-#img-pending {
-    visibility: hidden;
-    max-width: 15%;
-    height: auto;
+#ply-balance {
+    width: 20%;
+    display: inline;
+    float: left;
+}
+
+#input-bet-amount {
+    width: 20%;
+    display: inline;
+    float: left;
+    margin-left: 5%;
 }
