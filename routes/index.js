@@ -230,11 +230,19 @@ router.get('/Dice', function (req, res) {
     }
     else {
         let userId = req.session.loginId;
-        db.query('select * from user where user.id=?', [userId], async function (err, result) {
-        let Address = result[0].address;
-        res.render('dice', {
-            Address
-        });
+        db.query('select * from user where user.id=?', [userId], function (err, result) {
+            if (err) {
+                throw err;
+            }
+            else {
+                db.query('select * from dice, user where user.address = dice.address', function (err, result2) {
+                    let Address = result[0].address;
+                    res.render('dice', {
+                        address : Address,
+                        result2
+                    });
+                })
+            }
     })}   
 })
 
@@ -246,6 +254,23 @@ router.get('/test', function (req, res) {
         res.render('test', {
             Address
         });
+    })
+})
+
+router.post('/dicedb', function(req, res){
+    let diceaddress = req.body['address'];
+    let dicebetting = req.body['betting'];
+    let dicecom = req.body['com'];
+    let diceuser = req.body['user'];
+    let diceresult = req.body['result'];
+    let dicetxhash = req.body['txhash'];
+    db.query('insert into dice (address, betting, com, user, result, txhash) values (?, ?, ?, ?, ?, ?)', [diceaddress, dicebetting, dicecom, diceuser, diceresult, dicetxhash], function (err, result){
+        if(err){
+            res.json({"msg" : "error"})
+        }
+        else {
+            res.json({"msg" : "success"})
+        }
     })
 })
 
