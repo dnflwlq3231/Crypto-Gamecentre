@@ -80,11 +80,9 @@ router.post('/login_process', function(req, res){
             throw err;
         }
          if(userinfo[0] == null || userinfo[0].password != pbkdf2){       
-            console.log("login failed")
             res.json({"msg" : "failed"})
         }
         else if(userinfo[0].password == pbkdf2){
-            console.log("login successed")
             req.session.loginId = userId;
             req.session.isLogined = true;
             req.session.isAddress = userinfo[0].address;
