@@ -408,7 +408,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 		
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "" || betAmount <= balance) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -446,7 +446,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 		
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "" || betAmount <= balance) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -484,7 +484,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 		
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "" || betAmount <= balance) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
