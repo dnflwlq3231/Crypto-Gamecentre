@@ -403,8 +403,8 @@ if (typeof web3 !== 'undefined') {
 
     $('#btn-play-dice-1').click(async function () {
         ethereum.enable();
-		let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
+		let betAmount = $("#input-bet-amount").val();
 		
 		if (betAmount == "" || betAmount > balance) {
 			$(function () {
