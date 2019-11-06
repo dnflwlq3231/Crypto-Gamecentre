@@ -216,8 +216,35 @@
         </div>
     </div>
 
+    <div>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">배팅금액</th>
+					<th scope="col">컴퓨터</th>
+					<th scope="col">사용자</th>
+					<th scope="col">게임결과</th>
+					<th scope="col">해쉬</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% list.forEach(function(result, index){ %>
+				<tr>
+					<td scope="row"><%= result.rps_no %></th>
+					<td><%= result.betting %></td>
+					<td><%= result.com %></td>
+					<td><%= result.user %></td>
+					<td><%= result.result %></td>
+					<td><%= result.tx %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table>
+	</div>
+
     <!-- 사용자 지갑 주소 -->
-	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= Address %>">
+	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= address %>">
 
     <!-- Bootstrap core JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

@@ -339,7 +339,7 @@ router.post('/rpsdb', function(req, res){
         rpsuser = '보'
     }
     
-    db.query('insert into rpsdice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [rpsaddress, rpsbetting, rpscom, rpsuser, rpsresult, rpstxhash], function (err, result){
+    db.query('insert into gamerps (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [rpsaddress, rpsbetting, rpscom, rpsuser, rpsresult, rpstxhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
         }
