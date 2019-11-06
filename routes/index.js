@@ -307,9 +307,6 @@ router.post('/dicedb', function(req, res){
         if(err){
             res.json({"msg" : "error"})
         }
-        else {
-            res.json({"msg" : "success"})
-        }
     })
 })
 
@@ -326,25 +323,34 @@ router.post('/rpsdb', function(req, res){
     else {
         rpsresult = '승'
     }
-    if(rpscom == 1 || rpsuser == 1){
-        rpscom = '가위'
-        rpsuser = '가위'
+
+    if (rpscom){
+        if(rpscom == 1){
+            rpscom = '가위'
+        }
+        else if(rpscom == 2){
+            rpscom = '바위'
+        }
+        else if(rpscom == 3){
+            rpscom = '보'
+        }
     }
-    else if(rpscom == 2 || rpsuser == 2){
-        rpscom = '바위'
-        rpsuser = '바위'
+
+    if (rpsuser){
+        if(rpsuser == 1){
+            rpsuser = '가위'
+        }
+        else if(rpsuser == 2){
+            rpsuser = '바위'
+        }
+        else if(rpsuser == 3){
+            rpsuser = '보'
+        }
     }
-    else if(rpscom == 3 || rpsuser == 3){
-        rpscom = '보'
-        rpsuser = '보'
-    }
-    
+
     db.query('insert into gamerps (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [rpsaddress, rpsbetting, rpscom, rpsuser, rpsresult, rpstxhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
-        }
-        else {
-            res.json({"msg" : "success"})
         }
     })
 })
