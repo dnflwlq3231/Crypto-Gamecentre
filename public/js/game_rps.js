@@ -410,8 +410,8 @@ if (typeof web3 !== 'undefined') {
 			})
 		}
 		else {
-			$('#img-ply-selected').attr('src', '/img/rps/scissors.png')
-			$('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/scissors.png')
+			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 	
 			await contract.methods.Rps(address, '1', betAmount).send({
 				from: address
@@ -460,8 +460,8 @@ if (typeof web3 !== 'undefined') {
 			})
 		}
 		else {
-			$('#img-ply-selected').attr('src', '/img/rps/rock.png')
-			$('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/rock.png')
+			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 	
 			await contract.methods.Rps(address, '2', betAmount).send({
 				from: address
@@ -510,8 +510,8 @@ if (typeof web3 !== 'undefined') {
 			})
 		}
 		else {
-			$('#img-ply-selected').attr('src', '/img/rps/palm.png')
-			$('#img-com-result').attr('src', '/img/portfolio/pending_hamster.gif')
+			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/palm.png')
+			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 	
 			await contract.methods.Rps(address, '3', betAmount).send({
 				from: address

@@ -413,8 +413,8 @@ if (typeof web3 !== 'undefined') {
             })
         }
         else {
-            $('#player_result').attr('src', '/img/oddeven/odd_result.png')
-            $('#com_result').attr('src', '/img/portfolio/pending_hamster.gif')
+            $('#img-ply-selected').attr('style', 'visibility:visible').attr('src', '/img/oddeven/odd_result.png')
+            $('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 
             await contract.methods.OddEven(address, '1', betAmount).send({
                 from: address
@@ -425,8 +425,8 @@ if (typeof web3 !== 'undefined') {
 
             let OddEvenResult = await contract.methods.OddEvenReward(address).call();
 
-            if (OddEvenResult[1] == 0) { $('#com_result').attr('src', '/img/oddeven/even_result.png')}
-            if (OddEvenResult[1] == 1) { $('#com_result').attr('src', '/img/oddeven/odd_result.png')}
+            if (OddEvenResult[1] == 0) { $('#img-com-result').attr('src', '/img/oddeven/even_result.png')}
+            if (OddEvenResult[1] == 1) { $('#img-com-result').attr('src', '/img/oddeven/odd_result.png')}
             
             let Balance = await contract.methods.BalanceOf(address).call();
             $('#ply-balance').attr('value', Balance)
@@ -444,8 +444,8 @@ if (typeof web3 !== 'undefined') {
             })
         }
         else {
-            $('#player_result').attr('src', '/img/oddeven/even_result.png')
-            $('#com_result').attr('src', '/img/portfolio/pending_hamster.gif')
+            $('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/oddeven/even_result.png')
+            $('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 
             await contract.methods.OddEven(address, '0', betAmount).send({
                 from: address
@@ -456,8 +456,8 @@ if (typeof web3 !== 'undefined') {
 
             let OddEvenResult = await contract.methods.OddEvenReward(address).call();
 
-            if (OddEvenResult[1] == 0) { $('#com_result').attr('src', '/img/oddeven/even_result.png')}
-            if (OddEvenResult[1] == 1) { $('#com_result').attr('src', '/img/oddeven/odd_result.png')}
+            if (OddEvenResult[1] == 0) { $('#img-com-result').attr('src', '/img/oddeven/even_result.png')}
+            if (OddEvenResult[1] == 1) { $('#img-com-result').attr('src', '/img/oddeven/odd_result.png')}
             
             let Balance = await contract.methods.BalanceOf(address).call();
             $('#ply-balance').attr('value', Balance)

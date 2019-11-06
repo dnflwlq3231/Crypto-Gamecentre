@@ -88,9 +88,9 @@
                     </div>
                 </div>
                 <div>
-                    <div class="result shadow-sm p-3 bg-white rounded"><img id="com_result" src=""></div>
+                    <div class="result shadow-sm p-3 bg-white rounded" id="com_result"><img id="img-com-result" src=""></div>
                     <div class="result" id="versus"> <img src="/img/portfolio/versus.png"></div>
-                    <div class="result shadow-sm p-3 bg-white rounded"><img id="player_result" src=""></div>
+                    <div class="result shadow-sm p-3 bg-white rounded" id="player_result"><img id="img-ply-selected" src=""></div>
                 </div>
             </p>
             <div class="game_select">
@@ -212,6 +212,12 @@
             <!--/.Content-->
         </div>
     </div>
+
+    <!-- 결과 창 가리기 -->
+    <script>
+        $("#img-com-result").attr('style', 'visibility:hidden');
+        $("#img-ply-selected").attr('style', 'visibility:hidden');
+    </script>
     
     <!-- 사용자 지갑 주소 -->
 	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= Address %>">
