@@ -355,4 +355,44 @@ router.post('/rpsdb', function(req, res){
     })
 })
 
+router.post('/oddevendb', function(req, res){
+    let oddevenaddress = req.body['address'];
+    let oddevenbetting = req.body['betting'];
+    let oddevencom = req.body['com'];
+    let oddevenuser = req.body['user'];
+    let oddevenresult = req.body['result'];
+    let oddeventxhash = req.body['txhash'];
+    if(oddevenresult == 0){
+        oddevenresult = '패'
+    }
+    else {
+        oddevenresult = '승'
+    }
+
+    if(oddevencom){
+        if(oddevencom == 0){
+            oddevencom = '짝'  
+        }
+        else {
+            oddevencom = '홀'
+        }
+    }
+
+    if(oddevenuser){
+        if(oddevenuser == 0){
+            oddevenuser = '짝'
+        }
+        else {
+            oddevenuser = '홀'
+        }
+    }
+    
+    
+    db.query('insert into gameoddeven (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [oddevenaddress, oddevenbetting, oddevencom, oddevenuser, oddevenresult, oddeventxhash], function (err, result){
+        if(err){
+            res.json({"msg" : "error"})
+        }
+    })
+})
+
 module.exports = router;
