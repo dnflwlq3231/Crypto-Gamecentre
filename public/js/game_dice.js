@@ -376,6 +376,7 @@ if (typeof web3 !== 'undefined') {
         $('#ply-balance').attr('value', Balance);
     });
 
+	// 토큰 얻기
     $('#btn-get-token').click(async function () {
 		ethereum.enable();
 		let currentBalance = $('#ply-balance').val()
@@ -399,14 +400,15 @@ if (typeof web3 !== 'undefined') {
 		}
     });
 
+	// 아래 부터는 주사위들에 대한 컨트랙트 동작 
     $('#btn-play-dice-1').click(async function () {
         ethereum.enable();
 		let balance = $('#ply-balance').val();
 		let betAmount = $("#input-bet-amount").val();
-		
-		if (betAmount == "" || betAmount > balance) {
+
+		if (betAmount == "") {
 			$(function () {
-				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
+				alert('배팅할 금액을 입력하지 않았습니다.');
 			})
 		}
 		else {
@@ -457,7 +459,7 @@ if (typeof web3 !== 'undefined') {
 		let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "") {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -509,7 +511,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "") {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -561,7 +563,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "") {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -614,7 +616,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "") {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -667,7 +669,7 @@ if (typeof web3 !== 'undefined') {
         let betAmount = $("#input-bet-amount").val();
 		let balance = $('#ply-balance').val();
 
-		if (betAmount == "" || betAmount > balance) {
+		if (betAmount == "") {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
