@@ -386,8 +386,6 @@ if (typeof web3 !== 'undefined') {
 			}, function(error, result) {
 				if (error){
 					console.log(error)
-				}else {
-					tx = result;
 				}
 			});
 			// 잔액 변경

@@ -241,10 +241,18 @@ router.get('/Rps', function(req,res){
     else {
         let userId = req.session.loginId;
         db.query('select * from user where user.id=?', [userId], async function (err, result) {
-        let Address = result[0].address;
-        res.render('rps', {
-            Address
-        });
+            if (err) {
+                throw err;
+            }
+            else {
+                let Address = result[0].address;
+                db.query('select * from gamerps where gamerps.address=?', [Address], function (err, result2) {
+                    res.render('rps', {
+                        address : Address,
+                        list : result2
+                    });
+                })
+            }
     })}
 })
 
@@ -259,8 +267,8 @@ router.get('/Dice', function (req, res) {
                 throw err;
             }
             else {
-                db.query('select * from gamedice, user where user.address = gamedice.address', function (err, result2) {
-                    let Address = result[0].address;
+                let Address = result[0].address;
+                db.query('select * from gamedice where gamedice.address=?', [Address], function (err, result2) {
                     res.render('dice', {
                         address : Address,
                         list : result2
@@ -296,6 +304,42 @@ router.post('/dicedb', function(req, res){
     }
     
     db.query('insert into gamedice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [diceaddress, dicebetting, dicecom, diceuser, diceresult, dicetxhash], function (err, result){
+        if(err){
+            res.json({"msg" : "error"})
+        }
+        else {
+            res.json({"msg" : "success"})
+        }
+    })
+})
+
+router.post('/rpsdb', function(req, res){
+    let rpsaddress = req.body['address'];
+    let rpsbetting = req.body['betting'];
+    let rpscom = req.body['com'];
+    let rpsuser = req.body['user'];
+    let rpsresult = req.body['result'];
+    let rpstxhash = req.body['txhash'];
+    if(rpsresult == 0){
+        rpsresult = '패'
+    }
+    else {
+        rpsresult = '승'
+    }
+    if(rpscom == 1 || rpsuser == 1){
+        rpscom = '가위'
+        rpsuser = '가위'
+    }
+    else if(rpscom == 2 || rpsuser == 2){
+        rpscom = '바위'
+        rpsuser = '바위'
+    }
+    else if(rpscom == 3 || rpsuser == 3){
+        rpscom = '보'
+        rpsuser = '보'
+    }
+    
+    db.query('insert into rpsdice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [rpsaddress, rpsbetting, rpscom, rpsuser, rpsresult, rpstxhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
         }
