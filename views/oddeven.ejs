@@ -133,6 +133,19 @@
         </p>
     </footer>
 
+    <tbody>
+        <% list.forEach(function(result, index){ %>
+        <tr>
+            <td scope="row"><%= result.oddeven_no %></th>
+            <td><%= result.betting %></td>
+            <td><%= result.com %></td>
+            <td><%= result.user %></td>
+            <td><%= result.result %></td>
+            <td><%= result.tx %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+
 
     <!--Balance Modal-->
     <div class="modal fade" id="modalBalance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

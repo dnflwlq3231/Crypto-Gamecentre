@@ -227,10 +227,18 @@ router.get('/OddEven', function (req, res) {
     else {
         let userId = req.session.loginId;
         db.query('select * from user where user.id=?', [userId], async function (err, result) {
-        let Address = result[0].address;
-        res.render('oddeven', {
-            Address
-        });
+            if (err) {
+                throw err;
+            }
+            else {
+                let Address = result[0].address;
+                db.query('select * from gameoddeven where gameoddeven.address=?', [Address], function (err, result2) {
+                    res.render('oddeven', {
+                        address : Address,
+                        list : result2
+                    });
+                })
+            }
     })}
 })
 
@@ -276,17 +284,6 @@ router.get('/Dice', function (req, res) {
                 })
             }
     })}   
-})
-
-// 테스트 페이지
-router.get('/test', function (req, res) {
-    let userId = req.session.loginId;
-    db.query('select * from user where user.id=?', [userId], async function (err, result) {
-        let Address = result[0].address;
-        res.render('test', {
-            Address
-        });
-    })
 })
 
 router.post('/dicedb', function(req, res){

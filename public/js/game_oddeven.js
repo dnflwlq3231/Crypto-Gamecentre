@@ -1,5 +1,118 @@
 var abi = [
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "x",
+				"type": "uint256"
+			}
+		],
+		"name": "OddEvenRule",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "DiceReward",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "OddEvenReward",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
@@ -44,43 +157,6 @@ var abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "select",
-				"type": "uint256"
-			}
-		],
-		"name": "DiceRule",
-		"outputs": [
-			{
-				"name": "result",
-				"type": "uint256"
-			},
-			{
-				"name": "DiceComNum",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "GetTokens",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
 				"name": "userAddress",
 				"type": "address"
 			},
@@ -100,48 +176,17 @@ var abi = [
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "x",
-				"type": "uint256"
-			}
-		],
-		"name": "OddEvenRule",
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
+				"type": "string"
 			}
 		],
 		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "userAddress",
-				"type": "address"
-			},
-			{
-				"name": "number",
-				"type": "uint256"
-			},
-			{
-				"name": "betAmount",
-				"type": "uint256"
-			}
-		],
-		"name": "Rps",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -192,6 +237,20 @@ var abi = [
 	},
 	{
 		"constant": true,
+		"inputs": [],
+		"name": "gameContract",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [
 			{
 				"name": "userAddress",
@@ -210,93 +269,17 @@ var abi = [
 		"type": "function"
 	},
 	{
-		"constant": true,
+		"constant": false,
 		"inputs": [
 			{
 				"name": "userAddress",
 				"type": "address"
 			}
 		],
-		"name": "DiceReward",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"name": "GetTokens",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "gameContract",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "OddEvenReward",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -331,31 +314,48 @@ var abi = [
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [
+		"constant": false,
+		"inputs": [
 			{
-				"name": "",
-				"type": "string"
+				"name": "select",
+				"type": "uint256"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "totalSupply",
+		"name": "DiceRule",
 		"outputs": [
 			{
-				"name": "",
+				"name": "result",
+				"type": "uint256"
+			},
+			{
+				"name": "DiceComNum",
 				"type": "uint256"
 			}
 		],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"name": "number",
+				"type": "uint256"
+			},
+			{
+				"name": "betAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "Rps",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
@@ -405,7 +405,7 @@ if (typeof web3 !== 'undefined') {
     $('#oddEven_odd').click(async function () {
         ethereum.enable();
         let betAmount = $("#input-bet-amount").val();
-        let balance = $('#ply-balance').val();
+        $('#ply-balance').val();
 
         if (betAmount == "") {
             $(function () {
@@ -429,14 +429,28 @@ if (typeof web3 !== 'undefined') {
             if (OddEvenResult[1] == 1) { $('#img-com-result').attr('src', '/img/oddeven/odd_result.png')}
             
             let Balance = await contract.methods.BalanceOf(address).call();
-            $('#ply-balance').attr('value', Balance)
+			$('#ply-balance').attr('value', Balance)
+			
+			$.ajax({
+				url: "/oddevendb",
+				dataType: 'json',
+				data: {
+					'address' : address,
+					'betting' : betAmount,
+					'com' : OddEvenReward[1],
+					'user' : OddEvenReward[2],
+					'result' : OddEvenReward[0],
+					'txhash' : tx
+				},
+				type: "POST"
+			})
         }
     })
     
     $('#oddEven_even').click(async function () {
 		ethereum.enable();
         let betAmount = $("#input-bet-amount").val();
-        let balance = $('#ply-balance').val();
+        $('#ply-balance').val();
 
         if (betAmount == "") {
             $(function () {
@@ -460,7 +474,21 @@ if (typeof web3 !== 'undefined') {
             if (OddEvenResult[1] == 1) { $('#img-com-result').attr('src', '/img/oddeven/odd_result.png')}
             
             let Balance = await contract.methods.BalanceOf(address).call();
-            $('#ply-balance').attr('value', Balance)
+			$('#ply-balance').attr('value', Balance)
+			
+			$.ajax({
+				url: "/oddevendb",
+				dataType: 'json',
+				data: {
+					'address' : address,
+					'betting' : betAmount,
+					'com' : OddEvenReward[1],
+					'user' : OddEvenReward[2],
+					'result' : OddEvenReward[0],
+					'txhash' : tx
+				},
+				type: "POST"
+			})
         }
     })
 }

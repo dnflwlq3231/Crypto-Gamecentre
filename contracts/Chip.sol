@@ -89,7 +89,7 @@ contract Chip {
     balances[gameContract] = balances[gameContract].add(betAmount);
 
     uint playerReturn;
-    playerReturn = betAmount.mul(5); 
+    playerReturn = betAmount.mul(10); 
 
     (Result, DiceComNum) = DiceRule(number);
 
@@ -148,7 +148,7 @@ contract Chip {
     balances[gameContract] = balances[gameContract].add(betAmount);
 
     uint playerReturn;
-    playerReturn = betAmount.mul(3); 
+    playerReturn = betAmount.mul(5); 
 
     (Result, RpsComHand) = RpsRule(number);
 
@@ -171,7 +171,6 @@ contract Chip {
     uint Result =5;
     uint i = 0;
     uint randNum = uint256(keccak256(abi.encodePacked(now, msg.sender, i))) % 2;
-    randNum = randNum + 1;
     uint OddEven =5;
 
     if(randNum % 2 == 0) {

@@ -1,45 +1,43 @@
-CREATE TABLE `user` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
-  `id` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
+CREATE TABLE `testserver`.`user` (
+  `no` INT NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(150) NOT NULL,
+  `email` VARCHAR(80) NOT NULL,
+  `address` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`no`),
-  UNIQUE KEY `address_UNIQUE` (`address`),
-  UNIQUE KEY `id_UNIQUE` (`id`));
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `address_UNIQUE` (`address` ASC));
 
 CREATE TABLE `testserver`.`gamedice` (
   `dice_no` INT NOT NULL AUTO_INCREMENT,
-  `address` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(80) NOT NULL,
   `betting` VARCHAR(45) NOT NULL,
   `com` VARCHAR(45) NOT NULL,
   `user` VARCHAR(45) NOT NULL,
   `result` VARCHAR(45) NOT NULL,
-  `tx` VARCHAR(80) NOT NULL,
+  `tx` VARCHAR(120) NOT NULL,
   PRIMARY KEY (`dice_no`),
-  UNIQUE INDEX `dice_no_UNIQUE` (`dice_no` ASC),
   UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
 
 CREATE TABLE `testserver`.`gamerps` (
   `rps_no` INT NOT NULL AUTO_INCREMENT,
-  `address` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(80) NOT NULL,
   `betting` VARCHAR(45) NOT NULL,
   `com` VARCHAR(45) NOT NULL,
   `user` VARCHAR(45) NOT NULL,
   `result` VARCHAR(45) NOT NULL,
-  `tx` VARCHAR(80) NOT NULL,
+  `tx` VARCHAR(120) NOT NULL,
   PRIMARY KEY (`rps_no`),
-  UNIQUE INDEX `rps_no_UNIQUE` (`rps_no` ASC),
   UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
 
 CREATE TABLE `testserver`.`gameoddeven` (
   `oddeven_no` INT NOT NULL AUTO_INCREMENT,
-  `address` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(80) NOT NULL,
   `betting` VARCHAR(45) NOT NULL,
   `com` VARCHAR(45) NOT NULL,
   `user` VARCHAR(45) NOT NULL,
   `result` VARCHAR(45) NOT NULL,
-  `tx` VARCHAR(80) NOT NULL,
+  `tx` VARCHAR(120) NOT NULL,
   PRIMARY KEY (`oddeven_no`),
-  UNIQUE INDEX `oddeven_no_UNIQUE` (`oddeven_no` ASC),
   UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
+
