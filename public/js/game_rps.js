@@ -375,6 +375,12 @@ if (typeof web3 !== 'undefined') {
         $('#ply-balance').attr('value', Balance);
 	});
 	
+	let betAmount;
+	
+	$('#betbutton).click(function () {
+		betAmount = $('#input-bet-amount').val();
+	}
+	
 	$('#btn-get-token').click(async function () {
         ethereum.enable();
 		let currentBalance = $('#ply-balance').val()
@@ -398,13 +404,9 @@ if (typeof web3 !== 'undefined') {
 		}
 	});
 
-	$('#betclose').click(function () {
-		$('#input-bet-amount').val('')
-	})
-
 	$('#rps_scissors').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
 		if (betAmount == "") {
@@ -454,7 +456,7 @@ if (typeof web3 !== 'undefined') {
 	
 	$('#rps_rock').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
 		if (betAmount == "") {
@@ -504,7 +506,7 @@ if (typeof web3 !== 'undefined') {
 	
 	$('#rps_paper').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
 		if (betAmount == "") {
