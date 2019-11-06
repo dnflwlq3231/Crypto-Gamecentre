@@ -468,7 +468,7 @@ if (typeof web3 !== 'undefined') {
                 else { tx = result }
             });
 
-            let OddEvenResult = await contract.methods.OddEvenReward(address).call();
+            let OddEvenReward = await contract.methods.OddEvenReward(address).call();
 
             if (OddEvenResult[1] == 0) { $('#img-com-result').attr('src', '/img/oddeven/even_result.png')}
             if (OddEvenResult[1] == 1) { $('#img-com-result').attr('src', '/img/oddeven/odd_result.png')}
