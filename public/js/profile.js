@@ -43,6 +43,7 @@ $("#check_profile").keydown(function (e) {
     let key = e.which;
     if (key == 13) {
         $(".close").click();
+        location.href='/'
     }
 })
 
