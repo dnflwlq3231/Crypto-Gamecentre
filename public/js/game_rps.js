@@ -398,6 +398,10 @@ if (typeof web3 !== 'undefined') {
 		}
 	});
 
+	$('#betclose').click(function () {
+		$('#input-bet-amount').val('')
+	})
+
 	$('#rps_scissors').click(async function () {
         ethereum.enable();
         let betAmount = $("#input-bet-amount").val();
