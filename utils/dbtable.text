@@ -19,3 +19,27 @@ CREATE TABLE `testserver`.`gamedice` (
   PRIMARY KEY (`dice_no`),
   UNIQUE INDEX `dice_no_UNIQUE` (`dice_no` ASC),
   UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
+
+CREATE TABLE `testserver`.`gamerps` (
+  `rps_no` INT NOT NULL AUTO_INCREMENT,
+  `address` VARCHAR(45) NOT NULL,
+  `betting` VARCHAR(45) NOT NULL,
+  `com` VARCHAR(45) NOT NULL,
+  `user` VARCHAR(45) NOT NULL,
+  `result` VARCHAR(45) NOT NULL,
+  `tx` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`rps_no`),
+  UNIQUE INDEX `rps_no_UNIQUE` (`rps_no` ASC),
+  UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
+
+CREATE TABLE `testserver`.`gameoddeven` (
+  `oddeven_no` INT NOT NULL AUTO_INCREMENT,
+  `address` VARCHAR(45) NOT NULL,
+  `betting` VARCHAR(45) NOT NULL,
+  `com` VARCHAR(45) NOT NULL,
+  `user` VARCHAR(45) NOT NULL,
+  `result` VARCHAR(45) NOT NULL,
+  `tx` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`oddeven_no`),
+  UNIQUE INDEX `oddeven_no_UNIQUE` (`oddeven_no` ASC),
+  UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
