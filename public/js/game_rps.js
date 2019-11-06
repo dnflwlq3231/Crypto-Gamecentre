@@ -377,9 +377,9 @@ if (typeof web3 !== 'undefined') {
 	
 	let betAmount;
 	
-	$('#betbutton).click(function () {
-		betAmount = $('#input-bet-amount').val();
-	}
+	$('#betbutton').click(function () {
+		betAmount = $('#input-bet-amount').val()
+	});
 	
 	$('#btn-get-token').click(async function () {
         ethereum.enable();

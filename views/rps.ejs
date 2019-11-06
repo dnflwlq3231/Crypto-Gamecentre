@@ -217,26 +217,26 @@
     </div>
 
     <div>
-		<table class="table">
+		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">배팅금액</th>
-					<th scope="col">컴퓨터</th>
-					<th scope="col">사용자</th>
-					<th scope="col">게임결과</th>
-					<th scope="col">해쉬</th>
+					<th scope="col" id='th_num'>#</th>
+					<th scope="col" id='th_betAmount'>Bet</th>
+					<th scope="col" id='th_com'>Com</th>
+					<th scope="col" id='th_user'>User</th>
+					<th scope="col" id='th_result'>Result</th>
+					<th scope="col" id='th_hash'>Hash</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% list.forEach(function(result, index){ %>
 				<tr>
 					<td scope="row"></th>
-					<td><%= result.betting %></td>
-					<td><%= result.com %></td>
-					<td><%= result.user %></td>
-					<td><%= result.result %></td>
-					<td><a href="https://ropsten.etherscan.io/tx/<%= result.tx %>" target="_blank"><%= result.tx %></a></td>
+					<td id='td_betAmount'><%= result.betting %></td>
+					<td id='td_com'><%= result.com %></td>
+					<td id='td_user'><%= result.user %></td>
+					<td id='td_result'><%= result.result %></td>
+					<td id='td_hash'><a href="https://ropsten.etherscan.io/tx/<%= result.tx %>" target="_blank"><%= result.tx %></a></td>
 				</tr>
 				<% }); %>
 			</tbody>
