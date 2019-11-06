@@ -7619,6 +7619,10 @@ h2 {
   font-family: 'Do Hyeon', sans-serif;
   font-size: 40px; }
 
+th {
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 20px;
+}
 .name {
   display: inline-block;
   font-family: 'Do Hyeon', sans-serif;

@@ -176,7 +176,7 @@
                 </div>
                 <!--Footer-->
                 <div class="modal-footer flex-center">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal" id="balanceclose">Close</button>
                 </div>
             </div>
             <!--/.Content-->
@@ -200,8 +200,8 @@
                 </div>
                 <!--Footer-->
                 <div class="modal-footer flex-center">
-                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Bet!</button>
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id='betbutton'>Bet!</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal" id="betclose">Close</button>
                 </div>
             </div>
             <!--/.Content-->
@@ -231,7 +231,7 @@
                 </div>
                 <!--Footer-->
                 <div class="modal-footer flex-center">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal" id="ruleclose">Close</button>
                 </div>
             </div>
             <!--/.Content-->
@@ -242,6 +242,24 @@
     <script>
         $("#img-com-result").attr('style', 'visibility:hidden');
         $("#img-ply-selected").attr('style', 'visibility:hidden');
+    </script>
+
+     <!-- enter key -->
+     <script>
+            $("#modalBalance").keydown(function(e) {
+                let key = e.which;
+                if (key == 13) {
+                    $("#balanceclose").click();
+                    location.href='/OddEven'
+                }
+            })
+            $("#modalRule").keydown(function(e) {
+                let key = e.which;
+                if (key == 13) {
+                    $("#ruleclose").click();
+                    location.href='/OddEven'
+                }
+            })
     </script>
     
     <!-- 사용자 지갑 주소 -->
