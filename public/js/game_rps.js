@@ -369,12 +369,17 @@ if (typeof web3 !== 'undefined') {
     let contract = new web3.eth.Contract(abi, '0x08550f36557f395071976240e32ba93c8e707cdc');
     ethereum.enable();
     
-    // 페이지 로드시 잔액 조회
     $(document).ready(async function () {
         ethereum.enable();
         let Balance = await contract.methods.BalanceOf(address).call();
         $('#ply-balance').attr('value', Balance);
 	});
+	
+	let betAmount;
+	
+	$('#betbutton).click(function () {
+		betAmount = $('#input-bet-amount').val();
+	}
 	
 	$('#btn-get-token').click(async function () {
         ethereum.enable();
@@ -388,7 +393,7 @@ if (typeof web3 !== 'undefined') {
 					console.log(error)
 				}
 			});
-			// 잔액 변경
+
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
 		}
@@ -401,7 +406,7 @@ if (typeof web3 !== 'undefined') {
 
 	$('#rps_scissors').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
 		if (betAmount == "") {
@@ -428,7 +433,7 @@ if (typeof web3 !== 'undefined') {
 			if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
 			if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
 			if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
-			// 잔액 변경
+
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
 
@@ -451,7 +456,7 @@ if (typeof web3 !== 'undefined') {
 	
 	$('#rps_rock').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
 		if (betAmount == "") {
@@ -478,7 +483,7 @@ if (typeof web3 !== 'undefined') {
 			if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
 			if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
 			if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
-			// 잔액 변경
+
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
 
@@ -501,7 +506,7 @@ if (typeof web3 !== 'undefined') {
 	
 	$('#rps_paper').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
 		if (betAmount == "") {
@@ -528,7 +533,7 @@ if (typeof web3 !== 'undefined') {
 			if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
 			if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
 			if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
-			// 잔액 변경
+
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
 

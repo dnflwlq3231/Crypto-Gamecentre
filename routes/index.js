@@ -80,11 +80,9 @@ router.post('/login_process', function(req, res){
             throw err;
         }
          if(userinfo[0] == null || userinfo[0].password != pbkdf2){       
-            console.log("login failed")
             res.json({"msg" : "failed"})
         }
         else if(userinfo[0].password == pbkdf2){
-            console.log("login successed")
             req.session.loginId = userId;
             req.session.isLogined = true;
             req.session.isAddress = userinfo[0].address;
@@ -232,7 +230,7 @@ router.get('/OddEven', function (req, res) {
             }
             else {
                 let Address = result[0].address;
-                db.query('select * from gameoddeven where gameoddeven.address=?', [Address], function (err, result2) {
+                db.query('select * from gameoddeven where gameoddeven.address=? order by oddeven_no DESC limit 5', [Address], function (err, result2) {
                     res.render('oddeven', {
                         address : Address,
                         list : result2
@@ -254,7 +252,7 @@ router.get('/Rps', function(req,res){
             }
             else {
                 let Address = result[0].address;
-                db.query('select * from gamerps where gamerps.address=?', [Address], function (err, result2) {
+                db.query('select * from gamerps where gamerps.address=? order by rps_no DESC limit 5', [Address], function (err, result2) {
                     res.render('rps', {
                         address : Address,
                         list : result2
@@ -276,7 +274,7 @@ router.get('/Dice', function (req, res) {
             }
             else {
                 let Address = result[0].address;
-                db.query('select * from gamedice where gamedice.address=?', [Address], function (err, result2) {
+                db.query('select * from gamedice where gamedice.address=? order by dice_no DESC limit 5', [Address], function (err, result2) {
                     res.render('dice', {
                         address : Address,
                         list : result2
