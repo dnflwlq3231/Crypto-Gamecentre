@@ -218,6 +218,14 @@ router.post('/forgot_process', function(req,res){
     })
 })
 
+router.get('/Blackjack', function(req, res) {
+    if(req.session.loginId == undefined) {
+        res.redirect('/login');
+    }
+    else {
+        res.render('blackjack')
+    }
+})
 router.get('/OddEven', function (req, res) {
     if (req.session.loginId == undefined) {
         res.redirect('/login');

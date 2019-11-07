@@ -15,11 +15,13 @@ th {
     font-size: 15px;
 }
 .table {
-    width: 900px;
+    position: relative;
+    width: 30%;
     margin-bottom: 5rem;
     color: #212529; 
     margin-top: 50px;
-    margin-left: 400px;}
+    margin-left: auto;
+    margin-right: auto;}
     .table th,
     .table td {
       padding: 0.75rem;
