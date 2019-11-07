@@ -380,6 +380,9 @@ if (typeof web3 !== 'undefined') {
 	$('#betbutton').click(function () {
 		betAmount = $('#input-bet-amount').val()
 	});
+	$('#betclose').on('click', function() {
+		$('#input-bet-amount').val(null)
+	});
 	
 	$('#btn-get-token').click(async function () {
         ethereum.enable();
@@ -406,24 +409,22 @@ if (typeof web3 !== 'undefined') {
 
 	$('#rps_scissors').click(async function () {
         ethereum.enable();
-//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
-		if (betAmount == "") {
+		if (betAmount == null || betAmount == "" || betAmount == 0) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
 		}
 		else {
-			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/scissors.png')
-			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-	
 			await contract.methods.Rps(address, '1', betAmount).send({
 				from: address
 			}, function(error, result) {
 				if (error){
 					console.log(error)
 				}else {
+					$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/scissors.png')
+					$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 					tx = result;
 				}
 			});
@@ -456,29 +457,29 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
-
+		betAmount = 0;
+		$('#input-bet-amount').val("")
 	});
 	
 	$('#rps_rock').click(async function () {
         ethereum.enable();
-//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
-		if (betAmount == "") {
+		if (betAmount == null || betAmount == "" || betAmount == 0) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
 		}
 		else {
-			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/rock.png')
-			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-	
+			
 			await contract.methods.Rps(address, '2', betAmount).send({
 				from: address
 			}, function(error, result) {
 				if (error){
 					console.log(error)
 				}else {
+					$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/rock.png')
+					$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 					tx = result;
 				}
 			});
@@ -511,29 +512,29 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
-
+		betAmount = 0;
+		$('#input-bet-amount').val("")
     });
 	
 	$('#rps_paper').click(async function () {
         ethereum.enable();
-//         let betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 		
-		if (betAmount == "") {
+		if (betAmount == null || betAmount == "" || betAmount == 0) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
 		}
 		else {
-			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/palm.png')
-			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-	
+			
 			await contract.methods.Rps(address, '3', betAmount).send({
 				from: address
 			}, function(error, result) {
 				if (error){
 					console.log(error)
 				}else {
+					$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/palm.png')
+					$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 					tx = result;
 				}
 			});
@@ -566,7 +567,7 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
-
-    });
-	
+		betAmount = 0;
+		$('#input-bet-amount').val("")
+	});
 }

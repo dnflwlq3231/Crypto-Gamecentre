@@ -376,6 +376,15 @@ if (typeof web3 !== 'undefined') {
         $('#ply-balance').attr('value', Balance);
     });
 
+	let betAmount;
+	
+	$('#betbutton').click(function () {
+		betAmount = $('#input-bet-amount').val()
+	});
+	$('#betclose').on('click', function() {
+		$('#input-bet-amount').val(null)
+	});
+
     $('#btn-get-token').click(async function () {
 		ethereum.enable();
 		let currentBalance = $('#ply-balance').val()
@@ -403,23 +412,25 @@ if (typeof web3 !== 'undefined') {
 
     $('#oddEven_odd').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+        
         $('#ply-balance').val();
 
-        if (betAmount == "") {
+        if (betAmount == null || betAmount == "" || betAmount == 0) {
             $(function () {
                 alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
             })
         }
         else {
-            $('#img-ply-selected').attr('style', 'visibility:visible').attr('src', '/img/oddeven/odd_result.png')
-            $('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-
-            await contract.methods.OddEven(address, '1', betAmount).send({
-                from: address
+			
+			await contract.methods.OddEven(address, '1', betAmount).send({
+				from: address
             }, function (err, result) {
-                if(err) { console.log(err) }
-                else { tx = result }
+				if(err) { console.log(err) }
+                else { 
+					$('#img-ply-selected').attr('style', 'visibility:visible').attr('src', '/img/oddeven/odd_result.png')
+					$('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
+					tx = result 
+				}
             });
 
             let OddEvenReward = await contract.methods.OddEvenReward(address).call();
@@ -448,28 +459,31 @@ if (typeof web3 !== 'undefined') {
 					}
 				}
 			})
-        }
+		}
+		betAmount = 0;
+		$('#input-bet-amount').val("")
     })
     
     $('#oddEven_even').click(async function () {
 		ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
         $('#ply-balance').val();
 
-        if (betAmount == "") {
+        if (betAmount == null || betAmount == "" || betAmount == 0) {
             $(function () {
                 alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
             })
         }
         else {
-            $('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/oddeven/even_result.png')
-            $('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-
-            await contract.methods.OddEven(address, '0', betAmount).send({
-                from: address
+			
+			await contract.methods.OddEven(address, '0', betAmount).send({
+				from: address
             }, function (err, result) {
-                if(err) { console.log(err) }
-                else { tx = result }
+				if(err) { console.log(err) }
+                else { 
+					$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/oddeven/even_result.png')
+					$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
+					tx = result
+				}
             });
 
             let OddEvenReward = await contract.methods.OddEvenReward(address).call();
@@ -498,6 +512,8 @@ if (typeof web3 !== 'undefined') {
 					}
 				}
 			})
-        }
+		}
+		betAmount = 0;
+		$('#input-bet-amount').val("")
     })
 }

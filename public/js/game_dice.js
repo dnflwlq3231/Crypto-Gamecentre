@@ -375,6 +375,8 @@ if (typeof web3 !== 'undefined') {
         $('#ply-balance').attr('value', Balance);
     });
 
+	let betAmount;
+
     $('#btn-get-token').click(async function () {
 		ethereum.enable();
 		let currentBalance = $('#ply-balance').val()
@@ -401,9 +403,9 @@ if (typeof web3 !== 'undefined') {
     $('#btn-play-dice-1').click(async function () {
         ethereum.enable();
 		$('#ply-balance').val();
-		let betAmount = $("#input-bet-amount").val();
+		betAmount = $("#input-bet-amount").val();
 
-		if (betAmount == "") {
+		if (betAmount == "" || betAmount == 0 || betAmount == null) {
 			$(function () {
 				alert('배팅할 금액을 입력하지 않았습니다.');
 			})
@@ -453,15 +455,16 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
-
+		betAmount = 0;
+		$('#input-bet-amount').val("");
     })
 
     $('#btn-play-dice-2').click(async function () {
         ethereum.enable();
-		let betAmount = $("#input-bet-amount").val();
+		betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 
-		if (betAmount == "") {
+		if (betAmount == "" || betAmount == 0 || betAmount == null) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -511,14 +514,16 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
+		betAmount = 0;
+		$('#input-bet-amount').val("");
     })
 
     $('#btn-play-dice-3').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+        betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 
-		if (betAmount == "") {
+		if (betAmount == "" || betAmount == 0 || betAmount == null) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -568,14 +573,16 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
+		betAmount = 0;
+		$('#input-bet-amount').val("");
     })
 
     $('#btn-play-dice-4').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+        betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 
-		if (betAmount == "") {
+		if (betAmount == "" || betAmount == 0 || betAmount == null) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -625,15 +632,16 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
-
+		betAmount = 0;
+		$('#input-bet-amount').val("");
     })
 
     $('#btn-play-dice-5').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+        betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 
-		if (betAmount == "") {
+		if (betAmount == "" || betAmount == 0 || betAmount == null) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -683,15 +691,16 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
-
+		betAmount = 0;
+		$('#input-bet-amount').val("");
     })
 
     $('#btn-play-dice-6').click(async function () {
         ethereum.enable();
-        let betAmount = $("#input-bet-amount").val();
+        betAmount = $("#input-bet-amount").val();
 		$('#ply-balance').val();
 
-		if (betAmount == "") {
+		if (betAmount == "" || betAmount == 0 || betAmount == null) {
 			$(function () {
 				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
 			})
@@ -741,5 +750,7 @@ if (typeof web3 !== 'undefined') {
 				}
 			})
 		}
+		betAmount = 0;
+		$('#input-bet-amount').val("");
 	})
 }
