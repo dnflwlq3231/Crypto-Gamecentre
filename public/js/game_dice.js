@@ -445,7 +445,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : diceReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#dicescore').load('/Dice #dicescore');
+					}
+				}
 			})
 		}
 
@@ -498,7 +503,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : diceReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#dicescore').load('/Dice #dicescore');
+					}
+				}
 			})
 		}
     })
@@ -550,7 +560,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : diceReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#dicescore').load('/Dice #dicescore');
+					}
+				}
 			})
 		}
     })
@@ -602,7 +617,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : diceReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#dicescore').load('/Dice #dicescore');
+					}
+				}
 			})
 		}
 
@@ -655,7 +675,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : diceReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#dicescore').load('/Dice #dicescore');
+					}
+				}
 			})
 		}
 
@@ -708,8 +733,13 @@ if (typeof web3 !== 'undefined') {
 					'result' : diceReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#dicescore').load('/Dice #dicescore');
+					}
+				}
 			})
 		}
-    })
+	})
 }

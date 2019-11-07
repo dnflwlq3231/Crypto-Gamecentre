@@ -441,7 +441,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : OddEvenReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#oddevenScore').load('/OddEven #oddevenScore');
+					}
+				}
 			})
         }
     })
@@ -486,7 +491,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : OddEvenReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#oddevenScore').load('/OddEven #oddevenScore');
+					}
+				}
 			})
         }
     })

@@ -132,31 +132,32 @@
             </p>
         </p>
     </footer>
-
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Bet</th>
-                <th scope="col">Com</th>
-                <th scope="col">User</th>
-                <th scope="col">Result</th>
-                <th scope="col">Hash</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% list.forEach(function(result, index){ %>
-            <tr>
-                <td scope="row"></th>
-                <td><%= result.betting %></td>
-                <td><%= result.com %></td>
-                <td><%= result.user %></td>
-                <td><%= result.result %></td>
-                <td><a href="https://ropsten.etherscan.io/tx/<%= result.tx %>" target="_blank"><%= result.tx %></a></td>
-            </tr>
-            <% }); %>
-        </tbody>
-    </table>
+    <div id="oddevenScore">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Bet</th>
+                    <th scope="col">Com</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Hash</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% list.forEach(function(result, index){ %>
+                    <tr>
+                        <td scope="row"></th>
+                        <td><%= result.betting %></td>
+                        <td><%= result.com %></td>
+                        <td><%= result.user %></td>
+                        <td><%= result.result %></td>
+                        <td><a href="https://ropsten.etherscan.io/tx/<%= result.tx %>" target="_blank"><%= result.tx %></a></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
 
 
     <!--Balance Modal-->
