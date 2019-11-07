@@ -448,7 +448,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : rpsReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#rpsscore').load('/Rps #rpsscore');
+					}
+				}
 			})
 		}
 
@@ -498,7 +503,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : rpsReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#rpsscore').load('/Rps #rpsscore');
+					}
+				}
 			})
 		}
 
@@ -548,7 +558,12 @@ if (typeof web3 !== 'undefined') {
 					'result' : rpsReward[0],
 					'txhash' : tx
 				},
-				type: "POST"
+				type: "POST",
+				success : function (result) {
+					if(result.msg == "success"){
+						$('#rpsscore').load('/Rps #rpsscore');
+					}
+				}
 			})
 		}
 

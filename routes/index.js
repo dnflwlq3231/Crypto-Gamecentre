@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../utils/db.js');
 const auth = require('../utils/auth.js');
-const author = require('../config/author.json');
+const author = require('../utils/author.js');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
@@ -302,6 +302,9 @@ router.post('/dicedb', function(req, res){
         if(err){
             res.json({"msg" : "error"})
         }
+        else {
+            res.json({"msg" : "success"})
+        }
     })
 })
 
@@ -347,6 +350,9 @@ router.post('/rpsdb', function(req, res){
         if(err){
             res.json({"msg" : "error"})
         }
+        else {
+            res.json({"msg" : "success"})
+        }
     })
 })
 
@@ -386,6 +392,9 @@ router.post('/oddevendb', function(req, res){
     db.query('insert into gameoddeven (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [oddevenaddress, oddevenbetting, oddevencom, oddevenuser, oddevenresult, oddeventxhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
+        }
+        else {
+            res.json({"msg" : "success"})
         }
     })
 })
