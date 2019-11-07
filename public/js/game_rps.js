@@ -362,6 +362,7 @@ var abi = [
 
 var address = $('#address').val();
 var tx;
+var flag = 0;
 if (typeof web3 !== 'undefined') {
 
     console.log("MetaMask가 감지되었습니다.");
@@ -405,168 +406,178 @@ if (typeof web3 !== 'undefined') {
 	});
 
 	$('#rps_scissors').click(async function () {
-        ethereum.enable();
-//         let betAmount = $("#input-bet-amount").val();
-		$('#ply-balance').val();
+		if(flag == 0){
+			flag = 1;
+			ethereum.enable();
+			$('#ply-balance').val();
+			
+			if (betAmount == "") {
+				$(function () {
+					alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
+					flag = 0;
+				})
+			}
+			else {
+				$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/scissors.png')
+				$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 		
-		if (betAmount == "") {
-			$(function () {
-				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
-			})
-		}
-		else {
-			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/scissors.png')
-			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-	
-			await contract.methods.Rps(address, '1', betAmount).send({
-				from: address
-			}, function(error, result) {
-				if (error){
-					console.log(error)
-				}else {
-					tx = result;
-				}
-			});
-			
-			let rpsReward = await contract.methods.RpsReward(address).call();
-			
-			if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
-			if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
-			if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
-
-			let Balance = await contract.methods.BalanceOf(address).call();
-			$('#ply-balance').attr('value', Balance);
-
-			$.ajax({
-				url: "/rpsdb",
-				dataType: 'json',
-				data: {
-					'address' : address,
-					'betting' : betAmount,
-					'com' : rpsReward[1],
-					'user' : rpsReward[2],
-					'result' : rpsReward[0],
-					'txhash' : tx
-				},
-				type: "POST",
-				success : function (result) {
-					if(result.msg == "success"){
-						$('#rpsscore').load('/Rps #rpsscore');
+				await contract.methods.Rps(address, '1', betAmount).send({
+					from: address
+				}, function(error, result) {
+					if (error){
+						console.log(error)
+					}else {
+						tx = result;
 					}
-				}
-			})
+				});
+				
+				let rpsReward = await contract.methods.RpsReward(address).call();
+				
+				if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
+				if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
+				if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
+	
+				let Balance = await contract.methods.BalanceOf(address).call();
+				$('#ply-balance').attr('value', Balance);
+	
+				$.ajax({
+					url: "/rpsdb",
+					dataType: 'json',
+					data: {
+						'address' : address,
+						'betting' : betAmount,
+						'com' : rpsReward[1],
+						'user' : rpsReward[2],
+						'result' : rpsReward[0],
+						'txhash' : tx
+					},
+					type: "POST",
+					success : function (result) {
+						if(result.msg == "success"){
+							$('#rpsscore').load('/Rps #rpsscore');
+						}
+					}
+				})
+				flag = 0;
+			}
 		}
 
 	});
 	
 	$('#rps_rock').click(async function () {
-        ethereum.enable();
-//         let betAmount = $("#input-bet-amount").val();
-		$('#ply-balance').val();
+		if(flag == 0){
+			flag = 1;
+			ethereum.enable();
+			$('#ply-balance').val();
+			
+			if (betAmount == "") {
+				$(function () {
+					alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
+					flag = 0;
+				})
+			}
+			else {
+				$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/rock.png')
+				$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 		
-		if (betAmount == "") {
-			$(function () {
-				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
-			})
-		}
-		else {
-			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/rock.png')
-			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-	
-			await contract.methods.Rps(address, '2', betAmount).send({
-				from: address
-			}, function(error, result) {
-				if (error){
-					console.log(error)
-				}else {
-					tx = result;
-				}
-			});
-			
-			let rpsReward = await contract.methods.RpsReward(address).call();
-			
-			if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
-			if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
-			if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
-
-			let Balance = await contract.methods.BalanceOf(address).call();
-			$('#ply-balance').attr('value', Balance);
-
-			$.ajax({
-				url: "/rpsdb",
-				dataType: 'json',
-				data: {
-					'address' : address,
-					'betting' : betAmount,
-					'com' : rpsReward[1],
-					'user' : rpsReward[2],
-					'result' : rpsReward[0],
-					'txhash' : tx
-				},
-				type: "POST",
-				success : function (result) {
-					if(result.msg == "success"){
-						$('#rpsscore').load('/Rps #rpsscore');
+				await contract.methods.Rps(address, '2', betAmount).send({
+					from: address
+				}, function(error, result) {
+					if (error){
+						console.log(error)
+					}else {
+						tx = result;
 					}
-				}
-			})
+				});
+				
+				let rpsReward = await contract.methods.RpsReward(address).call();
+				
+				if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
+				if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
+				if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
+	
+				let Balance = await contract.methods.BalanceOf(address).call();
+				$('#ply-balance').attr('value', Balance);
+	
+				$.ajax({
+					url: "/rpsdb",
+					dataType: 'json',
+					data: {
+						'address' : address,
+						'betting' : betAmount,
+						'com' : rpsReward[1],
+						'user' : rpsReward[2],
+						'result' : rpsReward[0],
+						'txhash' : tx
+					},
+					type: "POST",
+					success : function (result) {
+						if(result.msg == "success"){
+							$('#rpsscore').load('/Rps #rpsscore');
+						}
+					}
+				})
+				flag = 0;
+			}
 		}
 
     });
 	
 	$('#rps_paper').click(async function () {
-        ethereum.enable();
-//         let betAmount = $("#input-bet-amount").val();
-		$('#ply-balance').val();
+		if(flag == 0){
+			flag = 1;
+			ethereum.enable();
+			$('#ply-balance').val();
+			
+			if (betAmount == "") {
+				$(function () {
+					alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
+					flag = 0;
+				})
+			}
+			else {
+				$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/palm.png')
+				$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 		
-		if (betAmount == "") {
-			$(function () {
-				alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
-			})
-		}
-		else {
-			$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/rps/palm.png')
-			$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-	
-			await contract.methods.Rps(address, '3', betAmount).send({
-				from: address
-			}, function(error, result) {
-				if (error){
-					console.log(error)
-				}else {
-					tx = result;
-				}
-			});
-			
-			let rpsReward = await contract.methods.RpsReward(address).call();
-			
-			if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
-			if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
-			if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
-
-			let Balance = await contract.methods.BalanceOf(address).call();
-			$('#ply-balance').attr('value', Balance);
-
-			$.ajax({
-				url: "/rpsdb",
-				dataType: 'json',
-				data: {
-					'address' : address,
-					'betting' : betAmount,
-					'com' : rpsReward[1],
-					'user' : rpsReward[2],
-					'result' : rpsReward[0],
-					'txhash' : tx
-				},
-				type: "POST",
-				success : function (result) {
-					if(result.msg == "success"){
-						$('#rpsscore').load('/Rps #rpsscore');
+				await contract.methods.Rps(address, '3', betAmount).send({
+					from: address
+				}, function(error, result) {
+					if (error){
+						console.log(error)
+					}else {
+						tx = result;
 					}
-				}
-			})
-		}
-
-    });
+				});
+				
+				let rpsReward = await contract.methods.RpsReward(address).call();
+				
+				if (rpsReward[1] == "1") { $('#img-com-result').attr('src', 'img/rps/scissors.png')}
+				if (rpsReward[1] == "2") { $('#img-com-result').attr('src', 'img/rps/rock.png')}
+				if (rpsReward[1] == "3") { $('#img-com-result').attr('src', 'img/rps/palm.png')}
 	
+				let Balance = await contract.methods.BalanceOf(address).call();
+				$('#ply-balance').attr('value', Balance);
+	
+				$.ajax({
+					url: "/rpsdb",
+					dataType: 'json',
+					data: {
+						'address' : address,
+						'betting' : betAmount,
+						'com' : rpsReward[1],
+						'user' : rpsReward[2],
+						'result' : rpsReward[0],
+						'txhash' : tx
+					},
+					type: "POST",
+					success : function (result) {
+						if(result.msg == "success"){
+							$('#rpsscore').load('/Rps #rpsscore');
+						}
+					}
+				})
+				flag = 0;
+			}
+		}
+    });
 }
