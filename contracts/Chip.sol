@@ -10,6 +10,7 @@ contract Chip {
 
   uint256 public totalSupply = 1000000000000;
 
+  address public publisher = 0x85D684Ad21aCb3772Ba3f7835D875726f392AE25;
   address public gameContract = 0x0000000000000000000000000000000000000000;
 
   mapping (address => uint) balances;
@@ -26,21 +27,54 @@ contract Chip {
   
 
   function Token() external {
+    require(msg.sender == publisher);
     require(balances[msg.sender] == 0);
 
     balances[msg.sender] = totalSupply;
   }
   
   function SetContAddr(address _gameContract) external {
+    require(msg.sender == publisher);
     gameContract = _gameContract;
   }
 
-  function AdminSend(uint256 amount) external returns (bool) {
+  function AdminSendContract(uint256 amount) external returns (bool) {
+    require(msg.sender == publisher);
     require(balances[msg.sender] >= amount);
     require(amount > 0);
 
     balances[msg.sender] = balances[msg.sender].sub(amount);
     balances[gameContract] = balances[gameContract].add(amount);
+    return true;
+  }
+
+  function AdminReceiveContract(uint256 amount) external returns (bool) {
+    require(msg.sender == publisher);
+    require(balances[msg.sender] >= amount);
+    require(amount > 0);
+
+    balances[msg.sender] = balances[msg.sender].sub(amount);
+    balances[gameContract] = balances[gameContract].add(amount);
+    return true;
+  }
+
+  function AdminSendUser(address userAddress, uint256 amount) external returns (bool) {
+    require(msg.sender == publisher);
+    require(balances[msg.sender] >= amount);
+    require(amount > 0);
+
+    balances[msg.sender] = balances[msg.sender].sub(amount);
+    balances[userAddress] = balances[userAddress].add(amount);
+    return true;
+  }
+
+  function AdminReceiveUser(address userAddress, uint amount) external returns (bool) {
+    require(msg.sender == publisher);
+    require(balances[userAddress] >= amount);
+    require(amount > 0);
+
+    balances[userAddress] = balances[userAddress].sub(amount);
+    balances[msg.sender] = balances[msg.sender].add(amount);
     return true;
   }
 
