@@ -461,10 +461,10 @@ if (typeof web3 !== 'undefined') {
 		let currentBalance = $('#ply-balance').val()
 
 		if (currentBalance == "0") {
-			$('#img-com-dice').attr('src', '/img/portfolio/coin.gif');
 			await contract.methods.GetTokens(address).send({
 				from : address
 			}, function(error, result) {
+				$('#img-ply-dice').attr('src', '/img/portfolio/coin.gif');
 				if (error){
 					console.log(error)
 				}
@@ -474,7 +474,7 @@ if (typeof web3 !== 'undefined') {
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
 
-			$('#img-com-dice').attr('src', '/img/dice/box.png');
+			$('#img-ply-dice').attr('src', '/img/dice/box.png');
 		}
 		else {
 			$(function () {

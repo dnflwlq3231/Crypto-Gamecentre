@@ -472,7 +472,7 @@ if (typeof web3 !== 'undefined') {
 			await contract.methods.GetTokens(address).send({
 				from : address
 			}, function(error, result) {
-				$('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/coin.gif');
+				$('#img-ply-selected').attr('style', 'visibility:visible').attr('src', '/img/portfolio/coin.gif');
 				if (error){
 					console.log(error)
 				}else {
@@ -484,7 +484,7 @@ if (typeof web3 !== 'undefined') {
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
 
-			$('#img-com-result').attr('style', 'visibility:hidden').attr('src', null);
+			$('#img-ply-selected').attr('style', 'visibility:hidden').attr('src', null);
 		}
 		else {
 			$(function () {
