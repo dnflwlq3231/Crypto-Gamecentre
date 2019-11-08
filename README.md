@@ -29,7 +29,7 @@
 
 게임을 진행하기에 앞서 회원가입을 하셔야 합니다. 회원으로 가입하시기 위해서는 <br> ID, 비밀번호, Ethereu 지갑 주소와 Ropsten Ethereum(저희의 테스트 서비스는 Ropsten test network로 구현되어있습니다.)이 필요합니다.
 
-![requirement_metamask Preview](./public/img/md/needMetamask.PNG)
+![requirement_metamask Preview](./public/img/md/needMetamask.png)
 
 또한 게임을 진행하기 위해서는 [MetaMask](https://metamask.io/)가 필요합니다.
 먼저 MetaMask를 설치합니다. 이후 MetaMask의 지시에 따라 Ethereum 지갑을 만듭니다.
@@ -55,7 +55,7 @@
 
 ### Forgot
 
-![Forgot_page Preview](./public/img/md/forgot.PNG)
+![Forgot_page Preview](.public/img/md/forgot.png)
 
 - `username` : 가입할 때 입력한 아이디를 입력하세요.
 - `email` : 가입할 때 입력한 이메일을 입력하세요. 비밀번호를 알려드립니다.
@@ -65,7 +65,7 @@
 
 ### Profile
 
-![Profile_page Preview](./public/img/md/profile.PNG)
+![Profile_page Preview](.public/img/md/profile.png)
 
 - `Name` : 가입시 입력한 아이디가 보입니다. (수정이 **불가**합니다)
 - `Mail` : 가입시 입력한 이메일이 보입니다. (수정이 `가능`합니다)
@@ -74,7 +74,7 @@
 
 ### OddEven
 
-![OddEven_page Preview](./public/img/md/oddeven.PNG)
+![OddEven_page Preview](.public/img/md/oddeven.png)
 
 이 게임은 플레이어가 홀수와 짝수중 한가지를 선택하여 고른 후 컨트랙트 상의 게임을 실행하여<br>
 같은 결과가 나오면 보상을 받는 게임입니다.
@@ -92,7 +92,7 @@
 
 ### Dice
 
-![Dice_page Preview](./public/img/md/dice.PNG)
+![Dice_page Preview](.public/img/md/dice.png)
 
 이 게임은 플레이어가 주사위들 중 한가지를 선택하여 게임을 진행하여 같은 주사위가 나오면 보상을 받는 게임입니다.
 
@@ -104,7 +104,7 @@
 
 ### Rock-Paper-Scissors
 
-![rps_page Preview](./public/img/md/rps.PNG)
+![rps_page Preview](.public/img/md/rps.png)
 
 이 게임은 플레이어가 가위, 바위, 보 중 한가지를 선택하여 게임을 진행합니다.<br>게임을 규칙은 일반적인 가위, 바위, 보 게임과 동일하며 플레이어가 이긴 경우에는 보상을 받을 수 있습니다.
 
@@ -120,7 +120,7 @@
 
 ### Record
 
-![record Preview](./piblic/img/md/recode.PNG)
+![record Preview](.public/img/md/recode.png)
 
 게임 페이지의 아래에는 위와 같이 최근 5 게임의 결과를 표시해줍니다.
 `Hash`의 링크를 통해 [Etherscan](https://etherscan.io)으로 이동하여 게임에 관한 정보를 확인하실 수 있습니다.
