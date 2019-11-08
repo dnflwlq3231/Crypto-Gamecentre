@@ -472,6 +472,7 @@ if (typeof web3 !== 'undefined') {
 			await contract.methods.GetTokens(address).send({
 				from : address
 			}, function(error, result) {
+				$('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/coin.gif');
 				if (error){
 					console.log(error)
 				}else {
@@ -479,7 +480,6 @@ if (typeof web3 !== 'undefined') {
 				}
 			});
 
-			$('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/coin.gif');
 
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);

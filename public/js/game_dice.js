@@ -461,6 +461,7 @@ if (typeof web3 !== 'undefined') {
 		let currentBalance = $('#ply-balance').val()
 
 		if (currentBalance == "0") {
+			$('#img-com-dice').attr('src', '/img/portfolio/coin.gif');
 			await contract.methods.GetTokens(address).send({
 				from : address
 			}, function(error, result) {
@@ -469,7 +470,6 @@ if (typeof web3 !== 'undefined') {
 				}
 			});
 
-			$('#img-com-dice').attr('src', '/img/portfolio/coin.gif');
 
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
