@@ -27,7 +27,7 @@
 
 ### Requirement
 
-게임을 진행하기에 앞서 회원가입을 하셔야 합니다. 회원으로 가입하시기 위해서는 <br> ID, 비밀번호, Ethereu 지갑 주소와 Ropsten Ethereum(저희의 테스트 서비스는 Ropsten test network로 구현되어있습니다.)이 필요합니다.
+게임을 진행하기에 앞서 회원가입을 하셔야 합니다.<br>회원으로 가입하시기 위해서는 ID, 비밀번호, Ethereuem 지갑 주소와 <br>Ropsten Ethereum(저희의 테스트 서비스는 Ropsten test network로 구현되어있습니다)이 필요합니다.
 
 ![requirement_metamask Preview](./public/img/md/needMetamask.png)
 
