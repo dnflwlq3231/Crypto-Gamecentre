@@ -243,30 +243,6 @@
 		</table>
 	</div>
 
-    <!-- 결과 창 가리기 -->
-    <script>
-        $("#img-com-result").attr('style', 'visibility:hidden');
-        $("#img-ply-selected").attr('style', 'visibility:hidden');
-    </script>
-
-    <!-- enter key -->
-    <script>
-        $("#modalBalance").keydown(function(e) {
-            let key = e.which;
-            if (key == 13) {
-                $("#balanceclose").click();
-                location.href='/Rps'
-            }
-        })
-        $("#modalRule").keydown(function(e) {
-            let key = e.which;
-            if (key == 13) {
-                $("#ruleclose").click();
-                location.href='/Rps'
-            }
-        })
-    </script>
-
     <!-- 사용자 지갑 주소 -->
 	<input type="hidden" name="address" class="form-control input_user" id="address" value="<%= address %>">
 
