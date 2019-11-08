@@ -479,10 +479,12 @@ if (typeof web3 !== 'undefined') {
 				}
 			});
 
-			$.jGrowl('현재 팬딩 중 입니다. 잠시만 기다려주세요..',{ life: 2000 })
+			$('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/coin.gif');
 
 			let Balance = await contract.methods.BalanceOf(address).call();
 			$('#ply-balance').attr('value', Balance);
+
+			$('#img-com-result').attr('style', 'visibility:hidden').attr('src', null);
 		}
 		else {
 			$(function () {
