@@ -447,14 +447,14 @@ if (typeof web3 !== 'undefined') {
     var web3 = new Web3(web3.currentProvider);
     let contract = new web3.eth.Contract(abi, '0x571ad83fae8c50df99a5ca0ba649e954b17d4b8a');
 	ethereum.enable();
-	var account;
+	// var account;
     
     $(document).ready(async function () {
         ethereum.enable();
         let Balance = await contract.methods.BalanceOf(address).call();
 		$('#ply-balance').attr('value', Balance);
-		let accounts = await ethereum.enable();
-		account = accounts[0];
+		// let accounts = await ethereum.enable();
+		// account = accounts[0];
     });
 
 	let betAmount;
