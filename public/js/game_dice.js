@@ -454,7 +454,7 @@ if (typeof web3 !== 'undefined') {
         let Balance = await contract.methods.BalanceOf(address).call();
 		$('#ply-balance').attr('value', Balance);
 		let accounts = await ethereum.enable();
-		account = accounts[0];
+		account = string(accounts[0]);
     });
 
 	let betAmount;
