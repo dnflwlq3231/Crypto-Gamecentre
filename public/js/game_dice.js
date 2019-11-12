@@ -446,12 +446,15 @@ if (typeof web3 !== 'undefined') {
     console.log("MetaMask가 감지되었습니다.");
     var web3 = new Web3(web3.currentProvider);
     let contract = new web3.eth.Contract(abi, '0x571ad83fae8c50df99a5ca0ba649e954b17d4b8a');
-    ethereum.enable();
+	ethereum.enable();
+	var account;
     
     $(document).ready(async function () {
         ethereum.enable();
         let Balance = await contract.methods.BalanceOf(address).call();
-        $('#ply-balance').attr('value', Balance);
+		$('#ply-balance').attr('value', Balance);
+		let accounts = await ethereum.enable();
+		account = accounts[0];
     });
 
 	let betAmount;
@@ -481,8 +484,96 @@ if (typeof web3 !== 'undefined') {
 				alert('토큰은 잔액을 모두 소진한 경우에만 드립니다.')
 			})
 		}
-    });
+	});
+	
+	$('.dice').click(async function () {
+		if(address != account) {
+			$(function () {
+				alert('MetaMask에 선택된 계정과 플레이어의 계정정보가 일치하지 않습니다.')
+			})
+		}
+		if(flag == 0){
+			ethereum.enable();
+			$('#ply-balance').val();
+			betAmount = $("#input-bet-amount").val();
+			flag = 1;
 
+			if (betAmount == "" || betAmount == 0 || betAmount == null) {
+				$(function () {
+					alert('배팅할 금액을 입력하지 않았습니다.');
+					flag = 0;
+				})
+			}
+
+			else {
+				var diceId = this.id;
+				var diceImg;
+
+				for (let index = 1; index < 7; index++) {
+					if (diceId == 'btn-play-dice-${index}') {
+						diceId = index;
+						diceImg = '/img/dice/dice_${index}.png';
+						console.log(diceId + ' ' + diceImg);
+						break
+					}
+				}
+
+				await contract.methods.Dice(address, diceId, betAmount).send({
+					from: address
+				}, function(error, result) {
+					if (error){
+						console.log(error)
+					}else {
+						$('#img-ply-dice').attr('src', diceImg)
+						$('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
+						tx = result;
+					}
+				});
+				
+				let diceReward = await contract.methods.DiceReward(address).call();
+
+				for (let j = 1; j < 7; j++) {
+					if (diceReward[1] == j) {
+						{ $('#img-com-dice').attr('src', 'img/dice/dice_${j}.png')}
+					}
+					
+				}
+				/*
+				if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
+				if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
+				if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
+				if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
+				if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
+				if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
+				*/
+				let Balance = await contract.methods.BalanceOf(address).call();
+				$('#ply-balance').attr('value', Balance);
+				
+				$.ajax({
+					url: "/dicedb",
+					dataType: 'json',
+					data: {
+						'address' : address,
+						'betting' : betAmount,
+						'com' : diceReward[1],
+						'user' : diceReward[2],
+						'result' : diceReward[0],
+						'txhash' : tx
+					},
+					type: "POST",
+					success : function (result) {
+						if(result.msg == "success"){
+							$('#dicescore').load('/Dice #dicescore');
+						}
+					}
+				})
+				flag = 0;
+			}
+		}
+		betAmount = 0;
+		$('#input-bet-amount').val("");
+    })
+/*
     $('#btn-play-dice-1').click(async function () {
 		if(flag == 0){
 			ethereum.enable();
@@ -868,6 +959,7 @@ if (typeof web3 !== 'undefined') {
 		$('#input-bet-amount').val("");
 	})
 }
+*/
 
 else {
 	$(function (){
