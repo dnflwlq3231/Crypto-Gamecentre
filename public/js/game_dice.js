@@ -486,7 +486,7 @@ if (typeof web3 !== 'undefined') {
 		}
 	});
 	
-	$('.dice').click(async function () {
+	$('.dice-space').click(async function () {
 		// if(address != account) {
 		// 	$(function () {
 		// 		alert('MetaMask에 선택된 계정과 플레이어의 계정정보가 일치하지 않습니다.')
