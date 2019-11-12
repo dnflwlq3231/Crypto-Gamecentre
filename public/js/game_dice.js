@@ -534,18 +534,11 @@ if (typeof web3 !== 'undefined') {
 
 				for (let j = 1; j < 7; j++) {
 					if (diceReward[1] == j) {
-						{ $('#img-com-dice').attr('src', 'img/dice/dice_${j}.png')}
+						{ $('#img-com-dice').attr('src', '/img/dice/dice_${j}.png')}
+						break
 					}
-					
 				}
-				/*
-				if (diceReward[1] == "1") { $('#img-com-dice').attr('src', 'img/dice/dice_1.png')}
-				if (diceReward[1] == "2") { $('#img-com-dice').attr('src', 'img/dice/dice_2.png')}
-				if (diceReward[1] == "3") { $('#img-com-dice').attr('src', 'img/dice/dice_3.png')}
-				if (diceReward[1] == "4") { $('#img-com-dice').attr('src', 'img/dice/dice_4.png')}
-				if (diceReward[1] == "5") { $('#img-com-dice').attr('src', 'img/dice/dice_5.png')}
-				if (diceReward[1] == "6") { $('#img-com-dice').attr('src', 'img/dice/dice_6.png')}
-				*/
+				
 				let Balance = await contract.methods.BalanceOf(address).call();
 				$('#ply-balance').attr('value', Balance);
 				
