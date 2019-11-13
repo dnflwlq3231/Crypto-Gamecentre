@@ -1,13 +1,13 @@
-# [Start GameCentre](http://203.236.220.47:3000/)
+# [Start GameCentre](http://222.122.203.222:3000/)
 
-[GameCentre](http://203.236.220.47:3000/) 는 블록체인 이더리움(Ethereum) 스마트 컨트렉트들로 제작된 게임들을 모아 놓았습니다.<br>
+[GameCentre](http://222.122.203.222:3000/) 는 블록체인 이더리움(Ethereum) 스마트 컨트렉트들로 제작된 게임들을 모아 놓았습니다.<br>
  총 4가지의 게임이 준비되어 있습니다. 자세한 내용은 아래에 설명하겠습니다.
 
 ## Preview
 
-[![GameCentre Preview](./public/img/md/main.PNG)](http://203.236.220.47:3000/)
+[![GameCentre Preview](./public/img/md/main.PNG)](http://222.122.203.222:3000/)
 
-**[View Live Preview](http://203.236.220.47:3000/)**
+**[View Live Preview](http://222.122.203.222:3000/)**
 
 - `LOGIN` : 로그인 페이지로 이동합니다.
 - `GAMELIST` : 메인 페이지 내의 게임목록 창으로 이동합니다.
