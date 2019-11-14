@@ -1,4 +1,4 @@
-CREATE TABLE `testserver`.`user` (
+CREATE TABLE `gameDB`.`user` (
   `no` INT NOT NULL AUTO_INCREMENT,
   `id` VARCHAR(45) NOT NULL,
   `password` VARCHAR(150) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE `testserver`.`user` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `address_UNIQUE` (`address` ASC));
 
-CREATE TABLE `testserver`.`gamedice` (
+CREATE TABLE `gameDB`.`gamedice` (
   `dice_no` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(80) NOT NULL,
   `betting` VARCHAR(45) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE `testserver`.`gamedice` (
   PRIMARY KEY (`dice_no`),
   UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
 
-CREATE TABLE `testserver`.`gamerps` (
+CREATE TABLE `gameDB`.`gamerps` (
   `rps_no` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(80) NOT NULL,
   `betting` VARCHAR(45) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `testserver`.`gamerps` (
   PRIMARY KEY (`rps_no`),
   UNIQUE INDEX `tx_UNIQUE` (`tx` ASC));
 
-CREATE TABLE `testserver`.`gameoddeven` (
+CREATE TABLE `gameDB`.`gameoddeven` (
   `oddeven_no` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(80) NOT NULL,
   `betting` VARCHAR(45) NOT NULL,
