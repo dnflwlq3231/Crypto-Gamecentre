@@ -5,8 +5,7 @@ CREATE TABLE `gameDB`.`user` (
   `email` VARCHAR(80) NOT NULL,
   `address` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`no`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `address_UNIQUE` (`address` ASC));
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
 
 CREATE TABLE `gameDB`.`gamedice` (
   `dice_no` INT NOT NULL AUTO_INCREMENT,

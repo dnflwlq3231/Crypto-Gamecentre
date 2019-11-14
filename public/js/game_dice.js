@@ -798,15 +798,15 @@ if (typeof web3 !== 'undefined') {
 				})
 			}
 			else {
-				$('#img-ply-dice').attr('src', '/img/dice/dice_5.png')
-				$('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
-		
+				
 				await contract.methods.Dice(address, '5', betAmount).send({
 					from: address
 				}, function(error, result) {
 					if (error){
 						console.log(error)
 					}else {
+						$('#img-ply-dice').attr('src', '/img/dice/dice_5.png')
+						$('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 						tx = result;
 					}
 				});
@@ -870,15 +870,15 @@ if (typeof web3 !== 'undefined') {
 					})
 				}
 				else {
-					$('#img-ply-dice').attr('src', '/img/dice/dice_6.png')
-					$('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
-			
+					
 					await contract.methods.Dice(address, '6', betAmount).send({
 						from: address
 					}, function(error, result) {
 						if (error){
 							console.log(error)
 						}else {
+							$('#img-ply-dice').attr('src', '/img/dice/dice_6.png')
+							$('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 							tx = result;
 						}
 					});
