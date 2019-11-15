@@ -6,6 +6,7 @@ if (typeof web3 !== 'undefined') {
       let userMail = $('#email').val();
       let accounts = await ethereum.enable();
       let userAddress = accounts[0];
+      userAddress = userAddress.toLowerCase();
       
       $.ajax({
          url: "/signup_process",
