@@ -710,20 +710,20 @@ if (typeof web3 !== 'undefined') {
 	$("#img-com-result").attr('style', 'visibility:hidden');
 	$("#img-ply-selected").attr('style', 'visibility:hidden');
 
-	// $("#modalBalance").keydown(function(e) {
-	// 	let key = e.which;
-	// 	if (key == 13) {
-	// 		$("#balanceclose").click();
-	// 		location.href='/Rps'
-	// 	}
-	// })
-	// $("#modalRule").keydown(function(e) {
-	// 	let key = e.which;
-	// 	if (key == 13) {
-	// 		$("#ruleclose").click();
-	// 		location.href='/Rps'
-	// 	}
-	// })
+	$("#modalBalance").keydown(function(e) {
+		let key = e.which;
+		if (key == 13) {
+			$("#balanceclose").click();
+			$(".modal-backdrop").remove();
+		}
+	})
+	$("#modalRule").keydown(function(e) {
+		let key = e.which;
+		if (key == 13) {
+			$("#ruleclose").click();
+			$(".modal-backdrop").remove();
+		}
+	})
 }
 
 else {
