@@ -48,7 +48,7 @@ router.post('/contact', function (req,res){
                 console.log(error);
             }
             else {
-                console.log('Email sent!: ' + info.response);
+                console.log(userId + ' Claim Email sent!: ' + info.response);
             }
             transporter.close();
         
@@ -127,6 +127,7 @@ router.post('/profile_process', function(req,res){
         }
         else { 
             res.json({});
+            console.log(userId + ' profile update')
         }
     })
 })
@@ -145,10 +146,11 @@ router.post('/signup_process', function(req, res){
 
     db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, pbkdf2, userEmail, userAddress], function(err, result){
         if(err){
-            res.json({"msg" : "error"})
+            res.json({"msg" : "error"});
         }
         else {
-            res.json({"msg" : "success"})
+            res.json({"msg" : "success"});
+            console.log(userId + ' signup');
         }
     });
 });
@@ -205,7 +207,7 @@ router.post('/forgot_process', function(req,res){
                     console.log(error);
                 }
                 else {
-                    console.log('Email sent!: ' + info.response);
+                    console.log(userId + ' forgot password Email sent!: ' + info.response);
                 }
                 transporter.close();
             
@@ -223,7 +225,7 @@ router.get('/Blackjack', function(req, res) {
         res.redirect('/login');
     }
     else {
-        res.render('blackjack')
+        res.render('blackjack');
     }
 })
 router.get('/OddEven', function (req, res) {
@@ -312,6 +314,7 @@ router.post('/dicedb', function(req, res){
         }
         else {
             res.json({"msg" : "success"})
+            console.log(req.session.loginId + ' game play Dice')
         }
     })
 })
@@ -360,6 +363,7 @@ router.post('/rpsdb', function(req, res){
         }
         else {
             res.json({"msg" : "success"})
+            console.log(req.session.loginId + ' game play Rps')
         }
     })
 })
@@ -403,6 +407,7 @@ router.post('/oddevendb', function(req, res){
         }
         else {
             res.json({"msg" : "success"})
+            console.log(req.session.loginId + ' game play oddeven')
         }
     })
 })

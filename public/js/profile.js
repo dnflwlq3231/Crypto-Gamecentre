@@ -3,6 +3,7 @@ $("#change").on("click", function () {
     let userMail = $('#email').val();
     let userAddress = $('#address').val();
     let userPassword = $('#password').val();
+    userAddress = userAddress.toLowerCase();
 
     if (userPassword != "") {
         $.ajax({
