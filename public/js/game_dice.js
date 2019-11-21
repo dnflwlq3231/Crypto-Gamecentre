@@ -494,7 +494,7 @@ if (typeof web3 !== 'undefined') {
 	});
 
 	$('.dice').click(async function (data) {
-		let diceNum = data.target.id.slice(-1)
+		let diceId = data.target.id.slice(-1)
 
 		if(flag == 0){
 			flag = 1;
@@ -518,13 +518,13 @@ if (typeof web3 !== 'undefined') {
 				}
 				else {
 					
-					await contract.methods.Dice(address, diceNum, betAmount).send({
+					await contract.methods.Dice(address, diceId, betAmount).send({
 						from: address
 					}, function(error, result) {
 						if (error){
 							console.log(error)
 						}else {
-							$('#img-ply-dice').attr('src', `/img/dice/dice_${diceNum}.png`)
+							$('#img-ply-dice').attr('src', `/img/dice/dice_${diceId}.png`)
 							$('#img-com-dice').attr('src', '/img/portfolio/pending_hamster.gif')
 							tx = result;
 						}

@@ -501,7 +501,8 @@ if (typeof web3 !== 'undefined') {
 		}
     });
 
-    $('#oddEven_odd').click(async function () {
+	$('.oddEven_img').click(async function (data) {
+		let oddId = data.target.id.slice(-1);
 		if(flag == 0){
 			flag = 1;
 			let accounts = await ethereum.enable();
@@ -525,12 +526,12 @@ if (typeof web3 !== 'undefined') {
 					})
 				}
 				else {
-					await contract.methods.OddEven(address, '1', betAmount).send({
+					await contract.methods.OddEven(address, oddId, betAmount).send({
 						from: address
 					}, function (err, result) {
 						if(err) { console.log(err) }
 						else { 
-							$('#img-ply-selected').attr('style', 'visibility:visible').attr('src', '/img/oddeven/odd_result.png')
+							$('#img-ply-selected').attr('style', 'visibility:visible').attr('src', `/img/oddeven/result_${oddId}.png`)
 							$('#img-com-result').attr('style', 'visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
 							tx = result
 						}
@@ -538,8 +539,7 @@ if (typeof web3 !== 'undefined') {
 					
 					let OddEvenReward = await contract.methods.OddEvenReward(address).call();
 					
-					if (OddEvenReward[1] == 0) { $('#img-com-result').attr('src', '/img/oddeven/even_result.png')}
-					if (OddEvenReward[1] == 1) { $('#img-com-result').attr('src', '/img/oddeven/odd_result.png')}
+					$('#img-com-result').attr('src', `/img/oddeven/result_${OddEvenReward[1]}.png`)
 					
 					let Balance = await contract.methods.BalanceOf(address).call();
 					$('#ply-balance').attr('value', Balance)
@@ -569,77 +569,7 @@ if (typeof web3 !== 'undefined') {
 			}
 		}
     })
-    
-    $('#oddEven_even').click(async function () {
-		if(flag == 0){
-			flag = 1;
-			let accounts = await ethereum.enable();
-			let account = accounts[0];
 
-			if(address != account) {
-				$(function () {
-					alert('MetaMask에 선택된 계정과 플레이어의 계정정보가 일치하지 않습니다.')
-				})
-				flag = 0;
-			}
-
-			else {
-				ethereum.enable();
-				betAmount = $("#input-bet-amount").val();
-				$('#ply-balance').val();
-		
-				if (betAmount == "" || betAmount == 0 || betAmount == null) {
-					$(function () {
-						alert('배팅할 금액이 잔고보다 부족하거나, 입력하지 않았습니다.');
-					})
-				}
-				else {
-					
-					await contract.methods.OddEven(address, '0', betAmount).send({
-						from: address
-					}, function (err, result) {
-						if(err) { console.log(err) }
-						else { 
-							$('#img-ply-selected').attr('style','visibility:visible').attr('src', '/img/oddeven/even_result.png')
-							$('#img-com-result').attr('style','visibility:visible').attr('src', '/img/portfolio/pending_hamster.gif')
-							tx = result
-						}
-					});
-		
-					let OddEvenReward = await contract.methods.OddEvenReward(address).call();
-		
-					if (OddEvenReward[1] == 0) { $('#img-com-result').attr('src', '/img/oddeven/even_result.png')}
-					if (OddEvenReward[1] == 1) { $('#img-com-result').attr('src', '/img/oddeven/odd_result.png')}
-					
-					let Balance = await contract.methods.BalanceOf(address).call();
-					$('#ply-balance').attr('value', Balance)
-					
-					$.ajax({
-						url: "/oddevendb",
-						dataType: 'json',
-						data: {
-							'address' : address,
-							'betting' : betAmount,
-							'com' : OddEvenReward[1],
-							'user' : OddEvenReward[2],
-							'result' : OddEvenReward[0],
-							'txhash' : tx
-						},
-						type: "POST",
-						success : function (result) {
-							if(result.msg == "success"){
-								$('#oddevenScore').load('/OddEven #oddevenScore');
-							}
-						}
-					})
-				}
-				betAmount = 0;
-				$('#input-bet-amount').val("")	
-				flag = 0;
-			}
-		}
-	})
-	
 	$("#img-com-result").attr('style', 'visibility:hidden');
 	$("#img-ply-selected").attr('style', 'visibility:hidden');
 

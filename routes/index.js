@@ -6,6 +6,8 @@ const author = require('../utils/author.js');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
+const salt = 'cryptoGamecentre';
+
 router.get('/', function (req, res) {
     let statusUI = auth.statusUI(req, res);
     if(req.session){
@@ -18,18 +20,21 @@ router.get('/', function (req, res) {
 })
 
 router.post('/contact', function (req,res){
-    let userId = req.body['id'];
-    let userMessage = req.body['message'];
-    let loginId = req.session.loginId;
-    
-    if(userId == loginId){
+    let ctr = req.body;
+    console.log(ctr.email);
+    if(ctr.email == ""){
+        res.json({"msg" : "false_1"})
+    }
+
+    else if(ctr.message == ""){
+        res.json({"msg" : "false_2"})
+    }
         
-        res.json({"msg" : "success"})
-        
+    else{
         let mailerid = author.emailId(req,res);
         let mailerpass = author.emailPass(req,res);
         var transporter = nodemailer.createTransport({
-            service: 'naver',
+            service: 'gmail',
             auth: {
                 user: mailerid,
                 pass: mailerpass
@@ -37,10 +42,10 @@ router.post('/contact', function (req,res){
         });
         
         var mailOptions = {
-            from: 'Game_Centre contact <dnflwlq3231@naver.com>',
+            from: '"Game_Centre contact" <crytogameteam@gmail.com>',
             to: mailerid,
-            subject: 'claim',
-            text: 'claim ID :   ' + userId +  '\nclaim message :  \n       ' + userMessage 
+            subject: 'claim <' + ctr.email + '>',
+            text: 'claim Email :   ' + ctr.email +  '\nclaim message :  \n       ' + ctr.message 
         };
         
         transporter.sendMail(mailOptions, (error, info) => {
@@ -48,20 +53,14 @@ router.post('/contact', function (req,res){
                 console.log(error);
             }
             else {
-                console.log(userId + ' Claim Email sent!: ' + info.response);
+                console.log(ctr.email + ' Claim Email sent!: ' + info.response);
             }
             transporter.close();
-        
         });
-    }
-    else if(userId != loginId){
-        if(loginId == undefined){
-            res.json({"msg" : "error"})
-        }
-        else{
-            res.json({"msg" : "false"})
-        }
+        res.json({"msg" : "success"})
     }   
+        
+    
 })
 
 router.get('/login', function (req, res) {
@@ -69,13 +68,10 @@ router.get('/login', function (req, res) {
 })
 
 router.post('/login_process', function(req, res){    
-    let userId = req.body['id'];
-    let userPw = req.body['password'];
+    let ctr = req.body;
+    let pbkdf2 = crypto.pbkdf2Sync(ctr.password, salt, 1004, 64, 'sha512').toString('hex'); 
 
-    let salt = 'cryptoGamecentre';
-    let pbkdf2 = crypto.pbkdf2Sync(userPw, salt, 1004, 64, 'sha512').toString('hex');
-    
-    db.query('select * from user where user.id=? ', [userId], function(err, userinfo){
+    db.query('select * from user where user.id=? ', [ctr.id], function(err, userinfo){
         if(err){
             throw err;
         }
@@ -83,7 +79,7 @@ router.post('/login_process', function(req, res){
             res.json({"msg" : "failed"})
         }
         else if(userinfo[0].password == pbkdf2){
-            req.session.loginId = userId;
+            req.session.loginId = ctr.id;
             res.json({"msg": "success"})
         }
     })
@@ -113,13 +109,10 @@ router.get('/profile', function (req, res) {
 
 router.post('/profile_process', function(req,res){
     let userId = req.session.loginId;
-    let userAddress = req.body['address'];
-    let userEmail = req.body['email'];
-    let userPw = req.body['password'];
-    let salt = 'cryptoGamecentre';
-    let pbkdf2 = crypto.pbkdf2Sync(userPw, salt, 1004, 64, 'sha512').toString('hex');
+    let ctr = req.body;
+    let pbkdf2 = crypto.pbkdf2Sync(ctr.password, salt, 1004, 64, 'sha512').toString('hex');
 
-    db.query('update user set user.email=?, user.address=?, user.password=? where user.id=?', [userEmail, userAddress, pbkdf2, userId], function(err, result){
+    db.query('update user set user.email=?, user.address=?, user.password=? where user.id=?', [ctr.email, ctr.address, pbkdf2, userId], function(err, result){
         if(err){
             throw err;
         }
@@ -135,20 +128,16 @@ router.get('/signup', function (req, res) {
 })
 
 router.post('/signup_process', function(req, res){
-    let userId = req.body['id'];
-    let userPw = req.body['password'];
-    let userEmail = req.body['email'];
-    let userAddress = req.body['address'];
-    let salt = 'cryptoGamecentre';
-    let pbkdf2 = crypto.pbkdf2Sync(userPw, salt, 1004, 64, 'sha512').toString('hex'); 
+    let ctr = req.body;
+    let pbkdf2 = crypto.pbkdf2Sync(ctr.password, salt, 1004, 64, 'sha512').toString('hex'); 
 
-    db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [userId, pbkdf2, userEmail, userAddress], function(err, result){
+    db.query(`insert into user (id, password, email, address) values (?, ?, ?, ?)`, [ctr.id, pbkdf2, ctr.email, ctr.address], function(err, result){
         if(err){
             res.json({"msg" : "error"});
         }
         else {
             res.json({"msg" : "success"});
-            console.log(userId + ' signup');
+            console.log(ctr.id + ' signup');
         }
     });
 });
@@ -158,11 +147,9 @@ router.get('/forgot', function (req,res){
 })
 
 router.post('/forgot_process', function(req,res){
-    let userId = req.body['id'];
-    let userEmail = req.body['email'];
+    let ctr = req.body;
     let arr = "0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,!,@,#,$,%,^,&,*,?".split(",");
     let randomPw = createCode(arr, 10);
-    let salt = 'cryptoGamecentre';
     let pbkdf2 = crypto.pbkdf2Sync(randomPw, salt, 1004, 64, 'sha512').toString('hex');
 
     function createCode(objArr, iLength) {
@@ -174,19 +161,19 @@ router.post('/forgot_process', function(req,res){
         return ranpw;
     }
 
-    db.query('select * from user where user.id=?', [userId], function(err,data){
+    db.query('select * from user where user.id=?', [ctr.id], function(err,data){
         
         if(err){
             throw err;
         }
-        else if(data[0] == null || data[0].email != userEmail){
+        else if(data[0] == null || data[0].email != ctr.email){
             res.json({"msg" : "error"});     
         }
-        else if(data[0].email == userEmail){
+        else if(data[0].email == ctr.email){
             let mailerid = author.emailId(req,res);
             let mailerpass = author.emailPass(req,res);
             var transporter = nodemailer.createTransport({
-                service: 'naver',
+                service: 'gmail',
                 auth: {
                     user: mailerid,
                     pass: mailerpass
@@ -194,8 +181,8 @@ router.post('/forgot_process', function(req,res){
             });
             
             var mailOptions = {
-                from: 'Game_Centre <dnflwlq3231@naver.com>',
-                to: userEmail,
+                from: 'Game_Centre <crytogameteam@gmail.com>',
+                to: ctr.email,
                 subject: 'Your Password',
                 text: 'Temporary password :\n\n       ' + randomPw + '\n   Please change your password! '
             };
@@ -205,13 +192,13 @@ router.post('/forgot_process', function(req,res){
                     console.log(error);
                 }
                 else {
-                    console.log(userId + ' forgot password Email sent!: ' + info.response);
+                    console.log(ctr.id + ' forgot password Email sent!: ' + info.response);
                 }
                 transporter.close();
             
             });
 
-            db.query('update user set user.password=? where user.id=?', [pbkdf2, userId], function(err2, data2){
+            db.query('update user set user.password=? where user.id=?', [pbkdf2, ctr.id], function(err2, data2){
                 res.json({"msg" : "success"});
             });
         }
@@ -293,20 +280,15 @@ router.get('/Dice', function (req, res) {
 })
 
 router.post('/dicedb', function(req, res){
-    let diceaddress = req.body['address'];
-    let dicebetting = req.body['betting'];
-    let dicecom = req.body['com'];
-    let diceuser = req.body['user'];
-    let diceresult = req.body['result'];
-    let dicetxhash = req.body['txhash'];
-    if(diceresult == 0){
-        diceresult = '패'
+    let dice = req.body;
+    if(dice.result == 0){
+        dice.result = '패'
     }
     else {
-        diceresult = '승'
+        dice.result = '승'
     }
     
-    db.query('insert into gamedice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [diceaddress, dicebetting, dicecom, diceuser, diceresult, dicetxhash], function (err, result){
+    db.query('insert into gamedice (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [dice.address, dice.betting, dice.com, dice.user, dice.result, dice.txhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
         }
@@ -318,44 +300,40 @@ router.post('/dicedb', function(req, res){
 })
 
 router.post('/rpsdb', function(req, res){
-    let rpsaddress = req.body['address'];
-    let rpsbetting = req.body['betting'];
-    let rpscom = req.body['com'];
-    let rpsuser = req.body['user'];
-    let rpsresult = req.body['result'];
-    let rpstxhash = req.body['txhash'];
-    if(rpsresult == 0){
-        rpsresult = '패'
+    let rps = req.body;
+
+    if(rps.result == 0){
+        rps.result = '패'
     }
     else {
-        rpsresult = '승'
+        rps.result = '승'
     }
 
-    if (rpscom){
-        if(rpscom == 1){
-            rpscom = '가위'
+    if (rps.com){
+        if(rps.com == 1){
+            rps.com = '가위'
         }
-        else if(rpscom == 2){
-            rpscom = '바위'
+        else if(rps.com == 2){
+            rps.com = '바위'
         }
-        else if(rpscom == 3){
-            rpscom = '보'
-        }
-    }
-
-    if (rpsuser){
-        if(rpsuser == 1){
-            rpsuser = '가위'
-        }
-        else if(rpsuser == 2){
-            rpsuser = '바위'
-        }
-        else if(rpsuser == 3){
-            rpsuser = '보'
+        else if(rps.com == 3){
+            rps.com = '보'
         }
     }
 
-    db.query('insert into gamerps (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [rpsaddress, rpsbetting, rpscom, rpsuser, rpsresult, rpstxhash], function (err, result){
+    if (rps.user){
+        if(rps.user == 1){
+            rps.user = '가위'
+        }
+        else if(rps.user == 2){
+            rps.user = '바위'
+        }
+        else if(rps.user == 3){
+            rps.user = '보'
+        }
+    }
+
+    db.query('insert into gamerps (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [rps.address, rps.betting, rps.com, rps.user, rps.result, rps.txhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
         }
@@ -367,39 +345,35 @@ router.post('/rpsdb', function(req, res){
 })
 
 router.post('/oddevendb', function(req, res){
-    let oddevenaddress = req.body['address'];
-    let oddevenbetting = req.body['betting'];
-    let oddevencom = req.body['com'];
-    let oddevenuser = req.body['user'];
-    let oddevenresult = req.body['result'];
-    let oddeventxhash = req.body['txhash'];
-    if(oddevenresult == 0){
-        oddevenresult = '패'
+    let odd = req.body;
+
+    if(odd.result == 0){
+        odd.result = '패'
     }
     else {
-        oddevenresult = '승'
+        odd.result = '승'
     }
 
-    if(oddevencom){
-        if(oddevencom == 0){
-            oddevencom = '짝'  
+    if(odd.com){
+        if(odd.com == 0){
+            odd.com = '짝'  
         }
         else {
-            oddevencom = '홀'
+            odd.com = '홀'
         }
     }
 
-    if(oddevenuser){
-        if(oddevenuser == 0){
-            oddevenuser = '짝'
+    if(odd.user){
+        if(odd.user == 0){
+            odd.user = '짝'
         }
         else {
-            oddevenuser = '홀'
+            odd.user = '홀'
         }
     }
     
     
-    db.query('insert into gameoddeven (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [oddevenaddress, oddevenbetting, oddevencom, oddevenuser, oddevenresult, oddeventxhash], function (err, result){
+    db.query('insert into gameoddeven (address, betting, com, user, result, tx) values (?, ?, ?, ?, ?, ?)', [odd.address, odd.betting, odd.com, odd.user, odd.result, odd.txhash], function (err, result){
         if(err){
             res.json({"msg" : "error"})
         }
