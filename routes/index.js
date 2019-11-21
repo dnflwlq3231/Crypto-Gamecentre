@@ -84,8 +84,6 @@ router.post('/login_process', function(req, res){
         }
         else if(userinfo[0].password == pbkdf2){
             req.session.loginId = userId;
-            req.session.isLogined = true;
-            req.session.isAddress = userinfo[0].address;
             res.json({"msg": "success"})
         }
     })
