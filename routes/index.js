@@ -42,10 +42,10 @@ router.post('/contact', function (req,res){
         });
         
         var mailOptions = {
-            from: '"Game_Centre contact" <crytogameteam@gmail.com>',
+            from: mailerid,
             to: mailerid,
             subject: 'claim <' + ctr.email + '>',
-            text: 'claim Email :   ' + ctr.email +  '\nclaim message :  \n       ' + ctr.message 
+            html: '<h4>claim Email:</h4>&nbsp;' + ctr.email + '<br><h4>claim message:</h4><br>' + ctr.message 
         };
         
         transporter.sendMail(mailOptions, (error, info) => {
@@ -181,10 +181,10 @@ router.post('/forgot_process', function(req,res){
             });
             
             var mailOptions = {
-                from: 'Game_Centre <crytogameteam@gmail.com>',
+                from: mailerid,
                 to: ctr.email,
-                subject: 'Your Password',
-                text: 'Temporary password :\n\n       ' + randomPw + '\n   Please change your password! '
+                subject: 'Your Temporary Password',
+                html: '<p>Temporary password : <b>' + randomPw + '</b></p><br><a href="http://222.122.203.222:3000/profile">Please change your password!</a>'
             };
             
             transporter.sendMail(mailOptions, (error, info) => {
