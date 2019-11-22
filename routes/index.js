@@ -45,7 +45,7 @@ router.post('/contact', function (req,res){
             from: mailerid,
             to: mailerid,
             subject: 'claim <' + ctr.email + '>',
-            html: '<p>claim Email:&nbsp;<b>' + ctr.email + '</b></p><p><b>claim message:</b><br>' + ctr.message + '</p>'
+            html: '<p>claim Email:&nbsp;<b>' + ctr.email + '</b></p><p>claim message:<br>' + ctr.message + '</p>'
         };
         
         transporter.sendMail(mailOptions, (error, info) => {
