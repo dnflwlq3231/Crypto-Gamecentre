@@ -121,6 +121,32 @@ router.post('/profile_process', function(req,res){
             console.log(userId + ' profile update')
         }
     })
+    
+    let mailerId = author.emailId(req,res);
+    let mailerPass = author.emailPass(req,res);
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: mailerId,
+            pass: mailerPass
+        }
+    });
+    let mailOptions = {
+        from: mailerId,
+        to: ctr.email,
+        subject: 'Crypto-GameCenter: Your account information has been changed.',
+        html: '<h4>Your account information has been changed.</h4><p>If this is <b>not your activity</b>, <a href="http://222.122.203.222:3000/profile">change your password.</a></p>'
+    }
+
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log(ctr.id + ' profile change notice mail send. ' + info.response);
+        }
+        transporter.close();
+    })
 })
 
 router.get('/signup', function (req, res) {
