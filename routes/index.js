@@ -45,7 +45,7 @@ router.post('/contact', function (req,res){
             from: mailerid,
             to: mailerid,
             subject: 'claim <' + ctr.email + '>',
-            html: '<p>claim Email:&nbsp;<b>' + ctr.email + '</b></p><br><p><b>claim message:</b><br>' + ctr.message + '</p>'
+            html: '<p>claim Email:&nbsp;<b>' + ctr.email + '</b></p><p><b>claim message:</b><br>' + ctr.message + '</p>'
         };
         
         transporter.sendMail(mailOptions, (error, info) => {
@@ -184,7 +184,7 @@ router.post('/forgot_process', function(req,res){
                 from: mailerid,
                 to: ctr.email,
                 subject: 'Your Temporary Password',
-                html: '<p>Temporary password : <b>' + randomPw + '</b></p><br><a href="http://222.122.203.222:3000/profile">Please change your password!</a>'
+                html: '<p>Temporary password : <b>' + randomPw + '</b></p><p><a href="http://222.122.203.222:3000/profile">Please change your password!</a></p>'
             };
             
             transporter.sendMail(mailOptions, (error, info) => {
